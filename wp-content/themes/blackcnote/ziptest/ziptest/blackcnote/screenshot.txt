@@ -1,0 +1,82 @@
+# BlackCnote Theme Screenshot Specification
+
+## Dimensions
+- Width: 1200 pixels
+- Height: 900 pixels
+- Format: PNG
+- Color Depth: 24-bit
+
+## Content Layout
+
+### Header Section (Top 100px)
+- Site logo/name in top-left
+- Navigation menu with items:
+  - Dashboard
+  - Investment Plans
+  - Transactions
+  - Account
+- User menu in top-right
+- Bootstrap 5 navbar styling
+
+### Main Content (Middle 700px)
+- Dashboard view showing:
+  - Investment summary card
+  - Active investments grid
+  - Recent transactions table
+  - Quick action buttons
+- Bootstrap 5 card layouts
+- Responsive grid system
+- Clean typography
+
+### Footer Section (Bottom 100px)
+- Copyright information
+- Social media links
+- Quick links
+- Bootstrap 5 footer styling
+
+## Color Scheme
+- Primary: #007bff (Bootstrap primary)
+- Secondary: #6c757d (Bootstrap secondary)
+- Success: #28a745 (Bootstrap success)
+- Danger: #dc3545 (Bootstrap danger)
+- Warning: #ffc107 (Bootstrap warning)
+- Info: #17a2b8 (Bootstrap info)
+- Light: #f8f9fa (Bootstrap light)
+- Dark: #343a40 (Bootstrap dark)
+
+## Typography
+- Body: System font stack
+- Headings: System font stack
+- Font sizes:
+  - H1: 2.5rem
+  - H2: 2rem
+  - H3: 1.75rem
+  - H4: 1.5rem
+  - Body: 1rem
+
+## UI Elements
+- Bootstrap 5 cards with shadows
+- Responsive tables
+- Form inputs with validation states
+- Buttons with hover effects
+- Progress bars
+- Badges
+- Alerts
+- Tooltips
+
+## Key Features to Showcase
+1. Modern, clean design
+2. Bootstrap 5 integration
+3. Responsive layout
+4. Investment dashboard
+5. Transaction management
+6. User-friendly interface
+7. Professional styling
+
+## Notes
+- Use high-quality mockup data
+- Ensure all text is readable
+- Maintain consistent spacing
+- Show responsive design elements
+- Include BlackCnote branding
+- Demonstrate theme's capabilities 
