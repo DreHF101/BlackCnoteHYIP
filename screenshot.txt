@@ -1,0 +1,48 @@
+Theme Screenshot Specification
+
+File: screenshot.png
+Dimensions: 1200x900 pixels
+Format: PNG
+Background: #ffffff (white)
+
+Content:
+1. Header
+   - BlackCnote Logo (top left)
+   - Navigation menu (top right)
+   - Bootstrap 5 responsive design
+
+2. Hero Section
+   - Welcome message
+   - Call-to-action button
+   - Background gradient
+
+3. Featured Plans
+   - 3 plan cards in Bootstrap 5 grid
+   - Each card showing:
+     - Plan name
+     - Return rate
+     - Duration
+     - Investment range
+   - Hover effects and shadows
+
+4. Dashboard Preview
+   - Recent transactions table
+   - Investment summary
+   - Quick action buttons
+   - User profile section
+
+5. Footer
+   - Legal disclaimer
+   - Navigation links
+   - Contact information
+   - Copyright notice
+
+Design Elements:
+- Modern, clean interface
+- Professional color scheme
+- Responsive layout indicators
+- Clear typography
+- Subtle shadows and gradients
+- Bootstrap 5 components
+
+Note: The screenshot should accurately represent the theme's appearance and features while maintaining a professional and trustworthy look suitable for an investment platform. 

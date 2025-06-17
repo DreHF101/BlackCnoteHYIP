@@ -1,0 +1,2857 @@
+# Copyright (C) 2023 Hyiplab
+# This file is distributed under the same license as the Hyiplab package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Hyiplab 2.1"
+"POT-Creation-Date: 2023-05-21 10:04:51+00:00"
+"MIME-Version: 1.0"
+"Content-Type: text/plain; charset=UTF-8"
+"Content-Transfer-Encoding: 8bit"
+"PO-Revision-Date: 2023-MO-DA HO:MI+ZONE"
+
+#: app/Hook/Authorization.php:108
+msgid "Email Verification Link"
+msgstr ""
+
+#: app/Hook/Authorization.php:112
+msgid "Leave blank to allow user to login without email verification."
+msgstr ""
+
+#: views/user/deposit_history.php:4
+#: views/user/payment/deposit.php:10
+msgid "Deposit History"
+msgstr ""
+
+#: views/user/deposit_history.php:6
+msgid "Deposit Now"
+msgstr ""
+
+#: views/user/deposit_history.php:56
+#: views/user/invest/details.php:184
+#: views/user/payment/deposit.php:44
+#: views/user/transactions.php:43
+#: views/user/partials/plans.php:134
+#: views/user/withdraw/methods.php:45
+#: views/user/withdraw/history.php:54
+#: views/admin/gateway/automatic/edit.php:108
+#: views/admin/gateway/automatic/edit.php:238
+#: views/admin/gateway/manual/edit.php:57
+#: views/admin/gateway/manual/create.php:59
+#: views/admin/withdraw/edit.php:61
+#: views/admin/withdraw/create.php:61
+#: views/admin/withdraw/index.php:12
+#: views/admin/withdraw/detail.php:34
+#: views/admin/deposit/detail.php:33
+msgid "Charge"
+msgstr ""
+
+#: views/user/deposit_history.php:60
+msgid "With Charge"
+msgstr ""
+
+#: views/user/deposit_history.php:64
+#: views/user/withdraw/history.php:62
+#: views/admin/withdraw/list.php:12
+#: views/admin/deposit/log.php:12
+msgid "Conversion"
+msgstr ""
+
+#: views/user/deposit_history.php:72
+#: views/user/invest/details.php:84
+#: views/user/withdraw/history.php:66
+#: views/user/support/index.php:17
+#: views/admin/plan/index.php:15
+#: views/admin/gateway/automatic/list.php:13
+#: views/admin/gateway/manual/list.php:11
+#: views/admin/report/invest_history.php:51
+#: views/admin/notification/edit.php:79
+#: views/admin/notification/edit.php:105
+#: views/admin/reports.php:14
+#: views/admin/users/detail.php:177
+#: views/admin/withdraw/list.php:13
+#: views/admin/withdraw/index.php:14
+#: views/admin/withdraw/detail.php:53
+#: views/admin/support/ticket.php:12
+#: views/admin/extension/index.php:11
+#: views/admin/deposit/log.php:13
+#: views/admin/deposit/detail.php:49
+msgid "Status"
+msgstr ""
+
+#: views/user/deposit_history.php:109
+#: views/user/invest/log.php:14
+#: views/user/invest/index.php:65
+#: views/user/invest/details.php:204
+#: views/user/transactions.php:63
+#: views/user/withdraw/history.php:92
+#: views/user/support/index.php:69
+#: views/admin/plan/index.php:63
+#: views/admin/report/invest_history.php:91
+#: views/admin/report/transactions.php:45
+#: views/admin/notification/edit.php:26
+#: views/admin/notification/templates.php:27
+#: views/admin/users/list.php:66
+#: views/admin/withdraw/index.php:59
+#: views/admin/support/ticket.php:74
+#: views/admin/time/index.php:34
+msgid "Data not found"
+msgstr ""
+
+#: views/user/deposit_history.php:125
+#: views/user/invest/details.php:192
+#: views/user/transactions.php:51
+#: views/user/withdraw/history.php:110
+#: views/admin/report/transactions.php:13
+#: views/admin/users/list.php:57
+#: views/admin/withdraw/list.php:67
+#: views/admin/support/ticket.php:66
+#: views/admin/deposit/log.php:69
+msgid "Details"
+msgstr ""
+
+#: views/user/deposit_history.php:136
+#: views/user/withdraw/history.php:122
+msgid "Close"
+msgstr ""
+
+#: views/user/deposit_history.php:164
+#: views/user/withdraw/history.php:147
+msgid "Admin Feedback"
+msgstr ""
+
+#: views/user/invest/log.php:3
+#: views/user/invest/index.php:3
+#: views/user/invest/details.php:4
+#: views/user/partials/plans.php:32
+msgid "Investment"
+msgstr ""
+
+#: views/user/invest/log.php:4
+msgid "My Investment Statistics"
+msgstr ""
+
+#: views/user/invest/index.php:4
+msgid "All Investment"
+msgstr ""
+
+#: views/user/invest/index.php:13
+#: views/admin/report/invest_history.php:16
+msgid "Total Invest"
+msgstr ""
+
+#: views/user/invest/index.php:17
+msgid "Total Profit"
+msgstr ""
+
+#: views/user/invest/index.php:22
+#: views/user/partials/plans.php:85
+msgid "Invest Now"
+msgstr ""
+
+#: views/user/invest/index.php:23
+#: views/user/withdraw/history.php:6
+msgid "Withdraw Now"
+msgstr ""
+
+#: views/user/invest/index.php:45
+msgid "No Investment Found Yet"
+msgstr ""
+
+#: views/user/invest/index.php:54
+msgid "Active Plan"
+msgstr ""
+
+#: views/user/invest/index.php:55
+#: views/admin/dashboard.php:14
+#: views/admin/dashboard.php:30
+#: views/admin/dashboard.php:46
+#: views/admin/dashboard.php:62
+#: views/admin/dashboard.php:81
+#: views/admin/dashboard.php:96
+#: views/admin/dashboard.php:111
+#: views/admin/dashboard.php:126
+#: views/admin/dashboard.php:143
+#: views/admin/dashboard.php:156
+#: views/admin/dashboard.php:169
+#: views/admin/dashboard.php:182
+#: views/admin/users/detail.php:16
+#: views/admin/users/detail.php:30
+#: views/admin/users/detail.php:44
+#: views/admin/users/detail.php:58
+#: views/admin/users/detail.php:72
+#: views/admin/users/detail.php:86
+msgid "View All"
+msgstr ""
+
+#: views/user/invest/details.php:5
+msgid "Investment Details"
+msgstr ""
+
+#: views/user/invest/details.php:11
+msgid "Plan & User Information"
+msgstr ""
+
+#: views/user/invest/details.php:16
+#: views/admin/report/invest_history.php:46
+msgid "Plan Name"
+msgstr ""
+
+#: views/user/invest/details.php:20
+msgid "Investable Amount "
+msgstr ""
+
+#: views/user/invest/details.php:31
+#: views/user/profile_setting.php:11
+#: views/admin/users/detail.php:103
+msgid "Full Name"
+msgstr ""
+
+#: views/user/invest/details.php:35
+#: views/user/auth/register_form.php:21
+#: views/admin/notification/email_setting.php:44
+#: views/admin/notification/sms_setting.php:37
+#: views/admin/notification/sms_setting.php:82
+#: views/admin/notification/sms_setting.php:122
+#: views/admin/notification/sms_setting.php:38
+#: views/admin/notification/sms_setting.php:83
+#: views/admin/notification/sms_setting.php:123
+#: views/admin/withdraw/detail.php:17
+#: views/admin/deposit/detail.php:17
+msgid "Username"
+msgstr ""
+
+#: views/user/invest/details.php:39
+#: views/user/auth/register_form.php:45
+#: views/admin/notification/sms_setting.php:160
+msgid "Mobile"
+msgstr ""
+
+#: views/user/invest/details.php:43
+#: views/admin/users/detail.php:112
+msgid "Email"
+msgstr ""
+
+#: views/user/invest/details.php:53
+msgid "Basic Information"
+msgstr ""
+
+#: views/user/invest/details.php:58
+#: views/user/partials/plans.php:129
+msgid "Invest Amount"
+msgstr ""
+
+#: views/user/invest/details.php:62
+#: views/user/partials/invest_history.php:25
+#: views/admin/investment/statistics.php:341
+msgid "Invested"
+msgstr ""
+
+#: views/user/invest/details.php:66
+msgid "Interest Amount"
+msgstr ""
+
+#: views/user/invest/details.php:70
+msgid "Total Payable"
+msgstr ""
+
+#: views/user/invest/details.php:73
+#: views/user/invest/details.php:110
+msgid "times"
+msgstr ""
+
+#: views/user/invest/details.php:75
+#: views/admin/plan/index.php:140
+#: views/admin/plan/index.php:221
+msgid "Lifetime"
+msgstr ""
+
+#: views/user/invest/details.php:80
+msgid "Interest Interval"
+msgstr ""
+
+#: views/user/invest/details.php:81
+#: views/user/partials/invest_history.php:22
+#: views/admin/investment/statistics.php:331
+msgid "Every"
+msgstr ""
+
+#: views/user/invest/details.php:87
+#: views/user/dashboard.php:68
+#: views/admin/report/invest_history.php:80
+msgid "Running"
+msgstr ""
+
+#: views/user/invest/details.php:89
+#: views/admin/report/invest_history.php:82
+msgid "Closed"
+msgstr ""
+
+#: views/user/invest/details.php:100
+msgid "Other Information"
+msgstr ""
+
+#: views/user/invest/details.php:105
+#: views/admin/report/invest_history.php:24
+msgid "Total Paid"
+msgstr ""
+
+#: views/user/invest/details.php:109
+msgid "Total Paid Amount"
+msgstr ""
+
+#: views/user/invest/details.php:113
+#: views/admin/investment/statistics.php:116
+msgid "Should Pay"
+msgstr ""
+
+#: views/user/invest/details.php:123
+msgid "Last Paid Time"
+msgstr ""
+
+#: views/user/invest/details.php:127
+msgid "Next Pay Time"
+msgstr ""
+
+#: views/user/invest/details.php:132
+msgid "Capital Back"
+msgstr ""
+
+#: views/user/invest/details.php:135
+#: views/user/partials/plans.php:144
+#: views/partials/confirmation.php:17
+#: views/admin/plan/index.php:376
+#: views/admin/support/reply.php:152
+msgid "Yes"
+msgstr ""
+
+#: views/user/invest/details.php:137
+#: views/user/partials/plans.php:143
+#: views/partials/confirmation.php:16
+#: views/admin/plan/index.php:377
+#: views/admin/support/reply.php:151
+msgid "No"
+msgstr ""
+
+#: views/user/invest/details.php:147
+msgid "All Interests"
+msgstr ""
+
+#: views/user/invest/details.php:174
+#: views/user/transactions.php:33
+#: views/admin/users/list.php:14
+msgid "Balance"
+msgstr ""
+
+#: views/user/invest/details.php:188
+#: views/user/transactions.php:47
+#: views/admin/report/transactions.php:12
+msgid "Post Balance"
+msgstr ""
+
+#: views/user/payment/StripeV3.php:6
+msgid "Deposit with Stripe"
+msgstr ""
+
+#: views/user/payment/deposit.php:5
+msgid "Deposit Funds"
+msgstr ""
+
+#: views/user/payment/deposit.php:6
+msgid "Add funds using our system\"
+msgstr ""
+
+#: views/user/payment/deposit.php:20
+#: views/user/withdraw/methods.php:20
+msgid "Select Gateway"
+msgstr ""
+
+#: views/user/payment/deposit.php:22
+#: views/user/partials/plans.php:118
+#: views/admin/plan/index.php:129
+#: views/form/form.php:23
+#: views/form/modal.php:16
+#: views/form/modal.php:28
+msgid "Select One"
+msgstr ""
+
+#: views/user/payment/deposit.php:31
+#: views/user/withdraw/methods.php:31
+#: views/admin/plan/index.php:338
+#: views/admin/report/invest_history.php:47
+#: views/admin/report/transactions.php:11
+#: views/admin/withdraw/list.php:11
+#: views/admin/withdraw/detail.php:29
+#: views/admin/deposit/log.php:11
+#: views/admin/deposit/detail.php:29
+msgid "Amount"
+msgstr ""
+
+#: views/user/payment/deposit.php:40
+#: views/user/withdraw/methods.php:41
+msgid "Limit"
+msgstr ""
+
+#: views/user/payment/deposit.php:48
+#: views/admin/withdraw/detail.php:48
+#: views/admin/deposit/detail.php:45
+msgid "Payable"
+msgstr ""
+
+#: views/user/payment/deposit.php:54
+#: views/user/withdraw/methods.php:55
+msgid "In"
+msgstr ""
+
+#: views/user/payment/deposit.php:58
+msgid "Conversion with"
+msgstr ""
+
+#: views/user/payment/deposit.php:58
+msgid "and final value will Show on next step"
+msgstr ""
+
+#: views/user/payment/deposit.php:62
+#: views/user/payment/Authorize.php:38
+#: views/user/payment/NMI.php:30
+#: views/user/payment/Stripe.php:39
+#: views/user/change_password.php:22
+#: views/user/profile_setting.php:54
+#: views/user/withdraw/methods.php:61
+#: views/user/withdraw/preview.php:18
+#: views/user/support/create.php:59
+#: views/admin/plan/index.php:149
+#: views/admin/plan/index.php:230
+#: views/admin/gateway/automatic/edit.php:319
+#: views/admin/gateway/manual/edit.php:149
+#: views/admin/gateway/manual/create.php:105
+#: views/admin/referral/index.php:50
+#: views/admin/notification/edit.php:121
+#: views/admin/notification/global_template.php:89
+#: views/admin/notification/email_setting.php:83
+#: views/admin/notification/email_setting.php:113
+#: views/admin/notification/sms_setting.php:135
+#: views/admin/notification/sms_setting.php:166
+#: views/admin/reports.php:63
+#: views/admin/users/detail.php:187
+#: views/admin/withdraw/edit.php:155
+#: views/admin/withdraw/create.php:112
+#: views/admin/withdraw/detail.php:142
+#: views/admin/withdraw/detail.php:166
+#: views/admin/setting/configuration.php:52
+#: views/admin/setting/index.php:24
+#: views/admin/setting/logo_icon.php:77
+#: views/admin/extension/index.php:84
+#: views/admin/time/index.php:69
+#: views/admin/time/index.php:100
+#: views/admin/deposit/detail.php:156
+msgid "Submit"
+msgstr ""
+
+#: views/user/payment/deposit.php:107
+#: views/user/withdraw/methods.php:96
+msgid "Conversion Rate"
+msgstr ""
+
+#: views/user/payment/manual.php:7
+msgid "Payment"
+msgstr ""
+
+#: views/user/payment/manual.php:14
+msgid "You have requested"
+msgstr ""
+
+#: views/user/payment/manual.php:14
+msgid "Please pay"
+msgstr ""
+
+#: views/user/payment/manual.php:15
+msgid "for successful payment"
+msgstr ""
+
+#: views/user/payment/manual.php:17
+msgid "Please follow the instruction below"
+msgstr ""
+
+#: views/user/payment/manual.php:27
+#: views/user/payment/Flutterwave.php:19
+#: views/user/payment/Paystack.php:21
+#: views/user/payment/Voguepay.php:19
+msgid "Pay Now"
+msgstr ""
+
+#: views/user/payment/Flutterwave.php:6
+msgid "Flutterwave Payment"
+msgstr ""
+
+#: views/user/payment/Flutterwave.php:11
+#: views/user/payment/Paystack.php:13
+#: views/user/payment/Voguepay.php:11
+#: views/user/payment/Razorpay.php:11
+msgid "You have to pay"
+msgstr ""
+
+#: views/user/payment/Flutterwave.php:15
+#: views/user/payment/StripeJs.php:17
+msgid "You will get "
+msgstr ""
+
+#: views/user/payment/crypto.php:6
+msgid "Payment Preview"
+msgstr ""
+
+#: views/user/payment/crypto.php:9
+msgid "PLEASE SEND EXACTLY"
+msgstr ""
+
+#: views/user/payment/crypto.php:10
+msgid "TO"
+msgstr ""
+
+#: views/user/payment/crypto.php:12
+msgid "SCAN TO SEND"
+msgstr ""
+
+#: views/user/payment/StripeJs.php:6
+#: views/user/payment/Stripe.php:6
+msgid "Stripe Payment"
+msgstr ""
+
+#: views/user/payment/StripeJs.php:13
+msgid "You have to pay "
+msgstr ""
+
+#: views/user/payment/Authorize.php:6
+msgid "Authorize Net"
+msgstr ""
+
+#: views/user/payment/Authorize.php:15
+#: views/user/payment/Stripe.php:15
+msgid "Name on Card"
+msgstr ""
+
+#: views/user/payment/Authorize.php:21
+#: views/user/payment/NMI.php:12
+#: views/user/payment/Stripe.php:21
+msgid "Card Number"
+msgstr ""
+
+#: views/user/payment/Authorize.php:29
+#: views/user/payment/NMI.php:21
+#: views/user/payment/Stripe.php:30
+msgid "Expiration Date"
+msgstr ""
+
+#: views/user/payment/Authorize.php:33
+#: views/user/payment/NMI.php:25
+#: views/user/payment/Stripe.php:34
+msgid "CVC Code"
+msgstr ""
+
+#: views/user/payment/NMI.php:6
+msgid "NMI"
+msgstr ""
+
+#: views/user/payment/Paystack.php:6
+msgid "Paystack Payment"
+msgstr ""
+
+#: views/user/payment/Paystack.php:17
+#: views/user/payment/Voguepay.php:15
+#: views/user/payment/Razorpay.php:15
+msgid "You will get"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:6
+msgid "Voguepay"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:50
+msgid "Customer name"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:51
+msgid "text"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:52
+msgid "Customer address"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:53
+msgid "Customer city"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:54
+msgid "Customer state"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:55
+msgid "Customer zip/post code"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:56
+msgid "example@example.com"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:57
+msgid "Customer phone"
+msgstr ""
+
+#: views/user/payment/Voguepay.php:66
+msgid "Buy"
+msgstr ""
+
+#: views/user/payment/Razorpay.php:6
+msgid "Razorpay"
+msgstr ""
+
+#: views/user/transactions.php:3
+msgid "Transaction"
+msgstr ""
+
+#: views/user/transactions.php:4
+msgid "My Transactions History"
+msgstr ""
+
+#: views/user/dashboard.php:6
+#: views/admin/partials/sidenav.php:136
+msgid "Successful Deposits"
+msgstr ""
+
+#: views/user/dashboard.php:12
+#: views/user/dashboard.php:38
+msgid "Submitted"
+msgstr ""
+
+#: views/user/dashboard.php:16
+#: views/user/dashboard.php:42
+msgid "Pending"
+msgstr ""
+
+#: views/user/dashboard.php:20
+#: views/user/dashboard.php:46
+msgid "Rejected"
+msgstr ""
+
+#: views/user/dashboard.php:25
+#: views/user/dashboard.php:51
+#: views/user/dashboard.php:77
+#: views/user/referral.php:10
+msgid "You\"
+msgstr ""
+
+#: views/user/dashboard.php:25
+#: views/user/dashboard.php:51
+msgid "Where"
+msgstr ""
+
+#: views/user/dashboard.php:25
+#: views/user/dashboard.php:51
+msgid "is just initiated but not submitted"
+msgstr ""
+
+#: views/user/dashboard.php:32
+msgid "Successful Withdrawals"
+msgstr ""
+
+#: views/user/dashboard.php:58
+#: views/admin/investment/statistics.php:56
+msgid "Total Investments"
+msgstr ""
+
+#: views/user/dashboard.php:64
+msgid "Completed"
+msgstr ""
+
+#: views/user/dashboard.php:72
+msgid "Interests"
+msgstr ""
+
+#: views/user/dashboard.php:77
+msgid "from the deposit wallet and"
+msgstr ""
+
+#: views/user/dashboard.php:77
+msgid "from the interest wallet"
+msgstr ""
+
+#: views/user/dashboard.php:87
+msgid "Latest ROI Statistics"
+msgstr ""
+
+#: views/user/dashboard.php:88
+msgid "Here is last 30 days statistics of your ROI (Return on Investment)"
+msgstr ""
+
+#: views/user/change_password.php:3
+#: views/user/layouts/master.php:106
+#: views/user/layouts/master.php:143
+msgid "Change Password"
+msgstr ""
+
+#: views/user/change_password.php:10
+msgid "Current Password"
+msgstr ""
+
+#: views/user/change_password.php:14
+#: views/user/auth/login.php:29
+#: views/user/auth/register_form.php:59
+#: views/admin/notification/email_setting.php:50
+#: views/admin/notification/sms_setting.php:43
+#: views/admin/notification/sms_setting.php:88
+#: views/admin/notification/sms_setting.php:44
+#: views/admin/notification/sms_setting.php:89
+msgid "Password"
+msgstr ""
+
+#: views/user/change_password.php:18
+#: views/user/auth/register_form.php:64
+msgid "Confirm Password"
+msgstr ""
+
+#: views/user/profile_setting.php:3
+#: views/admin/partials/topnav.php:26
+msgid "Profile"
+msgstr ""
+
+#: views/user/profile_setting.php:17
+msgid "E-mail Address"
+msgstr ""
+
+#: views/user/profile_setting.php:21
+#: views/admin/users/detail.php:119
+msgid "Mobile Number"
+msgstr ""
+
+#: views/user/profile_setting.php:27
+#: views/admin/users/detail.php:131
+msgid "Address"
+msgstr ""
+
+#: views/user/profile_setting.php:31
+#: views/admin/users/detail.php:145
+msgid "State"
+msgstr ""
+
+#: views/user/profile_setting.php:38
+msgid "Zip Code"
+msgstr ""
+
+#: views/user/profile_setting.php:43
+#: views/admin/users/detail.php:138
+msgid "City"
+msgstr ""
+
+#: views/user/profile_setting.php:48
+#: views/user/auth/register_form.php:33
+#: views/admin/users/list.php:12
+#: views/admin/users/detail.php:159
+msgid "Country"
+msgstr ""
+
+#: views/user/plan.php:4
+msgid "Investment Plan"
+msgstr ""
+
+#: views/user/partials/invest_history.php:22
+#: views/admin/investment/statistics.php:334
+msgid "for"
+msgstr ""
+
+#: views/user/partials/invest_history.php:24
+#: views/user/partials/plans.php:24
+#: views/admin/investment/statistics.php:338
+msgid "LIFETIME"
+msgstr ""
+
+#: views/user/partials/invest_history.php:26
+msgid "Capital will be back"
+msgstr ""
+
+#: views/user/partials/invest_history.php:31
+#: views/admin/investment/statistics.php:344
+msgid "Start Date"
+msgstr ""
+
+#: views/user/partials/invest_history.php:35
+msgid "Next Return"
+msgstr ""
+
+#: views/user/partials/invest_history.php:39
+#: views/user/partials/plans.php:71
+msgid "Total Return"
+msgstr ""
+
+#: views/user/partials/plans.php:10
+msgid "Total"
+msgstr ""
+
+#: views/user/partials/plans.php:12
+msgid "ROI"
+msgstr ""
+
+#: views/user/partials/plans.php:14
+#: views/user/partials/plans.php:79
+msgid "Unlimited"
+msgstr ""
+
+#: views/user/partials/plans.php:21
+msgid "EVERY"
+msgstr ""
+
+#: views/user/partials/plans.php:21
+msgid "FOR"
+msgstr ""
+
+#: views/user/partials/plans.php:43
+msgid "Max. Earn"
+msgstr ""
+
+#: views/user/partials/plans.php:75
+msgid "capital +"
+msgstr ""
+
+#: views/user/partials/plans.php:96
+msgid "Confirm to invest on"
+msgstr ""
+
+#: views/user/partials/plans.php:98
+#: views/user/partials/plans.php:147
+msgid "At first sign in your account"
+msgstr ""
+
+#: views/user/partials/plans.php:116
+msgid "Select Wallet"
+msgstr ""
+
+#: views/user/partials/plans.php:120
+#: views/user/layouts/master.php:46
+#: views/admin/users/detail.php:14
+#: views/admin/investment/statistics.php:71
+msgid "Deposit Wallet"
+msgstr ""
+
+#: views/user/partials/plans.php:123
+#: views/user/layouts/master.php:47
+#: views/admin/users/detail.php:28
+#: views/admin/investment/statistics.php:83
+msgid "Interest Wallet"
+msgstr ""
+
+#: views/user/partials/plans.php:134
+msgid "Total amount"
+msgstr ""
+
+#: views/user/withdraw/methods.php:5
+msgid "Withdraw Funds"
+msgstr ""
+
+#: views/user/withdraw/methods.php:6
+msgid "The fund will be withdrawal only from Interest Wallet. So make sure that you\"
+msgstr ""
+
+#: views/user/withdraw/methods.php:10
+#: views/user/withdraw/history.php:4
+msgid "Withdraw History"
+msgstr ""
+
+#: views/user/withdraw/methods.php:18
+#: views/admin/withdraw/index.php:10
+#: views/admin/withdraw/detail.php:25
+#: views/admin/deposit/detail.php:25
+msgid "Method"
+msgstr ""
+
+#: views/user/withdraw/methods.php:49
+msgid "Receivable"
+msgstr ""
+
+#: views/user/withdraw/history.php:58
+#: views/admin/withdraw/detail.php:39
+#: views/admin/deposit/detail.php:37
+msgid "After Charge"
+msgstr ""
+
+#: views/user/withdraw/preview.php:6
+msgid "Withdraw Confirmation"
+msgstr ""
+
+#: views/user/layouts/master.php:41
+msgid "ACCOUNT BALANCE"
+msgstr ""
+
+#: views/user/layouts/master.php:49
+#: views/user/layouts/master.php:76
+msgid "Deposit"
+msgstr ""
+
+#: views/user/layouts/master.php:50
+#: views/user/layouts/master.php:81
+msgid "Withdraw"
+msgstr ""
+
+#: views/user/layouts/master.php:59
+msgid "WP Admin"
+msgstr ""
+
+#: views/user/layouts/master.php:66
+#: views/admin/partials/sidenav.php:16
+msgid "Dashboard"
+msgstr ""
+
+#: views/user/layouts/master.php:71
+#: views/admin/investment/statistics.php:49
+msgid "Investments"
+msgstr ""
+
+#: views/user/layouts/master.php:86
+#: views/admin/users/detail.php:70
+msgid "Transactions"
+msgstr ""
+
+#: views/user/layouts/master.php:91
+msgid "Referrals"
+msgstr ""
+
+#: views/user/layouts/master.php:96
+#: views/admin/partials/sidenav.php:223
+msgid "Support Ticket"
+msgstr ""
+
+#: views/user/layouts/master.php:101
+#: views/user/layouts/master.php:138
+msgid "Profile Settings"
+msgstr ""
+
+#: views/user/layouts/master.php:111
+#: views/user/layouts/master.php:148
+#: views/user/inactive.php:11
+#: views/admin/partials/topnav.php:31
+msgid "Logout"
+msgstr ""
+
+#: views/user/support/create.php:4
+msgid "Open Ticket"
+msgstr ""
+
+#: views/user/support/create.php:15
+#: views/admin/plan/index.php:11
+#: views/admin/plan/index.php:89
+#: views/admin/plan/index.php:171
+#: views/admin/gateway/automatic/edit.php:199
+#: views/admin/notification/templates.php:8
+#: views/admin/withdraw/edit.php:10
+#: views/admin/withdraw/create.php:11
+#: views/admin/time/index.php:10
+msgid "Name"
+msgstr ""
+
+#: views/user/support/create.php:19
+msgid "Email Address"
+msgstr ""
+
+#: views/user/support/create.php:24
+#: views/user/support/index.php:16
+#: views/admin/notification/edit.php:73
+#: views/admin/notification/templates.php:9
+#: views/admin/support/ticket.php:10
+msgid "Subject"
+msgstr ""
+
+#: views/user/support/create.php:28
+#: views/user/support/index.php:18
+#: views/admin/support/ticket.php:13
+msgid "Priority"
+msgstr ""
+
+#: views/user/support/create.php:30
+#: views/user/support/index.php:52
+#: views/admin/support/ticket.php:58
+msgid "High"
+msgstr ""
+
+#: views/user/support/create.php:31
+#: views/user/support/index.php:50
+#: views/admin/support/ticket.php:56
+msgid "Medium"
+msgstr ""
+
+#: views/user/support/create.php:32
+#: views/user/support/index.php:48
+#: views/admin/support/ticket.php:54
+msgid "Low"
+msgstr ""
+
+#: views/user/support/create.php:36
+#: views/admin/notification/edit.php:87
+#: views/admin/notification/edit.php:111
+#: views/admin/notification/global_template.php:25
+#: views/admin/reports.php:13
+#: views/admin/reports.php:58
+msgid "Message"
+msgstr ""
+
+#: views/user/support/create.php:44
+#: views/user/support/view.php:41
+#: views/admin/gateway/manual/edit.php:91
+#: views/admin/gateway/manual/create.php:92
+#: views/admin/withdraw/edit.php:96
+#: views/admin/withdraw/create.php:97
+msgid "Add New"
+msgstr ""
+
+#: views/user/support/create.php:48
+#: views/user/support/view.php:44
+#: views/admin/support/reply.php:45
+msgid "Attachments"
+msgstr ""
+
+#: views/user/support/create.php:48
+#: views/user/support/view.php:44
+msgid "Max 5 files can be uploaded"
+msgstr ""
+
+#: views/user/support/create.php:48
+#: views/user/support/view.php:44
+msgid "Maximum upload size is"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "Allowed File Extensions"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "jpg"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "jpeg"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "png"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "pdf"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "doc"
+msgstr ""
+
+#: views/user/support/create.php:52
+#: views/user/support/view.php:48
+#: views/admin/support/reply.php:59
+msgid "docx"
+msgstr ""
+
+#: views/user/support/view.php:3
+msgid "View Ticket"
+msgstr ""
+
+#: views/user/support/view.php:23
+#: views/user/support/index.php:28
+#: views/admin/support/reply.php:22
+#: views/admin/support/ticket.php:25
+msgid "Ticket"
+msgstr ""
+
+#: views/user/support/view.php:51
+#: views/admin/support/reply.php:64
+msgid "Reply"
+msgstr ""
+
+#: views/user/support/view.php:68
+#: views/user/support/view.php:89
+#: views/admin/support/reply.php:89
+#: views/admin/support/reply.php:112
+msgid "Posted on"
+msgstr ""
+
+#: views/user/support/view.php:74
+#: views/user/support/view.php:95
+#: views/admin/withdraw/detail.php:93
+#: views/admin/support/reply.php:96
+#: views/admin/support/reply.php:119
+#: views/admin/deposit/detail.php:100
+msgid "Attachment"
+msgstr ""
+
+#: views/user/support/view.php:84
+#: views/admin/support/reply.php:106
+msgid "Admin"
+msgstr ""
+
+#: views/user/support/view.php:85
+#: views/admin/support/reply.php:107
+msgid "Staff"
+msgstr ""
+
+#: views/user/support/view.php:26
+msgid "Are you sure to close this ticket?"
+msgstr ""
+
+#: views/user/support/index.php:5
+msgid "Support Tickets"
+msgstr ""
+
+#: views/user/support/index.php:7
+msgid "Open Support Ticket"
+msgstr ""
+
+#: views/user/support/index.php:19
+#: views/admin/support/ticket.php:14
+msgid "Last Reply"
+msgstr ""
+
+#: views/user/support/index.php:20
+#: views/admin/plan/index.php:16
+#: views/admin/gateway/automatic/list.php:14
+#: views/admin/gateway/manual/list.php:12
+#: views/admin/notification/templates.php:10
+#: views/admin/users/list.php:15
+#: views/admin/withdraw/list.php:14
+#: views/admin/withdraw/index.php:15
+#: views/admin/support/ticket.php:15
+#: views/admin/extension/index.php:12
+#: views/admin/time/index.php:12
+#: views/admin/deposit/log.php:14
+msgid "Action"
+msgstr ""
+
+#: views/user/referral.php:3
+msgid "My Referrals"
+msgstr ""
+
+#: views/user/referral.php:9
+msgid "Refer & Enjoy the Bonus"
+msgstr ""
+
+#: views/user/referral.php:10
+msgid "authority. If you reach the level, you\"
+msgstr ""
+
+#: views/user/referral.php:13
+#: views/user/referral.php:47
+#: views/admin/gateway/automatic/edit.php:42
+msgid "Copy"
+msgstr ""
+
+#: views/user/referral.php:45
+#: views/admin/gateway/automatic/edit.php:375
+msgid "Copied"
+msgstr ""
+
+#: views/user/auth/login.php:14
+msgid "Login to your account"
+msgstr ""
+
+#: views/user/auth/login.php:15
+msgid "You can sign in to your account using email or username"
+msgstr ""
+
+#: views/user/auth/login.php:22
+msgid "Username or Email"
+msgstr ""
+
+#: views/user/auth/login.php:40
+msgid "Keep me Logged in"
+msgstr ""
+
+#: views/user/auth/login.php:42
+msgid "Forgot Password?"
+msgstr ""
+
+#: views/user/auth/login.php:46
+msgid "Login"
+msgstr ""
+
+#: views/user/auth/login.php:55
+#: views/admin/notification/edit.php:80
+#: views/admin/notification/edit.php:106
+msgid "Don\"
+msgstr ""
+
+#: views/user/auth/login.php:55
+msgid "Create Account"
+msgstr ""
+
+#: views/user/auth/login.php:59
+msgid "Activation account"
+msgstr ""
+
+#: views/user/auth/login.php:60
+#: views/user/auth/resend_activation.php:4
+msgid "Resend Email"
+msgstr ""
+
+#: views/user/auth/resend_activation.php:5
+msgid "Check your junk/spam folder if you did not receive the activation email"
+msgstr ""
+
+#: views/user/auth/resend_activation.php:9
+#: views/user/auth/reset_password.php:7
+msgid "Email or Username"
+msgstr ""
+
+#: views/user/auth/resend_activation.php:14
+msgid "Resend"
+msgstr ""
+
+#: views/user/auth/resend_activation.php:17
+#: views/user/auth/change_password.php:19
+#: views/user/auth/register_form.php:75
+#: views/user/auth/reset_password.php:15
+msgid "Already have an account?"
+msgstr ""
+
+#: views/user/auth/resend_activation.php:18
+msgid "Login Now"
+msgstr ""
+
+#: views/user/auth/change_password.php:3
+#: views/user/auth/change_password.php:17
+msgid "Reset Password"
+msgstr ""
+
+#: views/user/auth/change_password.php:4
+msgid "Your account is verified successfully. Now you can change your password. Please enter a strong password and don\"
+msgstr ""
+
+#: views/user/auth/change_password.php:7
+msgid "New password"
+msgstr ""
+
+#: views/user/auth/change_password.php:11
+msgid "Confirm new password"
+msgstr ""
+
+#: views/user/auth/change_password.php:20
+#: views/user/auth/register_form.php:76
+#: views/user/auth/reset_password.php:16
+msgid "Login now"
+msgstr ""
+
+#: views/user/auth/register_form.php:9
+msgid "Create an Account"
+msgstr ""
+
+#: views/user/auth/register_form.php:10
+msgid "You can create account using email or username and the registration is fully free"
+msgstr ""
+
+#: views/user/auth/register_form.php:15
+msgid "Referral Username"
+msgstr ""
+
+#: views/user/auth/register_form.php:26
+msgid "E-Mail Address"
+msgstr ""
+
+#: views/user/auth/register_form.php:71
+msgid "Register"
+msgstr ""
+
+#: views/user/auth/reset_password.php:3
+msgid "Account Recovery"
+msgstr ""
+
+#: views/user/auth/reset_password.php:4
+msgid "To recover your account please provide your email or username to find your account."
+msgstr ""
+
+#: views/user/auth/reset_password.php:12
+msgid "Get New Password"
+msgstr ""
+
+#: views/user/auth/reset_password.php:13
+msgid "You will receive a link to create a new password via email."
+msgstr ""
+
+#: views/user/inactive.php:6
+msgid "You are banned"
+msgstr ""
+
+#: views/activation.php:20
+msgid "License Activation"
+msgstr ""
+
+#: views/activation.php:27
+msgid "You can ask for support by creating a support ticket."
+msgstr ""
+
+#: views/activation.php:28
+msgid "create ticket"
+msgstr ""
+
+#: views/activation.php:35
+msgid "To validate your purchase details, following information will sent to ViserLab server."
+msgstr ""
+
+#: views/activation.php:38
+msgid "Application"
+msgstr ""
+
+#: views/activation.php:39
+msgid "Envato Username"
+msgstr ""
+
+#: views/activation.php:40
+msgid "Purchase Code"
+msgstr ""
+
+#: views/activation.php:41
+msgid "Your Email"
+msgstr ""
+
+#: views/activation.php:42
+msgid "Activation URL"
+msgstr ""
+
+#: views/activation.php:45
+msgid "We never collect any sensitive or confidential data."
+msgstr ""
+
+#: views/activation.php:49
+msgid "The purchase code(license) is for one website or domain only. Please activate the license into the correct domain(URL) to avoid any unwanted issues in the future."
+msgstr ""
+
+#: views/activation.php:51
+msgid "To get the purchase code"
+msgstr ""
+
+#: views/activation.php:51
+msgid "click here"
+msgstr ""
+
+#: views/activation.php:57
+msgid "Enter Purchase Code"
+msgstr ""
+
+#: views/activation.php:63
+msgid "Enter Envato Username"
+msgstr ""
+
+#: views/activation.php:67
+msgid "Enter Your Email"
+msgstr ""
+
+#: views/activation.php:73
+msgid "I accept the terms of the"
+msgstr ""
+
+#: views/activation.php:73
+msgid "Envato Standard License"
+msgstr ""
+
+#: views/activation.php:73
+msgid "as well as the Viserlab terms and conditions."
+msgstr ""
+
+#: views/activation.php:76
+msgid "Activate Now"
+msgstr ""
+
+#: views/partials/confirmation.php:5
+msgid "Confirmation Alert!"
+msgstr ""
+
+#: views/partials/captcha.php:19
+msgid "Captcha"
+msgstr ""
+
+#: views/admin/dashboard.php:11
+msgid "Total Deposited"
+msgstr ""
+
+#: views/admin/dashboard.php:27
+#: views/admin/partials/sidenav.php:119
+msgid "Pending Deposits"
+msgstr ""
+
+#: views/admin/dashboard.php:43
+#: views/admin/partials/sidenav.php:143
+msgid "Rejected Deposits"
+msgstr ""
+
+#: views/admin/dashboard.php:59
+msgid "Deposited Charge"
+msgstr ""
+
+#: views/admin/dashboard.php:78
+msgid "Total Withdrawn"
+msgstr ""
+
+#: views/admin/dashboard.php:93
+#: views/admin/partials/sidenav.php:188
+msgid "Pending Withdrawals"
+msgstr ""
+
+#: views/admin/dashboard.php:108
+#: views/admin/partials/sidenav.php:205
+msgid "Rejected Withdrawals"
+msgstr ""
+
+#: views/admin/dashboard.php:123
+msgid "Withdrawal Charge"
+msgstr ""
+
+#: views/admin/dashboard.php:141
+msgid "Total Investment"
+msgstr ""
+
+#: views/admin/dashboard.php:154
+msgid "Total Interest"
+msgstr ""
+
+#: views/admin/dashboard.php:167
+msgid "Active Investments"
+msgstr ""
+
+#: views/admin/dashboard.php:180
+msgid "Closed Investment"
+msgstr ""
+
+#: views/admin/dashboard.php:191
+msgid "Transactions Report"
+msgstr ""
+
+#: views/admin/dashboard.php:191
+msgid "Last 30 Days"
+msgstr ""
+
+#: views/admin/plan/index.php:10
+msgid "Plan ID"
+msgstr ""
+
+#: views/admin/plan/index.php:12
+msgid "Invest Limit"
+msgstr ""
+
+#: views/admin/plan/index.php:13
+#: views/admin/plan/index.php:118
+#: views/admin/plan/index.php:200
+#: views/admin/report/invest_history.php:48
+#: views/admin/investment/statistics.php:226
+msgid "Interest"
+msgstr ""
+
+#: views/admin/plan/index.php:14
+#: views/admin/plan/index.php:127
+#: views/admin/plan/index.php:209
+#: views/admin/time/index.php:11
+msgid "Time"
+msgstr ""
+
+#: views/admin/plan/index.php:46
+#: views/admin/users/detail.php:178
+msgid "Active"
+msgstr ""
+
+#: views/admin/plan/index.php:48
+#: views/admin/users/detail.php:178
+msgid "Inactive"
+msgstr ""
+
+#: views/admin/plan/index.php:52
+#: views/admin/gateway/automatic/list.php:37
+#: views/admin/gateway/manual/list.php:30
+#: views/admin/notification/templates.php:20
+#: views/admin/withdraw/index.php:42
+#: views/admin/time/index.php:21
+msgid "Edit"
+msgstr ""
+
+#: views/admin/plan/index.php:54
+#: views/admin/gateway/automatic/list.php:45
+#: views/admin/gateway/manual/list.php:38
+#: views/admin/withdraw/index.php:45
+#: views/admin/setting/configuration.php:17
+#: views/admin/setting/configuration.php:29
+#: views/admin/setting/configuration.php:45
+#: views/admin/extension/index.php:47
+#: views/admin/time/index.php:24
+msgid "Disable"
+msgstr ""
+
+#: views/admin/plan/index.php:56
+#: views/admin/gateway/automatic/list.php:41
+#: views/admin/gateway/manual/list.php:34
+#: views/admin/withdraw/index.php:49
+#: views/admin/setting/configuration.php:17
+#: views/admin/setting/configuration.php:29
+#: views/admin/setting/configuration.php:45
+#: views/admin/extension/index.php:43
+#: views/admin/time/index.php:26
+msgid "Enable"
+msgstr ""
+
+#: views/admin/plan/index.php:78
+msgid "Add New Plan"
+msgstr ""
+
+#: views/admin/plan/index.php:95
+#: views/admin/plan/index.php:177
+msgid "Invest type"
+msgstr ""
+
+#: views/admin/plan/index.php:97
+#: views/admin/plan/index.php:179
+#: views/admin/gateway/automatic/edit.php:87
+#: views/admin/gateway/automatic/edit.php:215
+#: views/admin/gateway/manual/edit.php:36
+#: views/admin/gateway/manual/create.php:38
+#: views/admin/withdraw/edit.php:39
+#: views/admin/withdraw/create.php:40
+msgid "Range"
+msgstr ""
+
+#: views/admin/plan/index.php:98
+#: views/admin/plan/index.php:112
+#: views/admin/plan/index.php:180
+#: views/admin/plan/index.php:194
+msgid "Fixed"
+msgstr ""
+
+#: views/admin/plan/index.php:109
+#: views/admin/plan/index.php:191
+msgid "Interest type"
+msgstr ""
+
+#: views/admin/plan/index.php:111
+#: views/admin/plan/index.php:193
+msgid "Percent"
+msgstr ""
+
+#: views/admin/plan/index.php:138
+#: views/admin/plan/index.php:219
+msgid "Return type"
+msgstr ""
+
+#: views/admin/plan/index.php:141
+#: views/admin/plan/index.php:222
+msgid "Repeat"
+msgstr ""
+
+#: views/admin/plan/index.php:160
+msgid "Edit Plan"
+msgstr ""
+
+#: views/admin/plan/index.php:317
+msgid "Minimum Invest"
+msgstr ""
+
+#: views/admin/plan/index.php:326
+msgid "Maximum Invest"
+msgstr ""
+
+#: views/admin/plan/index.php:366
+msgid "Repeat Times"
+msgstr ""
+
+#: views/admin/plan/index.php:374
+msgid "Capital back"
+msgstr ""
+
+#: views/admin/plan/index.php:54
+msgid "Are you sure to disable this plan?"
+msgstr ""
+
+#: views/admin/plan/index.php:56
+msgid "Are you sure to enable this plan?"
+msgstr ""
+
+#: views/admin/partials/topnav.php:6
+msgid "Search here..."
+msgstr ""
+
+#: views/admin/partials/sidenav.php:23
+#: views/admin/partials/sidenav.php:36
+msgid "Plan Manage"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:30
+msgid "Time Manage"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:46
+msgid "Manage Referral"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:53
+msgid "Investment Report"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:60
+msgid "All Users"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:73
+msgid "Payment Gateways"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:86
+msgid "Automatic Gateways"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:92
+msgid "Manual Gateways"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:105
+#: views/admin/users/detail.php:42
+msgid "Deposits"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:129
+msgid "Approved Deposits"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:151
+msgid "Initiated Deposits"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:158
+msgid "All Deposits"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:168
+#: views/admin/users/detail.php:56
+msgid "Withdrawals"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:181
+msgid "Withdrawal Methods"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:198
+msgid "Approved Withdrawals"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:212
+msgid "All Withdrawals"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:235
+#: views/admin/users/detail.php:84
+msgid "Pending Ticket"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:244
+msgid "Closed Ticket"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:250
+msgid "Answered Ticket"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:256
+msgid "All Ticket"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:266
+msgid "Report"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:273
+msgid "Transaction Log"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:279
+msgid "Invest History"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:286
+msgid "Settings"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:291
+msgid "General Setting"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:298
+msgid "System Configuration"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:305
+msgid "Extensions"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:312
+msgid "Logo & Favicon"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:319
+msgid "Notification Setting"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:326
+msgid "Global Template"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:332
+msgid "Email Setting"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:338
+msgid "SMS Setting"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:344
+msgid "Notification Templates"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:354
+#: views/admin/reports.php:42
+msgid "Report & Request"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:361
+msgid "V"
+msgstr ""
+
+#: views/admin/partials/sidenav.php:365
+msgid "Back To WordPress"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:18
+msgid "Select currency"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:23
+msgid "Add new"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:35
+msgid "Configurations"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:51
+msgid "Global Setting for"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:76
+#: views/admin/gateway/automatic/edit.php:204
+msgid "Remove"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:90
+#: views/admin/gateway/automatic/edit.php:218
+#: views/admin/gateway/manual/edit.php:39
+#: views/admin/gateway/manual/create.php:41
+#: views/admin/withdraw/edit.php:42
+#: views/admin/withdraw/create.php:43
+msgid "Minimum Amount"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:97
+#: views/admin/gateway/automatic/edit.php:226
+#: views/admin/gateway/manual/edit.php:46
+#: views/admin/gateway/manual/create.php:48
+#: views/admin/withdraw/edit.php:49
+#: views/admin/withdraw/create.php:50
+msgid "Maximum Amount"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:111
+#: views/admin/gateway/automatic/edit.php:241
+#: views/admin/gateway/manual/edit.php:60
+#: views/admin/gateway/manual/create.php:62
+#: views/admin/withdraw/edit.php:64
+#: views/admin/withdraw/create.php:64
+msgid "Fixed Charge"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:118
+#: views/admin/gateway/automatic/edit.php:248
+#: views/admin/gateway/manual/edit.php:67
+#: views/admin/gateway/manual/create.php:69
+#: views/admin/withdraw/edit.php:71
+#: views/admin/withdraw/create.php:71
+msgid "Percent Charge"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:129
+#: views/admin/gateway/automatic/edit.php:134
+#: views/admin/gateway/automatic/edit.php:260
+#: views/admin/gateway/automatic/edit.php:265
+#: views/admin/gateway/manual/edit.php:17
+#: views/admin/gateway/manual/create.php:19
+#: views/admin/withdraw/edit.php:16
+#: views/admin/withdraw/create.php:17
+#: views/admin/withdraw/index.php:11
+#: views/admin/setting/index.php:11
+msgid "Currency"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:141
+#: views/admin/gateway/automatic/edit.php:272
+msgid "Symbol"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:148
+#: views/admin/gateway/automatic/edit.php:279
+#: views/admin/gateway/manual/edit.php:23
+#: views/admin/gateway/manual/create.php:25
+#: views/admin/withdraw/edit.php:24
+#: views/admin/withdraw/create.php:25
+#: views/admin/withdraw/detail.php:43
+#: views/admin/deposit/detail.php:41
+msgid "Rate"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:166
+#: views/admin/gateway/automatic/edit.php:295
+msgid "Configuration"
+msgstr ""
+
+#: views/admin/gateway/automatic/edit.php:377
+msgid "Please press Ctrl/Cmd + C to copy"
+msgstr ""
+
+#: views/admin/gateway/automatic/list.php:10
+#: views/admin/gateway/manual/list.php:10
+msgid "Gateway"
+msgstr ""
+
+#: views/admin/gateway/automatic/list.php:11
+msgid "Supported Currency"
+msgstr ""
+
+#: views/admin/gateway/automatic/list.php:12
+msgid "Enabled Currency"
+msgstr ""
+
+#: views/admin/gateway/automatic/list.php:54
+#: views/admin/gateway/manual/list.php:47
+msgid "Data Not found"
+msgstr ""
+
+#: views/admin/gateway/automatic/list.php:40
+#: views/admin/gateway/manual/list.php:33
+msgid "Are you sure to enable this gateway?"
+msgstr ""
+
+#: views/admin/gateway/automatic/list.php:44
+#: views/admin/gateway/manual/list.php:37
+msgid "Are you sure to disable this gateway?"
+msgstr ""
+
+#: views/admin/gateway/manual/edit.php:11
+#: views/admin/gateway/manual/create.php:13
+msgid "Gateway Name"
+msgstr ""
+
+#: views/admin/gateway/manual/edit.php:79
+#: views/admin/gateway/manual/create.php:80
+msgid "Deposit Instruction"
+msgstr ""
+
+#: views/admin/gateway/manual/edit.php:90
+#: views/admin/gateway/manual/create.php:91
+#: views/admin/withdraw/edit.php:95
+#: views/admin/withdraw/create.php:96
+msgid "User Data"
+msgstr ""
+
+#: views/admin/gateway/manual/edit.php:107
+#: views/admin/withdraw/edit.php:112
+msgid "Label"
+msgstr ""
+
+#: views/admin/gateway/manual/edit.php:111
+#: views/admin/reports.php:12
+#: views/admin/reports.php:51
+#: views/admin/withdraw/edit.php:116
+msgid "Type"
+msgstr ""
+
+#: views/admin/referral/index.php:9
+msgid "Enable Now"
+msgstr ""
+
+#: views/admin/referral/index.php:11
+msgid "Disable Now"
+msgstr ""
+
+#: views/admin/referral/index.php:24
+#: views/admin/referral/index.php:114
+msgid "Level"
+msgstr ""
+
+#: views/admin/referral/index.php:31
+msgid "Update Setting"
+msgstr ""
+
+#: views/admin/referral/index.php:35
+msgid "Number of Level"
+msgstr ""
+
+#: views/admin/referral/index.php:38
+msgid "Generate"
+msgstr ""
+
+#: views/admin/referral/index.php:40
+msgid "Please enter a number"
+msgstr ""
+
+#: views/admin/referral/index.php:46
+msgid "The Old setting will be removed after generating new"
+msgstr ""
+
+#: views/admin/report/invest_history.php:8
+msgid "Total Invest Count"
+msgstr ""
+
+#: views/admin/report/invest_history.php:32
+#: views/admin/report/invest_history.php:49
+msgid "To Pay"
+msgstr ""
+
+#: views/admin/report/invest_history.php:32
+msgid "Without lifetime plan invest"
+msgstr ""
+
+#: views/admin/report/invest_history.php:45
+#: views/admin/report/transactions.php:8
+#: views/admin/users/list.php:10
+#: views/admin/withdraw/list.php:10
+#: views/admin/deposit/log.php:10
+msgid "User"
+msgstr ""
+
+#: views/admin/report/invest_history.php:50
+#: views/admin/investment/statistics.php:127
+msgid "Paid"
+msgstr ""
+
+#: views/admin/report/transactions.php:9
+msgid "TRX"
+msgstr ""
+
+#: views/admin/report/transactions.php:10
+msgid "Transacted"
+msgstr ""
+
+#: views/admin/notification/edit.php:10
+#: views/admin/notification/edit.php:42
+#: views/admin/notification/global_template.php:10
+#: views/admin/notification/global_template.php:39
+msgid "Short Code"
+msgstr ""
+
+#: views/admin/notification/edit.php:11
+#: views/admin/notification/edit.php:43
+#: views/admin/notification/global_template.php:11
+#: views/admin/notification/global_template.php:40
+msgid "Description"
+msgstr ""
+
+#: views/admin/notification/edit.php:35
+#: views/admin/notification/global_template.php:32
+msgid "Global Short Codes"
+msgstr ""
+
+#: views/admin/notification/edit.php:67
+msgid "Email Template"
+msgstr ""
+
+#: views/admin/notification/edit.php:99
+msgid "SMS Template"
+msgstr ""
+
+#: views/admin/notification/edit.php:80
+msgid "Send Email"
+msgstr ""
+
+#: views/admin/notification/edit.php:88
+#: views/admin/notification/edit.php:112
+msgid "Your message using short-codes"
+msgstr ""
+
+#: views/admin/notification/edit.php:106
+msgid "Send SMS"
+msgstr ""
+
+#: views/admin/notification/global_template.php:17
+msgid "Full Name of User"
+msgstr ""
+
+#: views/admin/notification/global_template.php:21
+msgid "Username of User"
+msgstr ""
+
+#: views/admin/notification/global_template.php:65
+msgid "Email Sent From"
+msgstr ""
+
+#: views/admin/notification/global_template.php:71
+msgid "Email Body"
+msgstr ""
+
+#: views/admin/notification/global_template.php:77
+#: views/admin/notification/global_template.php:78
+msgid "SMS Sent From"
+msgstr ""
+
+#: views/admin/notification/global_template.php:84
+#: views/admin/notification/global_template.php:85
+msgid "SMS Body"
+msgstr ""
+
+#: views/admin/notification/global_template.php:66
+msgid "Email address"
+msgstr ""
+
+#: views/admin/notification/global_template.php:72
+msgid "Your email template"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:9
+msgid "Email Send Method"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:11
+msgid "PHP Mail"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:12
+msgid "SMTP"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:13
+msgid "SendGrid API"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:14
+msgid "Mailjet API"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:19
+msgid "SMTP Configuration"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:23
+msgid "Host"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:29
+msgid "Port"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:35
+msgid "Encryption"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:37
+msgid "SSL"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:38
+msgid "TLS"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:57
+msgid "SendGrid API Configuration"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:60
+msgid "App Key"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:66
+msgid "Mailjet API Configuration"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:70
+msgid "Api Public Key"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:76
+msgid "Api Secret Key"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:94
+msgid "Test Mail Setup"
+msgstr ""
+
+#: views/admin/notification/email_setting.php:106
+#: views/admin/notification/sms_setting.php:159
+msgid "Sent to"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:9
+msgid "Sms Send Method"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:11
+msgid "Clickatell"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:12
+msgid "Infobip"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:13
+msgid "Message Bird"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:14
+msgid "Nexmo"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:15
+msgid "Sms Broadcast"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:16
+msgid "Twilio"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:17
+msgid "Text Magic"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:22
+msgid "Clickatell Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:26
+#: views/admin/notification/sms_setting.php:54
+#: views/admin/notification/sms_setting.php:65
+#: views/admin/notification/sms_setting.php:27
+#: views/admin/notification/sms_setting.php:55
+#: views/admin/notification/sms_setting.php:66
+msgid "API Key"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:33
+msgid "Infobip Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:50
+msgid "Message Bird Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:61
+msgid "Nexmo Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:71
+#: views/admin/notification/sms_setting.php:72
+msgid "API Secret"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:78
+msgid "Sms Broadcast Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:95
+msgid "Twilio Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:99
+#: views/admin/notification/sms_setting.php:100
+msgid "Account SID"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:105
+#: views/admin/notification/sms_setting.php:106
+msgid "Auth Token"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:111
+#: views/admin/notification/sms_setting.php:112
+msgid "From Number"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:118
+msgid "Text Magic Configuration"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:128
+#: views/admin/notification/sms_setting.php:129
+msgid "Apiv2 Key"
+msgstr ""
+
+#: views/admin/notification/sms_setting.php:147
+msgid "Test SMS Setup"
+msgstr ""
+
+#: views/admin/reports.php:27
+#: views/admin/withdraw/list.php:74
+#: views/admin/deposit/log.php:77
+msgid "Data Not Found"
+msgstr ""
+
+#: views/admin/reports.php:53
+msgid "Report Bug"
+msgstr ""
+
+#: views/admin/reports.php:54
+msgid "Feature Request"
+msgstr ""
+
+#: views/admin/users/list.php:11
+msgid "Email-Phone"
+msgstr ""
+
+#: views/admin/users/list.php:13
+msgid "Joined At"
+msgstr ""
+
+#: views/admin/users/detail.php:95
+msgid "Information of"
+msgstr ""
+
+#: views/admin/users/detail.php:152
+msgid "Zip/Postal"
+msgstr ""
+
+#: views/admin/users/detail.php:170
+#: views/admin/setting/configuration.php:35
+#: views/admin/setting/configuration.php:38
+msgid "Email Verification"
+msgstr ""
+
+#: views/admin/users/detail.php:171
+msgid "Verified"
+msgstr ""
+
+#: views/admin/users/detail.php:171
+msgid "Unverified"
+msgstr ""
+
+#: views/admin/withdraw/edit.php:83
+#: views/admin/withdraw/create.php:84
+msgid "Withdraw Instruction"
+msgstr ""
+
+#: views/admin/withdraw/list.php:8
+#: views/admin/deposit/log.php:8
+msgid "Gateway | Transaction"
+msgstr ""
+
+#: views/admin/withdraw/list.php:9
+#: views/admin/deposit/log.php:9
+msgid "Initiated"
+msgstr ""
+
+#: views/admin/withdraw/list.php:39
+#: views/admin/deposit/log.php:39
+msgid "charge"
+msgstr ""
+
+#: views/admin/withdraw/list.php:41
+#: views/admin/deposit/log.php:41
+msgid "Amount after charge"
+msgstr ""
+
+#: views/admin/withdraw/index.php:13
+msgid "Withdraw Limit"
+msgstr ""
+
+#: views/admin/withdraw/index.php:44
+msgid "Are you sure to disable this method?"
+msgstr ""
+
+#: views/admin/withdraw/index.php:48
+msgid "Are you sure to enable this method?"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:6
+msgid "Withdraw Via"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:9
+#: views/admin/deposit/detail.php:9
+msgid "Date"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:13
+msgid "Trx Number"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:69
+#: views/admin/deposit/detail.php:71
+msgid "Admin Response"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:81
+msgid "User Withdraw Information"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:110
+#: views/admin/deposit/detail.php:117
+msgid "Approve"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:114
+#: views/admin/deposit/detail.php:119
+msgid "Reject"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:128
+msgid "Approve Withdrawal Confirmation"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:137
+msgid "Have you sent"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:153
+msgid "Reject Withdrawal Confirmation"
+msgstr ""
+
+#: views/admin/withdraw/detail.php:162
+msgid "Reason of Rejection"
+msgstr ""
+
+#: views/admin/setting/configuration.php:11
+#: views/admin/setting/configuration.php:40
+msgid "Email Notification"
+msgstr ""
+
+#: views/admin/setting/configuration.php:13
+msgid "If you enable this module, the system will send emails to users where needed. Otherwise, no email will be sent."
+msgstr ""
+
+#: views/admin/setting/configuration.php:13
+#: views/admin/setting/configuration.php:25
+msgid "So be sure before disabling this module that, the system doesn\"
+msgstr ""
+
+#: views/admin/setting/configuration.php:23
+msgid "SMS Notification"
+msgstr ""
+
+#: views/admin/setting/configuration.php:25
+msgid "If you enable this module, the system will send SMS to users where needed. Otherwise, no SMS will be sent."
+msgstr ""
+
+#: views/admin/setting/configuration.php:38
+msgid "If you enable"
+msgstr ""
+
+#: views/admin/setting/configuration.php:38
+msgid "users have to verify their email to access the dashboard. A verification link will be sent to their email to be verified."
+msgstr ""
+
+#: views/admin/setting/configuration.php:40
+msgid "Note"
+msgstr ""
+
+#: views/admin/setting/configuration.php:40
+msgid "Make sure that the"
+msgstr ""
+
+#: views/admin/setting/configuration.php:40
+msgid "module is enabled"
+msgstr ""
+
+#: views/admin/setting/index.php:17
+msgid "Currency Symbol"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:6
+msgid "If the logo and favicon are not changed after you update from this page, please"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:6
+msgid "clear the cache"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:6
+msgid "from your browser. As we keep the filename the same after the update, it may show the old image for the cache. usually, it works after clear the cache but if you still see the old logo or favicon, it may be caused by server level or network level caching. Please clear them too."
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:17
+msgid "Logo For White Background"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:31
+msgid "Select Logo"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:37
+msgid "Logo For Dark Background"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:51
+msgid "Select Dark Logo"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:57
+msgid "Favicon Image"
+msgstr ""
+
+#: views/admin/setting/logo_icon.php:71
+msgid "Select Favicon"
+msgstr ""
+
+#: views/admin/support/reply.php:27
+msgid "Close Ticket"
+msgstr ""
+
+#: views/admin/support/reply.php:45
+msgid "Max 5 files can be uploaded. Maximum upload size is"
+msgstr ""
+
+#: views/admin/support/reply.php:84
+#: views/admin/support/reply.php:108
+msgid "Delete"
+msgstr ""
+
+#: views/admin/support/reply.php:139
+msgid "Close Support Ticket!"
+msgstr ""
+
+#: views/admin/support/reply.php:145
+msgid "Are you want to close this support ticket?"
+msgstr ""
+
+#: views/admin/support/reply.php:48
+msgid "Select your file!"
+msgstr ""
+
+#: views/admin/support/reply.php:84
+#: views/admin/support/reply.php:108
+msgid "Are you sure to delete this message?"
+msgstr ""
+
+#: views/admin/support/ticket.php:11
+msgid "Submitted By"
+msgstr ""
+
+#: views/admin/investment/statistics.php:10
+msgid "Total Invests"
+msgstr ""
+
+#: views/admin/investment/statistics.php:19
+#: views/admin/investment/statistics.php:200
+#: views/admin/investment/statistics.php:252
+msgid "Current Week"
+msgstr ""
+
+#: views/admin/investment/statistics.php:20
+#: views/admin/investment/statistics.php:201
+#: views/admin/investment/statistics.php:253
+msgid "Current Month"
+msgstr ""
+
+#: views/admin/investment/statistics.php:21
+#: views/admin/investment/statistics.php:202
+#: views/admin/investment/statistics.php:254
+msgid "Current Year"
+msgstr ""
+
+#: views/admin/investment/statistics.php:31
+msgid "This"
+msgstr ""
+
+#: views/admin/investment/statistics.php:31
+msgid "invest"
+msgstr ""
+
+#: views/admin/investment/statistics.php:97
+msgid "Invest not found"
+msgstr ""
+
+#: views/admin/investment/statistics.php:107
+msgid "Profit to Pay"
+msgstr ""
+
+#: views/admin/investment/statistics.php:122
+#: views/admin/investment/statistics.php:215
+#: views/admin/investment/statistics.php:222
+#: views/admin/investment/statistics.php:229
+msgid "History"
+msgstr ""
+
+#: views/admin/investment/statistics.php:143
+msgid "This statistics showing data excluding lifetime investment."
+msgstr ""
+
+#: views/admin/investment/statistics.php:146
+msgid "No invest found to paid"
+msgstr ""
+
+#: views/admin/investment/statistics.php:156
+msgid "Interest Statistics by Plan"
+msgstr ""
+
+#: views/admin/investment/statistics.php:195
+#: views/admin/investment/statistics.php:282
+msgid "Invest & Interest"
+msgstr ""
+
+#: views/admin/investment/statistics.php:199
+#: views/admin/investment/statistics.php:251
+msgid "All Time"
+msgstr ""
+
+#: views/admin/investment/statistics.php:212
+msgid "Running Invest"
+msgstr ""
+
+#: views/admin/investment/statistics.php:219
+msgid "Closed Invest"
+msgstr ""
+
+#: views/admin/investment/statistics.php:241
+msgid "Investment Statistics by Plan"
+msgstr ""
+
+#: views/admin/investment/statistics.php:246
+msgid "All Invests"
+msgstr ""
+
+#: views/admin/investment/statistics.php:247
+msgid "Active Invests"
+msgstr ""
+
+#: views/admin/investment/statistics.php:248
+msgid "Closed Invests"
+msgstr ""
+
+#: views/admin/investment/statistics.php:295
+msgid "January"
+msgstr ""
+
+#: views/admin/investment/statistics.php:296
+msgid "February"
+msgstr ""
+
+#: views/admin/investment/statistics.php:297
+msgid "March"
+msgstr ""
+
+#: views/admin/investment/statistics.php:298
+msgid "April"
+msgstr ""
+
+#: views/admin/investment/statistics.php:299
+msgid "May"
+msgstr ""
+
+#: views/admin/investment/statistics.php:300
+msgid "June"
+msgstr ""
+
+#: views/admin/investment/statistics.php:301
+msgid "July"
+msgstr ""
+
+#: views/admin/investment/statistics.php:302
+msgid "August"
+msgstr ""
+
+#: views/admin/investment/statistics.php:303
+msgid "September"
+msgstr ""
+
+#: views/admin/investment/statistics.php:304
+msgid "October"
+msgstr ""
+
+#: views/admin/investment/statistics.php:305
+msgid "November"
+msgstr ""
+
+#: views/admin/investment/statistics.php:306
+msgid "December"
+msgstr ""
+
+#: views/admin/investment/statistics.php:321
+msgid "Recent Investments"
+msgstr ""
+
+#: views/admin/investment/statistics.php:350
+msgid "End Date"
+msgstr ""
+
+#: views/admin/investment/statistics.php:356
+msgid "Net Profit"
+msgstr ""
+
+#: views/admin/extension/index.php:10
+msgid "Extension"
+msgstr ""
+
+#: views/admin/extension/index.php:28
+msgid "Enabled"
+msgstr ""
+
+#: views/admin/extension/index.php:30
+msgid "Disabled"
+msgstr ""
+
+#: views/admin/extension/index.php:36
+msgid "Configure"
+msgstr ""
+
+#: views/admin/extension/index.php:39
+msgid "Help"
+msgstr ""
+
+#: views/admin/extension/index.php:68
+msgid "Update Extension"
+msgstr ""
+
+#: views/admin/extension/index.php:77
+msgid "Script"
+msgstr ""
+
+#: views/admin/extension/index.php:95
+msgid "Need Help"
+msgstr ""
+
+#: views/admin/extension/index.php:42
+msgid "Are you sure to enable this extension?"
+msgstr ""
+
+#: views/admin/extension/index.php:46
+msgid "Are you sure to disable this extension?"
+msgstr ""
+
+#: views/admin/extension/index.php:79
+msgid "Paste your script with proper key"
+msgstr ""
+
+#: views/admin/time/index.php:49
+msgid "Add New Time"
+msgstr ""
+
+#: views/admin/time/index.php:56
+#: views/admin/time/index.php:87
+msgid "Time Name"
+msgstr ""
+
+#: views/admin/time/index.php:60
+#: views/admin/time/index.php:91
+msgid "Time in Hours"
+msgstr ""
+
+#: views/admin/time/index.php:63
+#: views/admin/time/index.php:94
+msgid "Hours"
+msgstr ""
+
+#: views/admin/time/index.php:65
+#: views/admin/time/index.php:96
+msgid "Interest will be given after this time which you\"
+msgstr ""
+
+#: views/admin/time/index.php:80
+msgid "Edit Time"
+msgstr ""
+
+#: views/admin/time/index.php:24
+msgid "Are you sure to disable this time?"
+msgstr ""
+
+#: views/admin/time/index.php:26
+msgid "Are you sure to enable this time?"
+msgstr ""
+
+#: views/admin/time/index.php:57
+#: views/admin/time/index.php:88
+msgid "e.g. Hour, Day, Week"
+msgstr ""
+
+#: views/admin/deposit/detail.php:6
+msgid "Deposit Via"
+msgstr ""
+
+#: views/admin/deposit/detail.php:13
+msgid "Transaction Number"
+msgstr ""
+
+#: views/admin/deposit/detail.php:89
+msgid "User Deposit Information"
+msgstr ""
+
+#: views/admin/deposit/detail.php:138
+msgid "Reject Deposit Confirmation"
+msgstr ""
+
+#: views/admin/deposit/detail.php:147
+msgid "Are you sure to"
+msgstr ""
+
+#: views/admin/deposit/detail.php:147
+msgid "reject"
+msgstr ""
+
+#: views/admin/deposit/detail.php:147
+msgid "deposit of"
+msgstr ""
+
+#: views/admin/deposit/detail.php:150
+msgid "Reason for Rejection"
+msgstr ""
+
+#: views/admin/deposit/detail.php:116
+msgid "Are you sure to approve this transaction?"
+msgstr ""
+
+#: views/form/form.php:63
+msgid "Supported mimes"
+msgstr ""
+
+#: views/form/generator.php:18
+#: views/form/generator.php:153
+msgid "JPG"
+msgstr ""
+
+#: views/form/generator.php:19
+#: views/form/generator.php:154
+msgid "JPEG"
+msgstr ""
+
+#: views/form/generator.php:20
+#: views/form/generator.php:155
+msgid "PNG"
+msgstr ""
+
+#: views/form/generator.php:21
+#: views/form/generator.php:156
+msgid "PDF"
+msgstr ""
+
+#: views/form/generator.php:22
+#: views/form/generator.php:157
+msgid "DOC"
+msgstr ""
+
+#: views/form/generator.php:23
+#: views/form/generator.php:158
+msgid "DOCX"
+msgstr ""
+
+#: views/form/generator.php:24
+#: views/form/generator.php:159
+msgid "TXT"
+msgstr ""
+
+#: views/form/generator.php:25
+#: views/form/generator.php:160
+msgid "XLX"
+msgstr ""
+
+#: views/form/generator.php:26
+msgid "XLXS"
+msgstr ""
+
+#: views/form/generator.php:27
+#: views/form/generator.php:162
+msgid "CSV"
+msgstr ""
+
+#: views/form/generator.php:29
+#: views/form/generator.php:148
+msgid "File Extensions"
+msgstr ""
+
+#: views/form/generator.php:29
+#: views/form/generator.php:148
+msgid "Separate each element by comma"
+msgstr ""
+
+#: views/form/generator.php:33
+msgid "Add Options"
+msgstr ""
+
+#: views/form/generator.php:161
+msgid "XLSX"
+msgstr ""
+
+#: views/form/generator.php:208
+msgid "Update"
+msgstr ""
+
+#: views/form/generator.php:218
+#: views/form/modal.php:42
+msgid "Add"
+msgstr ""
+
+#: views/form/modal.php:5
+msgid "Generate Form"
+msgstr ""
+
+#: views/form/modal.php:14
+msgid "Form Type"
+msgstr ""
+
+#: views/form/modal.php:17
+msgid "Text"
+msgstr ""
+
+#: views/form/modal.php:18
+msgid "Textarea"
+msgstr ""
+
+#: views/form/modal.php:19
+msgid "Select"
+msgstr ""
+
+#: views/form/modal.php:20
+msgid "Checkbox"
+msgstr ""
+
+#: views/form/modal.php:21
+msgid "Radio"
+msgstr ""
+
+#: views/form/modal.php:22
+msgid "File"
+msgstr ""
+
+#: views/form/modal.php:26
+msgid "Is Required"
+msgstr ""
+
+#: views/form/modal.php:29
+msgid "Required"
+msgstr ""
+
+#: views/form/modal.php:30
+msgid "Optional"
+msgstr ""
+
+#: views/form/modal.php:34
+msgid "Form Label"
+msgstr ""
+
+#: views/errors/404.php:20
+msgid "404"
+msgstr ""
+
+#: views/errors/404.php:21
+msgid "Page not found"
+msgstr ""
+
+#: views/errors/404.php:22
+msgid "page you are looking for doesn\"
+msgstr ""
+
+#: views/errors/404.php:23
+msgid "or temporarily unavailable."
+msgstr ""
+
+#: views/errors/404.php:27
+msgid "Go to Home"
+msgstr ""
