@@ -20,7 +20,7 @@
               </div>
             </div>
             <h3 class="h5 mb-3">High-Yield Returns</h3>
-            <p class="text-muted mb-0">Earn competitive returns on your investments with our carefully selected HYIP programs.</p>
+            <p class="text-muted mb-0">Earn competitive returns on your investments with our carefully selected investment programs.</p>
           </div>
         </div>
       </div>
