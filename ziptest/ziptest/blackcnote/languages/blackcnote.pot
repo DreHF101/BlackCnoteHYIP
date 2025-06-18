@@ -1,0 +1,373 @@
+# Copyright (C) 2024 ViserLab
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: BlackCnote 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/blackcnote\n"
+"POT-Creation-Date: 2024-01-01 12:00:00+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2024-01-01 12:00:00+00:00\n"
+"Last-Translator: ViserLab <support@viserlab.com>\n"
+"Language-Team: ViserLab <support@viserlab.com>\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: functions.php:42
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:43
+msgid "Footer Menu"
+msgstr ""
+
+#: template-dashboard.php:31
+msgid "Dashboard"
+msgstr ""
+
+#: template-dashboard.php:35
+msgid "Welcome to your investment dashboard"
+msgstr ""
+
+#: template-dashboard.php:36
+msgid "View your investments and earnings"
+msgstr ""
+
+#: template-dashboard.php:37
+msgid "Track your portfolio performance"
+msgstr ""
+
+#: template-dashboard.php:45
+msgid "Total Investment"
+msgstr ""
+
+#: template-dashboard.php:52
+msgid "Total Earnings"
+msgstr ""
+
+#: template-dashboard.php:53
+msgid "Active Plans"
+msgstr ""
+
+#: template-dashboard.php:54
+msgid "Pending Withdrawals"
+msgstr ""
+
+#: template-dashboard.php:55
+msgid "Recent Transactions"
+msgstr ""
+
+#: template-dashboard.php:77
+msgid "Plan"
+msgstr ""
+
+#: template-dashboard.php:82
+msgid "Amount"
+msgstr ""
+
+#: template-dashboard.php:95
+msgid "Date"
+msgstr ""
+
+#: template-dashboard.php:99
+msgid "Type"
+msgstr ""
+
+#: template-dashboard.php:103
+msgid "Status"
+msgstr ""
+
+#: template-dashboard.php:107
+msgid "Action"
+msgstr ""
+
+#: template-plans.php:31
+msgid "Investment Plans"
+msgstr ""
+
+#: template-plans.php:34
+msgid "Choose your investment plan"
+msgstr ""
+
+#: template-plans.php:65
+msgid "Return Rate"
+msgstr ""
+
+#: template-plans.php:69
+msgid "Investment Period"
+msgstr ""
+
+#: template-plans.php:73
+msgid "Minimum Investment"
+msgstr ""
+
+#: template-plans.php:79
+msgid "Maximum Investment"
+msgstr ""
+
+#: template-plans.php:83
+msgid "Capital Return"
+msgstr ""
+
+#: template-plans.php:89
+msgid "Total Return"
+msgstr ""
+
+#: template-plans.php:93
+msgid "Invest Now"
+msgstr ""
+
+#: template-plans.php:102
+msgid "Calculate Return"
+msgstr ""
+
+#: template-plans.php:112
+msgid "Investment Amount"
+msgstr ""
+
+#: template-plans.php:117
+msgid "Estimated Return"
+msgstr ""
+
+#: template-plans.php:124
+msgid "Calculate"
+msgstr ""
+
+#: template-plans.php:126
+msgid "Clear"
+msgstr ""
+
+#: template-plans.php:131
+msgid "Please enter a valid amount"
+msgstr ""
+
+#: template-plans.php:133
+msgid "Amount must be between minimum and maximum investment"
+msgstr ""
+
+#: template-plans.php:150
+msgid "No plans available"
+msgstr ""
+
+#: template-dashboard.php:31
+msgid "Account Overview"
+msgstr ""
+
+#: template-dashboard.php:35
+msgid "Username:"
+msgstr ""
+
+#: template-dashboard.php:36
+msgid "Email:"
+msgstr ""
+
+#: template-dashboard.php:37
+msgid "Member Since:"
+msgstr ""
+
+#: template-dashboard.php:45
+msgid "Investment Summary"
+msgstr ""
+
+#: template-dashboard.php:52
+msgid "Plan"
+msgstr ""
+
+#: template-dashboard.php:53
+msgid "Amount"
+msgstr ""
+
+#: template-dashboard.php:54
+msgid "Return"
+msgstr ""
+
+#: template-dashboard.php:55
+msgid "Status"
+msgstr ""
+
+#: template-dashboard.php:77
+msgid "No investments found."
+msgstr ""
+
+#: template-dashboard.php:82
+msgid "Error loading investment data."
+msgstr ""
+
+#: template-dashboard.php:95
+msgid "Quick Actions"
+msgstr ""
+
+#: template-dashboard.php:99
+msgid "New Investment"
+msgstr ""
+
+#: template-dashboard.php:103
+msgid "Withdraw Funds"
+msgstr ""
+
+#: template-dashboard.php:107
+msgid "Update Profile"
+msgstr ""
+
+#: template-plans.php:34
+msgid "Choose from our selection of investment plans to start earning returns."
+msgstr ""
+
+#: template-plans.php:65
+msgid "Min Investment:"
+msgstr ""
+
+#: template-plans.php:69
+msgid "Max Investment:"
+msgstr ""
+
+#: template-plans.php:73
+msgid "Return Period:"
+msgstr ""
+
+#: template-plans.php:79
+msgid "Login to Invest"
+msgstr ""
+
+#: template-plans.php:89
+msgid "No investment plans available at the moment."
+msgstr ""
+
+#: template-plans.php:93
+msgid "Error loading investment plans."
+msgstr ""
+
+#: template-plans.php:102
+msgid "Make Investment"
+msgstr ""
+
+#: template-plans.php:112
+msgid "Plan"
+msgstr ""
+
+#: template-plans.php:117
+msgid "Investment Amount"
+msgstr ""
+
+#: template-plans.php:124
+msgid "Expected Return"
+msgstr ""
+
+#: template-plans.php:126
+msgid "Enter amount to calculate return"
+msgstr ""
+
+#: template-plans.php:131
+msgid "Payment Method"
+msgstr ""
+
+#: template-plans.php:133
+msgid "Select payment method"
+msgstr ""
+
+#: template-plans.php:150
+msgid "Close"
+msgstr ""
+
+#: template-plans.php:153
+msgid "Confirm Investment"
+msgstr ""
+
+#: template-transactions.php:31
+msgid "Transaction History"
+msgstr ""
+
+#: template-transactions.php:34
+msgid "View your investment transactions and returns."
+msgstr ""
+
+#: template-transactions.php:41
+msgid "Type"
+msgstr ""
+
+#: template-transactions.php:43
+msgid "All Types"
+msgstr ""
+
+#: template-transactions.php:44
+msgid "Investment"
+msgstr ""
+
+#: template-transactions.php:45
+msgid "Return"
+msgstr ""
+
+#: template-transactions.php:46
+msgid "Withdrawal"
+msgstr ""
+
+#: template-transactions.php:49
+msgid "From Date"
+msgstr ""
+
+#: template-transactions.php:53
+msgid "To Date"
+msgstr ""
+
+#: template-transactions.php:57
+msgid "Filter"
+msgstr ""
+
+#: template-transactions.php:89
+msgid "Date"
+msgstr ""
+
+#: template-transactions.php:90
+msgid "Type"
+msgstr ""
+
+#: template-transactions.php:91
+msgid "Amount"
+msgstr ""
+
+#: template-transactions.php:92
+msgid "Status"
+msgstr ""
+
+#: template-transactions.php:93
+msgid "Details"
+msgstr ""
+
+#: template-transactions.php:127
+msgid "View"
+msgstr ""
+
+#: template-transactions.php:156
+msgid "No transactions found."
+msgstr ""
+
+#: template-transactions.php:160
+msgid "Error loading transactions."
+msgstr ""
+
+#: template-transactions.php:175
+msgid "Transaction Details"
+msgstr ""
+
+#: template-transactions.php:183
+msgid "Loading..."
+msgstr ""
+
+#: index.php:31
+msgid "Continue reading<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: index.php:45
+msgid "Nothing Found"
+msgstr ""
+
+#: index.php:46
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for."
+msgstr "" 

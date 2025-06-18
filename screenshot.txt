@@ -1,0 +1,38 @@
+# BlackCnote Theme Screenshot Specification
+
+## Requirements
+- Dimensions: 1200x900 pixels (4:3 aspect ratio)
+- Format: PNG
+- File name: screenshot.png
+- Location: Theme root directory
+
+## Content Guidelines
+- Show the BlackCnote homepage with modern, card-based design
+- Include hero section with BlackCnote branding
+- Display investment plans section with attractive cards
+- Show features section with icons and descriptions
+- Include call-to-action sections
+- Use the BlackCnote color scheme and typography
+- Ensure responsive design elements are visible
+- Include navigation menu and footer
+
+## Design Elements
+- Primary colors: Modern blue and gold theme
+- Typography: Clean, professional fonts
+- Layout: Card-based, modern design
+- Icons: Professional investment/finance icons
+- Images: High-quality, relevant stock photos
+- Buttons: Modern, rounded design with hover effects
+
+## Technical Notes
+- Screenshot should be representative of the actual theme
+- No placeholder content - use realistic investment data
+- Ensure all sections are visible and well-lit
+- Optimize for file size while maintaining quality
+- Test on different screen sizes for consistency
+
+## Branding
+- BlackCnote logo prominently displayed
+- Consistent with BlackCnoteHYIP repository design
+- Professional investment platform appearance
+- Trustworthy and modern aesthetic 
