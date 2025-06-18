@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) {
 
 // Get investment plans
 global $wpdb;
-$plans = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}blackcnotelab_plans ORDER BY min_amount ASC");
+$plans = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}blackcnotelab_plans ORDER BY return_rate ASC");
 ?>
 
 <section class="investment-plans-section py-5 bg-white">

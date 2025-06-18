@@ -149,7 +149,7 @@ function blackcnote_plans_shortcode($atts) {
                     <div class="plan-details">
                         <p class="return-rate">
                             <?php echo esc_html__('Return Rate:', 'blackcnote'); ?>
-                            <?php echo esc_html($plan->interest_rate); ?>%
+                            <?php echo esc_html($plan->return_rate); ?>%
                         </p>
                         <p class="min-investment">
                             <?php echo esc_html__('Min Investment:', 'blackcnote'); ?>
@@ -206,7 +206,7 @@ function blackcnote_calculate_plan() {
             throw new Exception(__('Amount is outside the allowed range.', 'blackcnote'));
         }
 
-        $return_amount = $amount * (1 + ($plan->interest_rate / 100));
+        $return_amount = $amount * (1 + ($plan->return_rate / 100));
         
         wp_send_json_success(array(
             'return_amount' => $return_amount,
@@ -430,7 +430,7 @@ function blackcnote_theme_calculate_return(): void {
     }
 
     // Calculate return
-    $return_amount = $amount * (1 + ($plan->interest_rate / 100));
+    $return_amount = $amount * (1 + ($plan->return_rate / 100));
 
     wp_send_json_success([
         'return_amount' => $return_amount,
@@ -512,7 +512,7 @@ function blackcnote_theme_daily_cron_task(): void {
         ));
 
         if ($plan) {
-            $interest = $investment->amount * ($plan->interest_rate / 100);
+            $interest = $investment->amount * ($plan->return_rate / 100);
             
             $wpdb->insert(
                 $wpdb->prefix . 'blackcnotelab_transactions',
