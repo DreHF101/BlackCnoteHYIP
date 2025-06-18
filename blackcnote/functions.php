@@ -559,35 +559,435 @@ add_action('blackcnote_theme_daily_cron', 'blackcnote_theme_daily_cron_task');
 function blackcnote_create_required_pages() {
     $pages = [
         [
+            'title' => 'Home',
+            'slug' => 'home',
+            'content' => '<h2>Welcome to BlackCnote!</h2><p>This is your homepage. Add content with Elementor, the WordPress editor, or import demo content for a full experience.</p>',
+        ],
+        [
             'title' => 'Dashboard',
             'slug' => 'dashboard',
-            'template' => 'template-hyip-dashboard.php',
+            'content' => '<h2>Dashboard</h2><p>Your dashboard content goes here.</p>',
         ],
         [
             'title' => 'Plans',
             'slug' => 'plans',
-            'template' => 'template-hyip-plans.php',
+            'content' => '<h2>Investment Plans</h2><p>Display your plans here or use the [blackcnote_plans] shortcode.</p>',
         ],
         [
             'title' => 'Transactions',
             'slug' => 'transactions',
-            'template' => 'template-hyip-transactions.php',
+            'content' => '<h2>Transactions</h2><p>Display your transactions here or use the [blackcnote_transactions] shortcode.</p>',
         ],
-        // Add more pages as needed
+        [
+            'title' => 'Calculator',
+            'slug' => 'calculator',
+            'content' => '<h2>Calculator</h2><p>Display your calculator here or use the [blackcnote_plans] shortcode.</p>',
+        ],
+        [
+            'title' => 'About',
+            'slug' => 'about',
+            'content' => '<h2>About BlackCnote</h2><p>Empowering Black Wealth Through Strategic Investment.</p>',
+        ],
+        [
+            'title' => 'Contact',
+            'slug' => 'contact',
+            'content' => '<h2>Contact Us</h2><p>Email: info@blackcnote.com<br>Phone: +1 234 567 890<br>Address: 123 Street Name, City, Country</p>',
+        ],
     ];
-
+    $home_page_id = null;
     foreach ($pages as $page) {
-        if (!get_page_by_path($page['slug'])) {
+        $existing = get_page_by_path($page['slug']);
+        if (!$existing) {
             $page_id = wp_insert_post([
                 'post_title'   => $page['title'],
                 'post_name'    => $page['slug'],
                 'post_status'  => 'publish',
                 'post_type'    => 'page',
+                'post_content' => $page['content'] ?? '',
             ]);
             if ($page_id && !is_wp_error($page_id)) {
-                update_post_meta($page_id, '_wp_page_template', $page['template']);
+                if ($page['slug'] === 'home') {
+                    $home_page_id = $page_id;
+                }
+            }
+        } else {
+            if ($page['slug'] === 'home') {
+                $home_page_id = $existing->ID;
+            }
+        }
+    }
+    // Set Home as static front page
+    if ($home_page_id) {
+        update_option('show_on_front', 'page');
+        update_option('page_on_front', $home_page_id);
+    }
+}
+add_action('after_switch_theme', 'blackcnote_create_required_pages');
+
+// Add admin tool for one-click demo content import
+add_action('admin_menu', function() {
+    add_submenu_page(
+        'themes.php',
+        __('Import Demo Content', 'blackcnote'),
+        __('Import Demo Content', 'blackcnote'),
+        'manage_options',
+        'blackcnote-import-demo-content',
+        'blackcnote_import_demo_content_page'
+    );
+});
+
+function blackcnote_import_demo_content_page() {
+    echo '<div class="wrap"><h1>' . esc_html__('Import Demo Content', 'blackcnote') . '</h1>';
+    if (isset($_POST['blackcnote_import_demo_content']) && check_admin_referer('blackcnote_import_demo_content')) {
+        $import_file = get_template_directory() . '/blackcnote-demo-content.xml';
+        if (file_exists($import_file)) {
+            if (!class_exists('WP_Import')) {
+                require_once ABSPATH . 'wp-admin/includes/plugin.php';
+                $plugin = 'wordpress-importer/wordpress-importer.php';
+                if (!is_plugin_active($plugin)) {
+                    activate_plugin($plugin);
+                }
+                if (!class_exists('WP_Import')) {
+                    require_once ABSPATH . 'wp-content/plugins/wordpress-importer/wordpress-importer.php';
+                }
+            }
+            if (class_exists('WP_Import')) {
+                ob_start();
+                $importer = new WP_Import();
+                $importer->fetch_attachments = true;
+                $importer->import($import_file);
+                ob_end_clean();
+                echo '<div class="notice notice-success"><p>' . esc_html__('Demo content imported successfully!', 'blackcnote') . '</p></div>';
+            } else {
+                echo '<div class="notice notice-error"><p>' . esc_html__('WordPress Importer plugin is not available. Please install and activate it first.', 'blackcnote') . '</p></div>';
+            }
+        } else {
+            echo '<div class="notice notice-error"><p>' . esc_html__('Demo content XML file not found in the theme directory. Please export demo content from Tools > Export and save as blackcnote-demo-content.xml in your theme folder.', 'blackcnote') . '</p></div>';
+        }
+    }
+    echo '<form method="post">';
+    wp_nonce_field('blackcnote_import_demo_content');
+    echo '<p>' . esc_html__('Click the button below to import demo content. This will create sample pages, posts, and categories.', 'blackcnote') . '</p>';
+    echo '<input type="submit" class="button button-primary" name="blackcnote_import_demo_content" value="' . esc_attr__('Import Demo Content', 'blackcnote') . '" />';
+    echo '</form></div>';
+}
+
+// Admin notification for required plugins
+add_action('admin_notices', function() {
+    // List your required plugins here (slug => name)
+    $required_plugins = [
+        'wordpress-importer' => 'WordPress Importer',
+        // Add more required plugins as needed
+    ];
+    include_once ABSPATH . 'wp-admin/includes/plugin.php';
+    foreach ($required_plugins as $slug => $name) {
+        $plugin_file = $slug . '/' . $slug . '.php';
+        if (!is_plugin_active($plugin_file)) {
+            $install_url = wp_nonce_url(self_admin_url('update.php?action=install-plugin&plugin=' . $slug), 'install-plugin_' . $slug);
+            $activate_url = wp_nonce_url(self_admin_url('plugins.php?action=activate&plugin=' . $plugin_file), 'activate-plugin_' . $plugin_file);
+            $plugin_installed = file_exists(WP_PLUGIN_DIR . '/' . $plugin_file);
+            echo '<div class="notice notice-warning is-dismissible"><p>';
+            echo esc_html($name) . ' ' . esc_html__('is required for the BlackCnote theme. ', 'blackcnote');
+            if (!$plugin_installed) {
+                echo '<a href="' . esc_url($install_url) . '" class="button button-primary">' . esc_html__('Install Now', 'blackcnote') . '</a> ';
+            } else {
+                echo '<a href="' . esc_url($activate_url) . '" class="button button-primary">' . esc_html__('Activate Now', 'blackcnote') . '</a> ';
+            }
+            echo '</p></div>';
+        }
+    }
+});
+
+/**
+ * Delete broken themes functionality
+ */
+function blackcnote_delete_broken_themes() {
+    $themes_dir = get_theme_root();
+    $broken_themes = [];
+    
+    // Get all theme directories
+    $theme_dirs = glob($themes_dir . '/*', GLOB_ONLYDIR);
+    
+    foreach ($theme_dirs as $theme_dir) {
+        $theme_name = basename($theme_dir);
+        
+        // Skip current theme and parent theme
+        if ($theme_name === get_template() || $theme_name === get_stylesheet()) {
+            continue;
+        }
+        
+        // Check if theme has required files
+        $style_file = $theme_dir . '/style.css';
+        $functions_file = $theme_dir . '/functions.php';
+        $index_file = $theme_dir . '/index.php';
+        
+        $is_broken = false;
+        $missing_files = [];
+        
+        // Check for missing essential files
+        if (!file_exists($style_file)) {
+            $is_broken = true;
+            $missing_files[] = 'style.css';
+        }
+        
+        if (!file_exists($index_file)) {
+            $is_broken = true;
+            $missing_files[] = 'index.php';
+        }
+        
+        // Check if style.css has valid theme headers
+        if (file_exists($style_file)) {
+            $theme_data = get_file_data($style_file, [
+                'ThemeName' => 'Theme Name',
+                'ThemeURI' => 'Theme URI',
+                'Description' => 'Description',
+                'Author' => 'Author',
+                'Version' => 'Version'
+            ]);
+            
+            if (empty($theme_data['ThemeName'])) {
+                $is_broken = true;
+                $missing_files[] = 'valid theme headers';
+            }
+        }
+        
+        if ($is_broken) {
+            $broken_themes[] = [
+                'name' => $theme_name,
+                'path' => $theme_dir,
+                'missing' => $missing_files
+            ];
+        }
+    }
+    
+    return $broken_themes;
+}
+
+/**
+ * Auto-delete broken themes on theme activation
+ */
+function blackcnote_auto_delete_broken_themes() {
+    // Only run if setting is enabled
+    if (get_option('blackcnote_auto_delete_broken_themes', true)) {
+        $broken_themes = blackcnote_delete_broken_themes();
+        
+        foreach ($broken_themes as $theme) {
+            // Use WordPress filesystem API for safe deletion
+            global $wp_filesystem;
+            if (empty($wp_filesystem)) {
+                require_once(ABSPATH . '/wp-admin/includes/file.php');
+                WP_Filesystem();
+            }
+            
+            if ($wp_filesystem->delete($theme['path'], true)) {
+                // Log deletion
+                error_log("BlackCnote: Deleted broken theme: " . $theme['name']);
             }
         }
     }
 }
-add_action('after_switch_theme', 'blackcnote_create_required_pages'); 
+add_action('after_switch_theme', 'blackcnote_auto_delete_broken_themes');
+
+/**
+ * Add theme maintenance admin page
+ */
+add_action('admin_menu', function() {
+    add_submenu_page(
+        'themes.php',
+        __('Theme Maintenance', 'blackcnote'),
+        __('Theme Maintenance', 'blackcnote'),
+        'manage_options',
+        'blackcnote-theme-maintenance',
+        'blackcnote_theme_maintenance_page'
+    );
+});
+
+function blackcnote_theme_maintenance_page() {
+    echo '<div class="wrap"><h1>' . esc_html__('Theme Maintenance', 'blackcnote') . '</h1>';
+    
+    // Handle form submissions
+    if (isset($_POST['blackcnote_delete_broken_themes']) && check_admin_referer('blackcnote_delete_broken_themes')) {
+        $broken_themes = blackcnote_delete_broken_themes();
+        $deleted_count = 0;
+        
+        foreach ($broken_themes as $theme) {
+            global $wp_filesystem;
+            if (empty($wp_filesystem)) {
+                require_once(ABSPATH . '/wp-admin/includes/file.php');
+                WP_Filesystem();
+            }
+            
+            if ($wp_filesystem->delete($theme['path'], true)) {
+                $deleted_count++;
+            }
+        }
+        
+        echo '<div class="notice notice-success"><p>' . 
+             sprintf(esc_html__('Successfully deleted %d broken themes.', 'blackcnote'), $deleted_count) . 
+             '</p></div>';
+    }
+    
+    if (isset($_POST['blackcnote_toggle_auto_delete']) && check_admin_referer('blackcnote_toggle_auto_delete')) {
+        $current_setting = get_option('blackcnote_auto_delete_broken_themes', true);
+        update_option('blackcnote_auto_delete_broken_themes', !$current_setting);
+        echo '<div class="notice notice-success"><p>' . 
+             esc_html__('Auto-delete setting updated successfully.', 'blackcnote') . 
+             '</p></div>';
+    }
+    
+    // Display current broken themes
+    $broken_themes = blackcnote_delete_broken_themes();
+    $auto_delete_enabled = get_option('blackcnote_auto_delete_broken_themes', true);
+    
+    echo '<div class="card"><h2>' . esc_html__('Broken Themes Detection', 'blackcnote') . '</h2>';
+    
+    if (empty($broken_themes)) {
+        echo '<p>' . esc_html__('No broken themes detected. Your theme directory is clean!', 'blackcnote') . '</p>';
+    } else {
+        echo '<p>' . sprintf(esc_html__('Found %d broken theme(s):', 'blackcnote'), count($broken_themes)) . '</p>';
+        echo '<ul>';
+        foreach ($broken_themes as $theme) {
+            echo '<li><strong>' . esc_html($theme['name']) . '</strong> - ' . 
+                 esc_html__('Missing:', 'blackcnote') . ' ' . esc_html(implode(', ', $theme['missing'])) . '</li>';
+        }
+        echo '</ul>';
+        
+        echo '<form method="post" style="margin-top: 20px;">';
+        wp_nonce_field('blackcnote_delete_broken_themes');
+        echo '<input type="submit" class="button button-primary" name="blackcnote_delete_broken_themes" value="' . 
+             esc_attr__('Delete All Broken Themes', 'blackcnote') . '" />';
+        echo '</form>';
+    }
+    echo '</div>';
+    
+    // Auto-delete settings
+    echo '<div class="card" style="margin-top: 20px;"><h2>' . esc_html__('Auto-Delete Settings', 'blackcnote') . '</h2>';
+    echo '<p>' . esc_html__('Automatically delete broken themes when switching themes:', 'blackcnote') . '</p>';
+    echo '<p><strong>' . esc_html__('Current setting:', 'blackcnote') . '</strong> ' . 
+         ($auto_delete_enabled ? esc_html__('Enabled', 'blackcnote') : esc_html__('Disabled', 'blackcnote')) . '</p>';
+    
+    echo '<form method="post">';
+    wp_nonce_field('blackcnote_toggle_auto_delete');
+    echo '<input type="submit" class="button button-secondary" name="blackcnote_toggle_auto_delete" value="' . 
+         esc_attr__($auto_delete_enabled ? 'Disable Auto-Delete' : 'Enable Auto-Delete', 'blackcnote') . '" />';
+    echo '</form>';
+    echo '</div>';
+    
+    echo '</div>';
+}
+
+/**
+ * Add theme maintenance notice in admin
+ */
+add_action('admin_notices', function() {
+    if (isset($_GET['page']) && $_GET['page'] === 'themes.php') {
+        $broken_themes = blackcnote_delete_broken_themes();
+        if (!empty($broken_themes)) {
+            echo '<div class="notice notice-warning is-dismissible"><p>';
+            echo sprintf(
+                esc_html__('BlackCnote detected %d broken theme(s). ', 'blackcnote'),
+                count($broken_themes)
+            );
+            echo '<a href="' . esc_url(admin_url('themes.php?page=blackcnote-theme-maintenance')) . '" class="button button-primary">' . 
+                 esc_html__('Manage Broken Themes', 'blackcnote') . '</a>';
+            echo '</p></div>';
+        }
+    }
+});
+
+/**
+ * Clean up theme directory on deactivation
+ */
+function blackcnote_cleanup_on_deactivation() {
+    // Delete temporary files and directories
+    $temp_dirs = [
+        get_template_directory() . '/temp',
+        get_template_directory() . '/cache',
+        get_template_directory() . '/backup'
+    ];
+    
+    global $wp_filesystem;
+    if (empty($wp_filesystem)) {
+        require_once(ABSPATH . '/wp-admin/includes/file.php');
+        WP_Filesystem();
+    }
+    
+    foreach ($temp_dirs as $dir) {
+        if ($wp_filesystem->exists($dir)) {
+            $wp_filesystem->delete($dir, true);
+        }
+    }
+}
+register_deactivation_hook(__FILE__, 'blackcnote_cleanup_on_deactivation');
+
+// --- BlackCnote: Auto-install and activate Full Content Checker plugin on theme activation ---
+add_action('after_switch_theme', function() {
+    $plugin_dir = WP_PLUGIN_DIR . '/full-content-checker';
+    $plugin_file = $plugin_dir . '/full-content-checker.php';
+    $theme_plugin = get_template_directory() . '/inc/full-content-checker.php';
+    // Copy plugin if not present
+    if (!file_exists($plugin_file) && file_exists($theme_plugin)) {
+        if (!file_exists($plugin_dir)) {
+            mkdir($plugin_dir, 0755, true);
+        }
+        copy($theme_plugin, $plugin_file);
+    }
+    // Activate plugin if not active
+    include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+    if (file_exists($plugin_file) && !is_plugin_active('full-content-checker/full-content-checker.php')) {
+        activate_plugin('full-content-checker/full-content-checker.php');
+    }
+});
+
+// --- BlackCnote: Demo content import admin notice and page ---
+add_action('admin_notices', function() {
+    if (get_option('blackcnote_demo_imported')) return;
+    if (get_template() !== 'blackcnote') return;
+    $import_url = admin_url('themes.php?page=blackcnote-demo-import');
+    echo '<div class="notice notice-success"><p>';
+    echo 'Welcome to BlackCnote! <a href="' . esc_url($import_url) . '">Click here to import demo content</a> (pages, header, footer, sections, etc.).';
+    echo '</p></div>';
+});
+
+add_action('admin_menu', function() {
+    add_theme_page('Import Demo Content', 'Import Demo Content', 'manage_options', 'blackcnote-demo-import', function() {
+        if (isset($_POST['import_demo_content'])) {
+            $file = get_template_directory() . '/blackcnote-demo-content.xml';
+            if (file_exists($file)) {
+                require_once ABSPATH . 'wp-admin/includes/file.php';
+                require_once ABSPATH . 'wp-admin/includes/import.php';
+                $importer = 'wordpress-importer/wordpress-importer.php';
+                if (!class_exists('WP_Import')) {
+                    // Try to load the importer if not present
+                    $importer_path = WP_PLUGIN_DIR . '/wordpress-importer/wordpress-importer.php';
+                    if (file_exists($importer_path)) {
+                        include_once $importer_path;
+                    } else {
+                        echo '<div class="notice notice-error"><p>Please install and activate the <strong>WordPress Importer</strong> plugin first.</p></div>';
+                        return;
+                    }
+                }
+                if (class_exists('WP_Import')) {
+                    ob_start();
+                    $importer = new WP_Import();
+                    $importer->fetch_attachments = true;
+                    $importer->import($file);
+                    ob_end_clean();
+                    update_option('blackcnote_demo_imported', 1);
+                    echo '<div class="notice notice-success"><p>Demo content imported successfully!</p></div>';
+                }
+            } else {
+                echo '<div class="notice notice-error"><p>Demo content file not found.</p></div>';
+            }
+        }
+        ?>
+        <div class="wrap">
+            <h1>Import BlackCnote Demo Content</h1>
+            <form method="post">
+                <p>This will import all demo pages, header, footer, and sections. Existing content will not be deleted, but may be duplicated.</p>
+                <input type="submit" name="import_demo_content" class="button button-primary" value="Import Demo Content">
+            </form>
+        </div>
+        <?php
+    });
+}); 

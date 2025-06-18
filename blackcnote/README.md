@@ -356,3 +356,18 @@ Before distributing the theme, ensure all items are completed:
 - [ ] Verify all shortcodes
 - [ ] Check debug.log
 - [ ] Package with `package.ps1` 
+
+## Full Content Checker Plugin
+
+The BlackCnote theme automatically installs and activates the Full Content & File Checker plugin on theme activation. This plugin checks all posts, pages, custom post types, header/footer, and core demo files for content. You can access it from the WordPress admin under Tools → Full Content Checker.
+
+## Demo Content Import
+
+When you activate the BlackCnote theme, you will see a notice in the admin area with a link to import demo content (pages, header, footer, sections, etc.).
+
+To import demo content:
+1. Go to Appearance → Import Demo Content (or click the notice link).
+2. Click the "Import Demo Content" button.
+3. The demo content will be imported. You can re-import at any time from the same menu.
+
+**Note:** The WordPress Importer plugin must be installed and activated for demo import to work. If not present, you will be prompted to install it. 
