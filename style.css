@@ -1,19 +1,16 @@
 /*
 Theme Name: BlackCnote
-Theme URI: https://blackcnote.com
-Author: BlackCnote Team
-Author URI: https://blackcnote.com
-Description: A modern investment platform theme with dark mode support, WooCommerce integration, and an investment calculator. Required for core functionality. Optional BlackCnoteLab integration supported.
+Theme URI: https://example.com/blackcnote
+Author: DeAndre Davis
+Author URI: https://example.com
+Description: A modern, responsive standalone WordPress theme for investment platforms. No plugins required for core functionality. Optional BlackCnoteLab integration supported.
 Version: 1.0.0
 Requires at least: 5.8
-Tested up to: 6.4
 Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: blackcnote
-Tags: investment, dark-mode, woocommerce, calculator, responsive, custom-menu, custom-logo, featured-images, footer-widgets, theme-options, translation-ready
-
-This theme is designed for investment platforms and includes features like dark mode support, WooCommerce integration, and an investment calculator.
+Tags: investment, bootstrap, responsive, custom-background, custom-logo, custom-menu, featured-images, threaded-comments
 */
 
 /* General Styles */
@@ -126,6 +123,10 @@ This theme is designed for investment platforms and includes features like dark 
 .blackcnote-btn-secondary {
     background: #6c757d;
     color: #fff;
+}
+
+.blackcnote-btn-secondary:hover {
+    background: #5a6268;
 }
 
 /* Tables */
@@ -318,6 +319,10 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
+.blackcnote-btn-secondary:hover {
+    background: #5a6268;
+}
+
 /* RTL Support */
 html[dir="rtl"] {
     text-align: right;
@@ -447,4 +452,33 @@ html[dir="rtl"] .blackcnote-table {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.mb-4 {
+    margin-bottom: 1.5rem;
+}
+
+.mt-3 {
+    margin-top: 1rem;
+}
+
+.mt-4 {
+    margin-top: 1.5rem;
+}
+
+.p-3 {
+    padding: 1rem;
+}
+
+.p-4 {
+    padding: 1.5rem;
 } 
