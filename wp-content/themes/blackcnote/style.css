@@ -1,0 +1,447 @@
+/*
+Theme Name: BlackCnote
+Theme URI: https://blackcnote.com
+Author: BlackCnote Team
+Author URI: https://blackcnote.com
+Description: A modern investment platform theme with dark mode support, WooCommerce integration, and an investment calculator. Required for core functionality. Optional BlackCnoteLab integration supported.
+Version: 1.0.0
+Requires at least: 5.8
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: blackcnote
+Tags: investment, dark-mode, woocommerce, calculator, responsive, custom-menu, custom-logo, featured-images, footer-widgets, theme-options, translation-ready
+
+This theme is designed for investment platforms and includes features like dark mode support, WooCommerce integration, and an investment calculator.
+*/
+
+/* General Styles */
+.blackcnote-card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.blackcnote-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blackcnote-form .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --card-bg: #2d2d2d;
+    --border-color: #404040;
+}
+
+[data-theme="dark"] .blackcnote-card {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+/* WooCommerce Integration */
+.woocommerce .blackcnote-card {
+    margin-bottom: 30px;
+}
+
+/* Investment Calculator */
+.blackcnote-calculator {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blackcnote-card {
+        padding: 15px;
+    }
+    
+    .blackcnote-form {
+        padding: 0 15px;
+    }
+}
+
+/* Security Features */
+.blackcnote-security {
+    border-left: 4px solid #28a745;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+/* Custom Widgets */
+.blackcnote-widget {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+.blackcnote-footer {
+    background: var(--bg-color);
+    color: var(--text-color);
+    padding: 40px 0;
+    margin-top: 60px;
+}
+
+/* Navigation */
+.blackcnote-nav {
+    background: var(--bg-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Buttons */
+.blackcnote-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.blackcnote-btn-primary {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+.blackcnote-btn-primary:hover {
+    background: var(--primary-color-dark);
+}
+
+.blackcnote-btn-secondary {
+    background: #6c757d;
+    color: #fff;
+}
+
+/* Tables */
+.blackcnote-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.blackcnote-table th,
+.blackcnote-table td {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+/* Alerts */
+.blackcnote-alert {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.blackcnote-alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.blackcnote-alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* Progress Bars */
+.blackcnote-progress {
+    height: 20px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.blackcnote-progress-bar {
+    height: 100%;
+    background: #007bff;
+    transition: width 0.3s ease;
+}
+
+/* Badges */
+.blackcnote-badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.blackcnote-badge-success {
+    background: #28a745;
+    color: #fff;
+}
+
+.blackcnote-badge-warning {
+    background: #ffc107;
+    color: #000;
+}
+
+/* Tooltips */
+.blackcnote-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.blackcnote-tooltip .tooltip-text {
+    visibility: hidden;
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.blackcnote-tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+/* Base Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+
+/* Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--dark-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Cards */
+.hyip-card {
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Forms */
+.hyip-form {
+    margin-bottom: 1.5rem;
+}
+
+.hyip-form .form-control {
+    display: block;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--dark-color);
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+}
+
+/* Tables */
+.hyip-table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: var(--dark-color);
+    border-collapse: collapse;
+}
+
+.hyip-table th,
+.hyip-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Buttons */
+.hyip-btn {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+}
+
+.hyip-btn-primary {
+    color: #fff;
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* RTL Support */
+html[dir="rtl"] {
+    text-align: right;
+}
+
+html[dir="rtl"] .blackcnote-card,
+html[dir="rtl"] .blackcnote-form,
+html[dir="rtl"] .blackcnote-table {
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    .hyip-card {
+        padding: 1rem;
+    }
+}
+
+/* Header Styles */
+.site-header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+/* Navigation */
+.main-navigation {
+    padding: 0.5rem 0;
+}
+
+.main-navigation .nav-link {
+    color: var(--dark-color);
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.main-navigation .nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Dashboard Styles */
+.blackcnote-dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.blackcnote-dashboard .card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.blackcnote-dashboard .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Investment Plans */
+.blackcnote-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.plan-card {
+    background: #fff;
+    border-radius: 0.5rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Transaction History */
+.transaction-table {
+    width: 100%;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transaction-table th {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+}
+
+.transaction-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem 0 0 -1rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 

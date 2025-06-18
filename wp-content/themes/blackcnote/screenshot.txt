@@ -1,0 +1,43 @@
+# BlackCnote Theme Screenshot Specification
+
+## Dimensions
+- Width: 1200px
+- Height: 900px
+- Format: PNG
+- Background: #1a1a1a
+
+## Content
+- Theme name: "BlackCnote"
+- Tagline: "Modern Investment Platform"
+- Version: "1.0.0"
+- Logo: BlackCnote logo centered
+- Color scheme: Dark theme with accent colors
+- Include BlackCnoteLab branding
+
+## Design Elements
+- Modern, clean layout
+- Investment-themed graphics
+- Responsive design preview
+- Dark mode showcase
+- Custom widgets display
+- WooCommerce integration preview
+- Investment calculator demo
+- Security features highlight
+
+## Text
+- "BlackCnote Theme"
+- "Version 1.0.0"
+- "Modern Investment Platform"
+- "Dark Mode Support"
+- "WooCommerce Ready"
+- "Investment Calculator"
+- "Secure & Reliable"
+
+## Notes
+- Use high-quality graphics
+- Ensure text is readable
+- Maintain brand consistency
+- Include BlackCnoteLab branding
+- Showcase key features
+- Highlight security measures
+- Display responsive design 

@@ -1,0 +1,238 @@
+/*
+Theme Name: BlackCnote Theme
+Theme URI: https://viserlab.com/blackcnote-theme
+Author: ViserLab
+Author URI: https://viserlab.com
+Description: A premium WordPress theme designed to integrate seamlessly with the BlackCnoteLab plugin for high-yield investment programs.
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: blackcnote-theme
+Tags: investment, bootstrap, responsive
+
+This theme is designed to work with the BlackCnoteLab plugin.
+*/
+
+/* Base Styles */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+
+/* Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    color: var(--dark-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+/* Layout */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Cards */
+.blackcnote-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Forms */
+.blackcnote-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.blackcnote-form .form-control {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+}
+
+/* Tables */
+.blackcnote-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.blackcnote-table th,
+.blackcnote-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Buttons */
+.blackcnote-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.blackcnote-btn-primary {
+    background: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.blackcnote-btn-primary:hover {
+    background: #0056b3;
+    color: #fff;
+}
+
+/* RTL Support */
+html[dir="rtl"] {
+    text-align: right;
+}
+
+html[dir="rtl"] .blackcnote-card,
+html[dir="rtl"] .blackcnote-form,
+html[dir="rtl"] .blackcnote-table {
+    text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    .blackcnote-card {
+        padding: 1rem;
+    }
+}
+
+/* Header Styles */
+.site-header {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+/* Navigation */
+.main-navigation {
+    padding: 0.5rem 0;
+}
+
+.main-navigation .nav-link {
+    color: var(--dark-color);
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.main-navigation .nav-link:hover {
+    color: var(--primary-color);
+}
+
+/* Dashboard Styles */
+.blackcnote-dashboard {
+    padding: 20px;
+}
+
+.blackcnote-dashboard .card {
+    transition: transform 0.3s ease;
+}
+
+.blackcnote-dashboard .card:hover {
+    transform: translateY(-5px);
+}
+
+/* Investment Plans */
+.blackcnote-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Transaction History */
+.transaction-table {
+    width: 100%;
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.transaction-table th {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 1rem;
+}
+
+.transaction-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem 0 0 -1rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+    .blackcnote-card {
+        background: #1a1a1a;
+        color: #fff;
+    }
+
+    .blackcnote-form .form-control {
+        background: #2a2a2a;
+        border-color: #3a3a3a;
+        color: #fff;
+    }
+
+    .blackcnote-table th,
+    .blackcnote-table td {
+        border-color: #3a3a3a;
+    }
+} 

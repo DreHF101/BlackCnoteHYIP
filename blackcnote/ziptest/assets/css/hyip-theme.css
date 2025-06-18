@@ -1,0 +1,604 @@
+/**
+ * HYIP Theme Custom Styles
+ *
+ * @package HYIP_Theme
+ * @since 1.0.0
+ */
+
+/* Variables */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+}
+
+/* Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+/* Header */
+.site-header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.site-branding {
+    display: flex;
+    align-items: center;
+}
+
+.site-title {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.site-title a {
+    color: var(--dark-color);
+    text-decoration: none;
+}
+
+.site-description {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* Navigation */
+.navbar {
+    padding: 1rem 0;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--dark-color);
+}
+
+.navbar-nav .nav-link:hover {
+    color: var(--primary-color);
+}
+
+.navbar-nav .nav-link.active {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+/* Dashboard */
+.dashboard .card {
+    margin-bottom: 1.5rem;
+}
+
+.dashboard .card-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dashboard .card-text {
+    margin-bottom: 0;
+}
+
+.dashboard .badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+}
+
+/* Investment Plans */
+.plans .card {
+    text-align: center;
+}
+
+.plans .display-4 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.plans .list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+.plans .bi {
+    color: var(--primary-color);
+}
+
+/* Transactions */
+.transactions .table {
+    margin-bottom: 0;
+}
+
+.transactions .badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+}
+
+.transactions .btn-link {
+    padding: 0;
+    font-size: 0.875rem;
+}
+
+/* Forms */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Buttons */
+.btn {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Footer */
+.site-footer {
+    margin-top: 3rem;
+}
+
+.footer-widget h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.footer-widget .list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-widget .bi {
+    color: var(--primary-color);
+}
+
+/* Responsive */
+@media (max-width: 767.98px) {
+    .site-header {
+        text-align: center;
+    }
+
+    .site-branding {
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .navbar-nav {
+        text-align: center;
+    }
+
+    .navbar-nav .nav-link {
+        padding: 0.5rem;
+    }
+
+    .dashboard .card {
+        margin-bottom: 1rem;
+    }
+
+    .plans .card {
+        margin-bottom: 1rem;
+    }
+}
+
+/* RTL Support */
+[dir="rtl"] .site-branding {
+    text-align: right;
+}
+
+[dir="rtl"] .navbar-nav {
+    padding-right: 0;
+}
+
+[dir="rtl"] .me-2 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+[dir="rtl"] .ms-2 {
+    margin-left: 0 !important;
+    margin-right: 0.5rem !important;
+}
+
+[dir="rtl"] .me-3 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
+
+[dir="rtl"] .ms-3 {
+    margin-left: 0 !important;
+    margin-right: 1rem !important;
+}
+
+[dir="rtl"] .text-md-end {
+    text-align: left !important;
+}
+
+/* Accessibility */
+.screen-reader-text {
+    border: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    word-wrap: normal !important;
+}
+
+.screen-reader-text:focus {
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+    clip: auto !important;
+    clip-path: none;
+    color: #21759b;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: auto;
+    left: 5px;
+    line-height: normal;
+    padding: 15px 23px 14px;
+    text-decoration: none;
+    top: 5px;
+    width: auto;
+    z-index: 100000;
+}
+
+/* Dashboard Styles */
+.hyip-dashboard {
+    padding: 2rem 0;
+}
+
+.hyip-dashboard .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hyip-dashboard .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hyip-dashboard .card-title {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.hyip-dashboard .user-info p {
+    margin-bottom: 0.5rem;
+}
+
+.hyip-dashboard .user-info strong {
+    color: var(--dark-color);
+    margin-right: 0.5rem;
+}
+
+/* Investment Plans */
+.hyip-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.plan-card {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.plan-header {
+    margin-bottom: 1.5rem;
+}
+
+.plan-name {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.plan-return {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    display: inline-block;
+}
+
+.return-rate {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: 0.5rem;
+}
+
+.return-period {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.plan-details {
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-item:last-child {
+    border-bottom: none;
+}
+
+.detail-item .label {
+    color: var(--secondary-color);
+}
+
+.detail-item .value {
+    font-weight: 600;
+}
+
+/* Transaction History */
+.transaction-filters {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.transaction-table {
+    background: #fff;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-table th {
+    background: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+}
+
+.transaction-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+}
+
+.transaction-table tr:last-child td {
+    border-bottom: none;
+}
+
+.badge {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+/* Forms */
+.hyip-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.hyip-form .form-label {
+    font-weight: 500;
+    color: var(--dark-color);
+}
+
+.hyip-form .form-control,
+.hyip-form .form-select {
+    border: 1px solid #ddd;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hyip-form .form-control:focus,
+.hyip-form .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.hyip-form .btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.hyip-form .btn-primary {
+    background: var(--primary-color);
+    border: none;
+}
+
+.hyip-form .btn-primary:hover {
+    background: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Modals */
+.modal-content {
+    border: none;
+    border-radius: 1rem;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: 1px solid #eee;
+    padding: 1.5rem;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.modal-footer {
+    border-top: 1px solid #eee;
+    padding: 1.5rem;
+}
+
+/* Loading States */
+.loading {
+    position: relative;
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2rem;
+    height: 2rem;
+    margin: -1rem 0 0 -1rem;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Notifications */
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hyip-plans {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-filters .row {
+        margin-bottom: 1rem;
+    }
+
+    .transaction-filters .col-md-3 {
+        margin-bottom: 1rem;
+    }
+
+    .transaction-table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .modal-dialog {
+        margin: 0.5rem;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .hyip-dashboard .card,
+    .plan-card,
+    .transaction-table {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .btn,
+    .modal,
+    .transaction-filters {
+        display: none !important;
+    }
+} 

@@ -1,0 +1,42 @@
+/**
+ * BlackCnote Theme Custom Styles
+ *
+ * @package BlackCnote
+ */
+
+.blackcnote-dashboard {
+    padding: 2rem 0;
+}
+
+.blackcnote-dashboard .card {
+    margin-bottom: 1.5rem;
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.blackcnote-dashboard .card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.blackcnote-dashboard .card-title {
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.blackcnote-dashboard .user-info p {
+    margin-bottom: 0.5rem;
+}
+
+.blackcnote-dashboard .user-info strong {
+    color: #666;
+    font-weight: 500;
+}
+
+.blackcnote-plans {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+} 

@@ -1,0 +1,92 @@
+# BlackCnote Theme
+
+A modern, responsive standalone WordPress theme for investment platforms. No plugins required for core functionality. Optional integration with BlackCnote is supported but not required.
+
+## Description
+
+BlackCnote is a fully standalone WordPress theme designed for investment and financial platforms. It features a modern UI, Bootstrap 5 integration, and is ready for production use without any plugin dependencies. Optional integration with BlackCnote is available for advanced features.
+
+## Legal Note
+
+> **Disclaimer:** Investment platforms carry significant financial risk. This theme is provided for educational and demonstration purposes only. The authors are not responsible for any financial losses or legal issues arising from the use of this theme. Use at your own risk and ensure compliance with all applicable laws and regulations in your jurisdiction.
+
+## Features
+- Bootstrap 5 integration
+- Responsive design
+- Custom menus and widget areas
+- Featured images and custom logo support
+- Custom colors and theme options
+- Blog and comments support
+- No plugin dependencies for core functionality
+- Optional BlackCnote integration (future-ready)
+
+## Installation
+
+1. Zip the `blackcnote` folder if not already zipped.
+2. In WordPress Admin, go to Appearance → Themes → Add New → Upload Theme.
+3. Select the zip file and click Install Now.
+4. Click Activate.
+
+## Post-Installation
+- Set up menus (Appearance → Menus)
+- Configure widgets (Appearance → Widgets)
+- Set homepage (Settings → Reading)
+- Create a test page using the "Theme Test Page" template
+
+## Troubleshooting
+See `TROUBLESHOOTING.md` for common issues and solutions.
+
+## License
+This theme is licensed under the GNU General Public License v2.0 or later. See `LICENSE.txt` for details.
+
+## Changelog
+See `CHANGELOG.md` for release notes.
+
+## Support
+For support, please refer to the documentation or contact the theme author.
+
+## Theme Structure
+
+```
+blackcnote/
+├── assets/
+│   ├── css/
+│   ├── js/
+│   └── images/
+├── inc/
+│   └── integrations.php
+├── template-parts/
+│   ├── hero-section.php
+│   ├── home-stats.php
+│   ├── home-features.php
+│   ├── home-plans.php
+│   ├── home-cta.php
+│   ├── content.php
+│   ├── content-none.php
+│   └── content-page.php
+├── style.css
+├── functions.php
+├── header.php
+├── footer.php
+├── front-page.php
+├── page.php
+├── page-template.php
+├── screenshot.png
+├── README.md
+├── CHANGELOG.md
+└── LICENSE.txt
+```
+
+## Theme Settings
+
+Access theme settings at Appearance > Customize:
+
+1. Site Identity: Upload logo and set site title/tagline
+2. Colors: Customize theme colors
+3. Typography: Choose fonts and text styles
+4. Layout: Adjust page layouts and spacing
+5. Social Media: Add social media links
+
+## Legal Notice
+
+This theme is designed for legitimate investment and finance websites. Users are responsible for ensuring their use of this theme complies with all applicable laws and regulations in their jurisdiction. 
