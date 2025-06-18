@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0"
+    xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
+    xmlns:content="http://purl.org/rss/1.0/modules/content/"
+    xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:wp="http://wordpress.org/export/1.2/"
+>
+<channel>
+    <title>BlackCnote Demo Site</title>
+    <link>http://localhost/</link>
+    <description>Demo content for BlackCnote Theme</description>
+    <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+    <language>en</language>
+    <wp:wxr_version>1.2</wp:wxr_version>
+    <wp:base_site_url>http://localhost/</wp:base_site_url>
+    <wp:base_blog_url>http://localhost/</wp:base_blog_url>
+
+    <wp:author><wp:author_id>1</wp:author_id><wp:author_login>admin</wp:author_login><wp:author_email>admin@example.com</wp:author_email><wp:author_display_name><![CDATA[Admin]]></wp:author_display_name><wp:author_first_name><![CDATA[Admin]]></wp:author_first_name><wp:author_last_name><![CDATA[User]]></wp:author_last_name></wp:author>
+
+    <wp:category><wp:term_id>1</wp:term_id><wp:category_nicename>news</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[News]]></wp:cat_name></wp:category>
+    <wp:category><wp:term_id>2</wp:term_id><wp:category_nicename>investments</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Investments]]></wp:cat_name></wp:category>
+    <wp:category><wp:term_id>3</wp:term_id><wp:category_nicename>updates</wp:category_nicename><wp:category_parent></wp:category_parent><wp:cat_name><![CDATA[Updates]]></wp:cat_name></wp:category>
+
+    <item>
+        <title>Home</title>
+        <link>http://localhost/home</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=1</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>Welcome to BlackCnote!</h2><p>This is your homepage. Customize it with your own content.</p>]]></content:encoded>
+        <wp:post_id>1</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>home</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>About</title>
+        <link>http://localhost/about</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=2</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>About BlackCnote</h2><p>This is a demo About page. Add your company or project information here.</p>]]></content:encoded>
+        <wp:post_id>2</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>about</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>1</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>Contact</title>
+        <link>http://localhost/contact</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=3</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>Contact Us</h2><p>Email: info@blackcnote.com<br>Phone: 123-456-7890</p>]]></content:encoded>
+        <wp:post_id>3</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>contact</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>2</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>Dashboard</title>
+        <link>http://localhost/dashboard</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=4</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>Dashboard</h2><p>This is a demo dashboard page for BlackCnote users.</p>]]></content:encoded>
+        <wp:post_id>4</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>dashboard</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>3</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>Investment Plans</title>
+        <link>http://localhost/investment-plans</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=5</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>Investment Plans</h2><p>Explore our demo investment plans and returns.</p>]]></content:encoded>
+        <wp:post_id>5</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>investment-plans</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>4</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>Transactions</title>
+        <link>http://localhost/transactions</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=6</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>Transactions</h2><p>View your demo transaction history here.</p>]]></content:encoded>
+        <wp:post_id>6</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>transactions</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>5</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>Blog</title>
+        <link>http://localhost/blog</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?page_id=7</guid>
+        <description></description>
+        <content:encoded><![CDATA[<h2>Blog</h2><p>Read the latest news and updates from BlackCnote.</p>]]></content:encoded>
+        <wp:post_id>7</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>closed</wp:comment_status>
+        <wp:ping_status>closed</wp:ping_status>
+        <wp:post_name>blog</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>6</wp:menu_order>
+        <wp:post_type>page</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>0</wp:is_sticky>
+    </item>
+    <item>
+        <title>Welcome to BlackCnote</title>
+        <link>http://localhost/welcome-to-blackcnote</link>
+        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+        <dc:creator>admin</dc:creator>
+        <guid isPermaLink="false">http://localhost/?p=100</guid>
+        <description></description>
+        <content:encoded><![CDATA[<p>This is a sample post for the BlackCnote demo site. Edit or delete it, then start blogging!</p>]]></content:encoded>
+        <excerpt:encoded><![CDATA[This is a sample post for the BlackCnote demo site.]]></excerpt:encoded>
+        <wp:post_id>100</wp:post_id>
+        <wp:post_date>2024-01-01 00:00:00</wp:post_date>
+        <wp:post_date_gmt>2024-01-01 00:00:00</wp:post_date_gmt>
+        <wp:comment_status>open</wp:comment_status>
+        <wp:ping_status>open</wp:ping_status>
+        <wp:post_name>welcome-to-blackcnote</wp:post_name>
+        <wp:status>publish</wp:status>
+        <wp:post_parent>0</wp:post_parent>
+        <wp:menu_order>0</wp:menu_order>
+        <wp:post_type>post</wp:post_type>
+        <wp:post_password></wp:post_password>
+        <wp:is_sticky>1</wp:is_sticky>
+        <category domain="category" nicename="news"><![CDATA[News]]></category>
+    </item>
+</channel>
+</rss> 
