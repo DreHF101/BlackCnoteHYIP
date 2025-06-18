@@ -34,14 +34,11 @@ get_header();
             if (have_posts()) :
                 while (have_posts()) :
                     the_post();
-                    get_template_part('template-parts/content', get_post_type());
+                    // Render shortcodes in post content
+                    echo do_shortcode(get_the_content());
                 endwhile;
-                the_posts_navigation([
-                    'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous:', 'blackcnote') . '</span> <span class="nav-title">%title</span>',
-                    'next_text' => '<span class="nav-subtitle">' . esc_html__('Next:', 'blackcnote') . '</span> <span class="nav-title">%title</span>',
-                ]);
             else :
-                get_template_part('template-parts/content', 'none');
+                echo '<div class="theme-fallback"><h2>Nothing Here Yet</h2><p>No posts or content found. Please add content or import demo data.</p></div>';
             endif;
             ?>
         </div>
