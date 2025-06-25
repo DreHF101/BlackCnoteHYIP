@@ -23,3 +23,22 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# testing
+/coverage
+
+# build output
+dist
+.temp-build/
+*.zip
+.last-build-hash
+
+# Temporary files
+*.bak
+temp_fix.txt
+debug-cleanup-report.json
+
+# BlackCnote Security
+wp-config.php
+logs/
+uploads/
