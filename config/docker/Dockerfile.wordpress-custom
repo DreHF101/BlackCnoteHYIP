@@ -1,0 +1,31 @@
+# Custom WordPress Dockerfile using local wp-includes
+FROM wordpress:6.8-apache
+
+# Copy local WordPress core files
+COPY ../wp-includes /var/www/html/wp-includes
+COPY ../wp-admin /var/www/html/wp-admin
+COPY ../wp-content /var/www/html/wp-content
+
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www/html
+
+# Optional: Copy custom wp-config.php if you have one
+# COPY ../wp-config.php /var/www/html/wp-config.php
+
+# Optional: Install additional PHP extensions or packages
+# RUN apt-get update && apt-get install -y \
+#     php-xdebug \
+#     php-redis \
+#     && rm -rf /var/lib/apt/lists/*
+
+# Set development environment
+ENV WP_DEBUG=true
+ENV WP_DEBUG_LOG=true
+ENV WP_DEBUG_DISPLAY=false
+ENV SCRIPT_DEBUG=true
+ENV SAVEQUERIES=true
+ENV WP_CACHE=false
+
+EXPOSE 80
+
+CMD ["apache2-foreground"] 

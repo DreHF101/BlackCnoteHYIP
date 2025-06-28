@@ -1,0 +1,189 @@
+# Production Docker Compose configuration for BlackCnote
+# This file contains production-optimized settings
+
+services:
+  # WordPress Application (Production Optimized)
+  wordpress:
+    image: wordpress:6.8-apache
+    container_name: blackcnote_wordpress_prod
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      # WordPress configuration
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_NAME: blackcnote
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: blackcnote_password
+      WORDPRESS_TABLE_PREFIX: wp_
+      # WordPress URLs - Production
+      WP_HOME: https://blackcnote.com
+      WP_SITEURL: https://blackcnote.com
+      WP_CONTENT_URL: https://static.blackcnote.com/wp-content
+      # WordPress settings - Production
+      WP_DEBUG: false
+      WP_DEBUG_DISPLAY: false
+      WP_DEBUG_LOG: false
+      SCRIPT_DEBUG: false
+      SAVEQUERIES: false
+      # Security - Production
+      FORCE_SSL_ADMIN: true
+      FORCE_SSL_LOGIN: true
+      # Performance - Production
+      WP_MEMORY_LIMIT: 512M
+      WP_MAX_MEMORY_LIMIT: 1024M
+      # Updates - Production
+      AUTOMATIC_UPDATER_DISABLED: true
+      WP_AUTO_UPDATE_CORE: false
+      # EXCLUSIVE BLACKCNOTE WP-CONTENT PATH
+      WP_CONTENT_DIR: /var/www/html/wp-content
+    volumes:
+      # EXCLUSIVELY mount blackcnote directory as WordPress root
+      - ./blackcnote:/var/www/html:cached
+      # Use blackcnote wp-config.php
+      - ./blackcnote/wp-config.php:/var/www/html/wp-config.php
+      - ./logs/wordpress:/var/www/html/logs
+      - ./ssl:/etc/ssl/certs
+    depends_on:
+      - mysql
+      - redis
+    restart: unless-stopped
+    networks:
+      - blackcnote_network
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+        reservations:
+          memory: 512M
+
+  # MySQL Database (Production Optimized)
+  mysql:
+    environment:
+      # Production MySQL settings
+      MYSQL_ROOT_PASSWORD: blackcnote_password
+      MYSQL_DATABASE: blackcnote
+      MYSQL_USER: blackcnote_user
+      MYSQL_PASSWORD: blackcnote_password
+      # Performance optimizations
+      MYSQL_INNODB_BUFFER_POOL_SIZE: 1G
+      MYSQL_INNODB_LOG_FILE_SIZE: 256M
+      MYSQL_INNODB_FLUSH_LOG_AT_TRX_COMMIT: 1
+      MYSQL_MAX_CONNECTIONS: 200
+      MYSQL_QUERY_CACHE_SIZE: 64M
+      MYSQL_QUERY_CACHE_TYPE: 1
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./logs/mysql:/var/log/mysql
+      - ./backups:/var/lib/mysql-backups
+    command: >
+      --default-authentication-plugin=mysql_native_password
+      --innodb-buffer-pool-size=1G
+      --slow-query-log=1
+      --long-query-time=5
+      --log-error=/var/log/mysql/error.log
+      --general-log=1
+      --general-log-file=/var/log/mysql/general.log
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-pblackcnote_password"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Redis Cache (Production Optimized)
+  redis:
+    image: redis:7-alpine
+    command: >
+      redis-server /usr/local/etc/redis/redis.conf
+      --loglevel notice
+      --maxmemory 512mb
+      --maxmemory-policy allkeys-lru
+      --save 900 1
+      --save 300 10
+      --save 60 10000
+    volumes:
+      - redis_data:/data
+      - ./config/redis.conf:/usr/local/etc/redis/redis.conf:ro
+      - ./logs/redis:/var/log/redis
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Nginx Reverse Proxy (Production)
+  nginx:
+    image: nginx:alpine
+    container_name: blackcnote_nginx_prod
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./config/nginx/blackcnote-prod.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/ssl/certs:ro
+      - ./logs/nginx:/var/log/nginx
+    depends_on:
+      - wordpress
+    restart: unless-stopped
+    networks:
+      - blackcnote_network
+
+  # BlackCnote Debug System (Production)
+  blackcnote_debug:
+    image: php:8.1-cli
+    container_name: blackcnote_debug_prod
+    volumes:
+      # EXCLUSIVELY monitor blackcnote directory
+      - ./blackcnote:/app/blackcnote
+      - .:/app
+      - ./logs:/app/logs
+    working_dir: /app
+    command: ["php", "bin/blackcnote-debug-daemon.php", "--production"]
+    restart: always
+    networks:
+      - blackcnote_network
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+        reservations:
+          memory: 128M
+
+  # BlackCnote Metrics Exporter (Production)
+  blackcnote_debug_exporter:
+    image: php:8.1-cli
+    container_name: blackcnote_debug_exporter_prod
+    volumes:
+      # EXCLUSIVELY monitor blackcnote directory
+      - ./blackcnote:/app/blackcnote
+      - .:/app
+      - ./logs:/app/logs
+    working_dir: /app
+    command: ["php", "bin/blackcnote-metrics-exporter.php", "--serve", "9091", "--production"]
+    ports:
+      - "9091:9091"
+    restart: always
+    depends_on:
+      - blackcnote_debug
+    networks:
+      - blackcnote_network
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+        reservations:
+          memory: 64M
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  blackcnote_network:
+    driver: bridge 

@@ -1,44 +1,115 @@
-# Logs
-logs
+# BlackCnote Project .gitignore
+
+# WordPress Core Files (should not be tracked)
+wordpress/
+wp-admin/
+wp-includes/
+wp-*.php
+xmlrpc.php
+readme.html
+license.txt
+
+# Vendor directories with embedded git repositories
+**/vendor/
+**/node_modules/
+
+# Composer files
+composer.lock
+composer.phar
+
+# Logs and temporary files
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-.env
-
-# testing
-/coverage
-
-# build output
-dist
-.temp-build/
-*.zip
-.last-build-hash
-
-# Temporary files
-*.bak
-temp_fix.txt
-debug-cleanup-report.json
-
-# BlackCnote Security
-wp-config.php
 logs/
-uploads/
+tmp/
+temp/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build and cache directories
+build/
+dist/
+.cache/
+.vite/
+
+# Backup files
+*.bak
+*.backup
+*.sql
+backups/
+
+# SSL certificates
+*.pem
+*.key
+*.crt
+ssl/
+
+# Docker volumes and data
+docker/data/
+docker/volumes/
+
+# React build output (will be generated)
+react-app/dist/
+react-app/build/
+
+# WordPress uploads (user content)
+**/uploads/
+
+# WordPress cache
+**/cache/
+**/wp-content/cache/
+
+# WordPress debug logs
+**/debug.log
+**/error_log
+
+# Specific problematic directories
+blackcnote/wp-content/plugins/hyiplab/vendor/
+hyiplab/vendor/
+
+# Keep important BlackCnote files
+!blackcnote/wp-content/themes/blackcnote/
+!blackcnote/wp-content/plugins/blackcnote-*/
+!blackcnote/wp-config.php
+!blackcnote/.htaccess
+
+# Keep documentation and scripts
+!docs/
+!scripts/
+!*.md
+!*.txt
+!*.bat
+!*.ps1
+!*.sh
+
+# Keep configuration files
+!config/
+!docker-compose*.yml
+!Dockerfile*
+
+# Keep React app source
+!react-app/src/
+!react-app/package.json
+!react-app/package-lock.json
+!react-app/vite.config.*
+!react-app/tailwind.config.*
+!react-app/tsconfig.*

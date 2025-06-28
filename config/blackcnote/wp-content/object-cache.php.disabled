@@ -1,0 +1,125 @@
+<?php
+/**
+ * Redis Object Cache Drop-in
+ *
+ * Enables Redis-based object caching for WordPress.
+ * Compatible with the Redis Object Cache plugin.
+ *
+ * @link https://github.com/rhubarbgroup/redis-cache
+ */
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+// Check if Redis extension is loaded
+if (!extension_loaded('redis')) {
+    return;
+}
+
+class WP_Object_Cache {
+    private $redis;
+    private $connected = false;
+    private $cache = [];
+    private $group_ops = [];
+    private $stats = [];
+    private $global_groups = ['users', 'userlogins', 'usermeta', 'site-options', 'site-transient', 'blog-details', 'blog-id-cache', 'networks', 'sites', 'blog-lookup', 'blog-details', 'rss', 'global-posts', 'blog_meta'];
+    private $prefix = '';
+
+    public function __construct() {
+        $this->redis = new Redis();
+        $host = defined('REDIS_HOST') ? REDIS_HOST : '127.0.0.1';
+        $port = defined('REDIS_PORT') ? REDIS_PORT : 6379;
+        $timeout = defined('REDIS_TIMEOUT') ? REDIS_TIMEOUT : 1.5;
+        $auth = defined('REDIS_AUTH') ? REDIS_AUTH : false;
+        $db = defined('REDIS_DB') ? REDIS_DB : 0;
+        $this->prefix = defined('WP_CACHE_KEY_SALT') ? WP_CACHE_KEY_SALT : '';
+        try {
+            $this->connected = $this->redis->connect($host, $port, $timeout);
+            if ($auth) {
+                $this->redis->auth($auth);
+            }
+            $this->redis->select($db);
+        } catch (Exception $e) {
+            $this->connected = false;
+        }
+    }
+
+    public function add($key, $data, $group = 'default', $expire = 0) {
+        return $this->set($key, $data, $group, $expire, false);
+    }
+
+    public function set($key, $data, $group = 'default', $expire = 0, $overwrite = true) {
+        $id = $this->build_key($key, $group);
+        if (!$this->connected) {
+            $this->cache[$id] = $data;
+            return true;
+        }
+        if ($expire) {
+            return $this->redis->setex($id, $expire, serialize($data));
+        } else {
+            return $this->redis->set($id, serialize($data));
+        }
+    }
+
+    public function get($key, $group = 'default', $force = false, &$found = null) {
+        $id = $this->build_key($key, $group);
+        if (!$this->connected) {
+            $found = isset($this->cache[$id]);
+            return $found ? $this->cache[$id] : false;
+        }
+        $value = $this->redis->get($id);
+        $found = $value !== false;
+        return $found ? unserialize($value) : false;
+    }
+
+    public function delete($key, $group = 'default') {
+        $id = $this->build_key($key, $group);
+        if (!$this->connected) {
+            unset($this->cache[$id]);
+            return true;
+        }
+        return (bool)$this->redis->del($id);
+    }
+
+    public function flush() {
+        if ($this->connected) {
+            $this->redis->flushDB();
+        }
+        $this->cache = [];
+        return true;
+    }
+
+    public function incr($key, $n = 1, $group = 'default') {
+        $id = $this->build_key($key, $group);
+        if (!$this->connected) {
+            if (!isset($this->cache[$id])) {
+                $this->cache[$id] = 0;
+            }
+            $this->cache[$id] += $n;
+            return $this->cache[$id];
+        }
+        return $this->redis->incrBy($id, $n);
+    }
+
+    public function decr($key, $n = 1, $group = 'default') {
+        $id = $this->build_key($key, $group);
+        if (!$this->connected) {
+            if (!isset($this->cache[$id])) {
+                $this->cache[$id] = 0;
+            }
+            $this->cache[$id] -= $n;
+            return $this->cache[$id];
+        }
+        return $this->redis->decrBy($id, $n);
+    }
+
+    private function build_key($key, $group) {
+        if (in_array($group, $this->global_groups)) {
+            return $this->prefix . ':global:' . $group . ':' . $key;
+        }
+        return $this->prefix . ':blog:' . $group . ':' . $key;
+    }
+}
+
+$GLOBALS['wp_object_cache'] = new WP_Object_Cache(); 

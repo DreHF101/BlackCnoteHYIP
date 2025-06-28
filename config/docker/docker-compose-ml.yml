@@ -1,0 +1,323 @@
+services:
+  # Jupyter Notebook for ML Development
+  jupyter:
+    image: jupyter/datascience-notebook:latest
+    container_name: blackcnote-jupyter
+    ports:
+      - "8888:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=blackcnote_ml
+      - CHOWN_HOME=yes
+      - CHOWN_HOME_OPTS=-R
+    volumes:
+      - jupyter_data:/home/jovyan/work
+      - ./ml-notebooks:/home/jovyan/work/notebooks
+      - ./ml-models:/home/jovyan/work/models
+      - ./ml-data:/home/jovyan/work/data
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: start-notebook.sh --NotebookApp.token='blackcnote_ml' --NotebookApp.password='' --NotebookApp.ip='0.0.0.0' --NotebookApp.allow_origin='*'
+
+  # TensorFlow Serving for Model Deployment
+  tensorflow-serving:
+    image: tensorflow/serving:latest
+    container_name: blackcnote-tensorflow-serving
+    ports:
+      - "8501:8501"  # REST API
+      - "8500:8500"  # gRPC API
+    environment:
+      - MODEL_NAME=blackcnote_model
+    volumes:
+      - ./ml-models:/models
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: --model_config_file=/models/models.config --port=8500 --rest_api_port=8501
+
+  # PyTorch Model Server
+  torchserve:
+    image: pytorch/torchserve:latest
+    container_name: blackcnote-torchserve
+    ports:
+      - "8080:8080"  # REST API
+      - "8081:8081"  # Management API
+      - "8082:8082"  # Metrics API
+    environment:
+      - TS_CONFIG_FILE=/home/model-server/config.properties
+    volumes:
+      - ./ml-models:/home/model-server/model-store
+      - ./ml-config:/home/model-server/config
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: torchserve --start --model-store /home/model-server/model-store --ts-config /home/model-server/config/config.properties
+
+  # MLflow for Experiment Tracking
+  mlflow:
+    image: python:3.9-slim
+    container_name: blackcnote-mlflow
+    ports:
+      - "5000:5000"
+    environment:
+      - MLFLOW_TRACKING_URI=http://localhost:5000
+      - MLFLOW_S3_ENDPOINT_URL=http://minio:9000
+    volumes:
+      - mlflow_data:/mlflow
+      - ./ml-experiments:/mlflow/experiments
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: >
+      bash -c "pip install mlflow boto3 &&
+               mlflow server --host 0.0.0.0 --port 5000 --backend-store-uri sqlite:///mlflow.db --default-artifact-root s3://mlflow/"
+
+  # MinIO for Model Artifact Storage
+  minio:
+    image: minio/minio:latest
+    container_name: blackcnote-minio
+    ports:
+      - "9000:9000"  # API
+      - "9001:9001"  # Console
+    environment:
+      - MINIO_ROOT_USER=blackcnote_admin
+      - MINIO_ROOT_PASSWORD=blackcnote_password
+    volumes:
+      - minio_data:/data
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: server /data --console-address ":9001"
+
+  # Redis for ML Caching
+  redis-ml:
+    image: redis:7-alpine
+    container_name: blackcnote-redis-ml
+    ports:
+      - "6380:6379"
+    volumes:
+      - redis_ml_data:/data
+      - ./config/redis-ml.conf:/usr/local/etc/redis/redis.conf:ro
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+  # PostgreSQL for ML Metadata
+  postgres-ml:
+    image: postgres:15
+    container_name: blackcnote-postgres-ml
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=ml_metadata
+      - POSTGRES_USER=ml_user
+      - POSTGRES_PASSWORD=ml_password
+    volumes:
+      - postgres_ml_data:/var/lib/postgresql/data
+      - ./ml-sql:/docker-entrypoint-initdb.d
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+
+  # Grafana for ML Monitoring
+  grafana-ml:
+    image: grafana/grafana:latest
+    container_name: blackcnote-grafana-ml
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=blackcnote
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_ml_data:/var/lib/grafana
+      - ./ml-dashboards:/etc/grafana/provisioning/dashboards
+      - ./ml-datasources:/etc/grafana/provisioning/datasources
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+
+  # Prometheus for ML Metrics
+  prometheus-ml:
+    image: prom/prometheus:latest
+    container_name: blackcnote-prometheus-ml
+    ports:
+      - "9091:9090"
+    volumes:
+      - prometheus_ml_data:/prometheus
+      - ./ml-prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: --config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --web.console.libraries=/etc/prometheus/console_libraries --web.console.templates=/etc/prometheus/consoles --storage.tsdb.retention.time=200h --web.enable-lifecycle
+
+  # FastAPI ML API
+  ml-api:
+    image: python:3.9-slim
+    container_name: blackcnote-ml-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/app/models
+      - REDIS_URL=redis://redis-ml:6379
+      - POSTGRES_URL=postgresql://ml_user:ml_password@postgres-ml:5432/ml_metadata
+    volumes:
+      - ./ml-api:/app
+      - ./ml-models:/app/models
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: >
+      bash -c "pip install fastapi uvicorn redis psycopg2-binary numpy pandas scikit-learn &&
+               cd /app && uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+
+  # Streamlit ML Dashboard
+  streamlit:
+    image: python:3.9-slim
+    container_name: blackcnote-streamlit
+    ports:
+      - "8502:8501"
+    environment:
+      - MODEL_PATH=/app/models
+      - API_URL=http://ml-api:8000
+    volumes:
+      - ./ml-dashboard:/app
+      - ./ml-models:/app/models
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: >
+      bash -c "pip install streamlit pandas numpy plotly requests &&
+               cd /app && streamlit run app.py --server.port 8501 --server.address 0.0.0.0"
+
+  # Apache Airflow for ML Pipelines
+  airflow-webserver:
+    image: apache/airflow:2.7.1
+    container_name: blackcnote-airflow-webserver
+    ports:
+      - "8083:8080"
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres-ml:5432/airflow
+      - AIRFLOW__CORE__FERNET_KEY=your-fernet-key-here
+      - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=True
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - airflow_dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - ./ml-pipelines:/opt/airflow/dags
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    depends_on:
+      - postgres-ml
+    command: webserver
+
+  airflow-scheduler:
+    image: apache/airflow:2.7.1
+    container_name: blackcnote-airflow-scheduler
+    environment:
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://airflow:airflow@postgres-ml:5432/airflow
+      - AIRFLOW__CORE__FERNET_KEY=your-fernet-key-here
+      - AIRFLOW__CORE__DAGS_ARE_PAUSED_AT_CREATION=True
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+    volumes:
+      - airflow_dags:/opt/airflow/dags
+      - airflow_logs:/opt/airflow/logs
+      - ./ml-pipelines:/opt/airflow/dags
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    depends_on:
+      - postgres-ml
+    command: scheduler
+
+  # Ray for Distributed ML
+  ray-head:
+    image: rayproject/ray:latest
+    container_name: blackcnote-ray-head
+    ports:
+      - "10001:10001"  # Ray Dashboard
+      - "6379:6379"    # Ray Redis
+    environment:
+      - RAY_DISABLE_DOCKER_CPU_WARNING=1
+    volumes:
+      - ray_data:/tmp/ray
+      - ./ml-ray:/ray/workspace
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: ray start --head --port=6379 --dashboard-port=10001 --dashboard-host=0.0.0.0
+
+  # Hugging Face Transformers
+  transformers:
+    image: huggingface/transformers-pytorch-gpu:latest
+    container_name: blackcnote-transformers
+    ports:
+      - "8001:8000"
+    environment:
+      - TRANSFORMERS_CACHE=/app/models
+      - HF_HOME=/app/models
+    volumes:
+      - transformers_data:/app/models
+      - ./ml-transformers:/app/workspace
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: >
+      bash -c "pip install fastapi uvicorn &&
+               cd /app/workspace &&
+               uvicorn api:app --host 0.0.0.0 --port 8000 --reload"
+
+  # Kubeflow Jupyter
+  kubeflow-jupyter:
+    image: kubeflownotebookswg/jupyter:latest
+    container_name: blackcnote-kubeflow-jupyter
+    ports:
+      - "8889:8888"
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=blackcnote_kubeflow
+    volumes:
+      - kubeflow_data:/home/jovyan
+      - ./ml-kubeflow:/home/jovyan/work
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    command: start-notebook.sh --NotebookApp.token='blackcnote_kubeflow' --NotebookApp.password='' --NotebookApp.ip='0.0.0.0'
+
+networks:
+  blackcnote-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+volumes:
+  jupyter_data:
+    driver: local
+  mlflow_data:
+    driver: local
+  minio_data:
+    driver: local
+  redis_ml_data:
+    driver: local
+  postgres_ml_data:
+    driver: local
+  grafana_ml_data:
+    driver: local
+  prometheus_ml_data:
+    driver: local
+  airflow_dags:
+    driver: local
+  airflow_logs:
+    driver: local
+  ray_data:
+    driver: local
+  transformers_data:
+    driver: local
+  kubeflow_data:
+    driver: local 

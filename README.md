@@ -1,71 +1,154 @@
-# BlackCnote WordPress Theme
+# BlackCnote - Advanced Investment Platform
 
-A custom WordPress theme for BlackCnote investment platform.
+## 🎯 Overview
+BlackCnote is a comprehensive investment platform built with WordPress, React, and modern web technologies. It provides a complete solution for managing investment plans, user portfolios, and financial transactions.
 
-## Development Setup
+## 📍 **CANONICAL DIRECTORY PATHWAYS** ⚠️ **CRITICAL**
+
+**All BlackCnote development, deployment, and documentation MUST use these canonical pathways:**
+
+### **BlackCnote Project Root Directory**
+```
+C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\
+```
+- **Purpose**: Main BlackCnote project root directory
+- **Contains**: All project files, Docker configs, scripts, docs, themes, plugins
+- **Usage**: Primary development and deployment directory for the entire BlackCnote project
+- **Status**: ✅ **CANONICAL PROJECT ROOT**
+
+### **Theme Directory (WordPress Installation)**
+```
+C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\blackcnote\
+```
+
+### **WordPress Content Directory**
+```
+C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\blackcnote\wp-content\
+```
+
+### **Theme Files Directory**
+```
+C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\blackcnote\wp-content\themes\blackcnote\
+```
+
+**⚠️ IMPORTANT:**
+- **NEVER** use `wordpress/wp-content` or any other directory
+- **ALWAYS** use the `blackcnote/wp-content` directory for all WordPress content
+- All Docker containers, scripts, and tools are configured to use these canonical paths
+- The debug system and monitoring tools exclusively watch these directories
+- **ALWAYS** start development from the main project root: `C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\`
+
+**For detailed directory structure information, see:** [BLACKCNOTE-DIRECTORY-STRUCTURE.md](BLACKCNOTE-DIRECTORY-STRUCTURE.md)  
+**For complete canonical path documentation, see:** [BLACKCNOTE-CANONICAL-PATHS.md](BLACKCNOTE-CANONICAL-PATHS.md)
+
+## ✨ Features
+- **Investment Management**: Create and manage investment plans
+- **User Portfolios**: Track user investments and returns
+- **Payment Processing**: Integrated payment gateways
+- **Real-time Updates**: Live investment tracking
+- **Admin Dashboard**: Comprehensive administration tools
+- **Mobile Responsive**: Works on all devices
+- **Security Focused**: Enterprise-grade security
+
+## 🚀 Quick Start
 
 ### Prerequisites
-- Docker
-- Docker Compose
+- Docker Desktop
 - Git
+- Node.js (for development)
 
-### Installation Steps
-
-1. Clone the repository:
+### Installation
+1. **Clone the repository**
    ```bash
-   git clone https://github.com/DreHF101/BlackCnoteHYIP.git
-   cd BlackCnoteHYIP
+   git clone https://github.com/your-org/blackcnote.git
+   cd blackcnote
    ```
 
-2. Start the Docker containers:
+2. **Start the environment**
    ```bash
+   # Windows
+   start-blackcnote.bat
+   
+   # Or manually
    docker-compose up -d
    ```
 
-3. Access WordPress:
-   - URL: http://localhost:8000
-   - Default credentials will be created on first run
+3. **Access the platform**
+   - WordPress: http://localhost:8888
+   - React App: http://localhost:5174
+   - PHPMyAdmin: http://localhost:8080
 
-4. Activate the theme:
-   - Log in to WordPress admin
-   - Go to Appearance > Themes
-   - Activate the BlackCnote theme
+## 🛠️ Technology Stack
+- **Backend**: WordPress 6.8, PHP 8.2, MySQL 8.0
+- **Frontend**: React 18, TypeScript, Vite
+- **Investment Platform**: HYIPLab (custom plugin)
+- **Containerization**: Docker, Docker Compose
+- **Caching**: Redis
+- **Email Testing**: MailHog
+- **Development**: Hot reloading, Live editing
 
-### Development Workflow
-
-1. Theme files are located in `wp-content/themes/blackcnote/`
-2. Changes to theme files will be reflected immediately
-3. Use `docker-compose down` to stop the containers
-4. Use `docker-compose up -d` to start the containers again
-
-### Database
-
-- Database name: wordpress
-- Username: wordpress
-- Password: wordpress
-- Host: db
-- Port: 3306
-
-### File Structure
-
+## 📁 Project Structure
 ```
-wp-content/
-└── themes/
-    └── blackcnote/
-        ├── assets/
-        ├── inc/
-        ├── template-parts/
-        ├── style.css
-        ├── functions.php
-        └── index.php
+BlackCnote/
+├── 📁 blackcnote/                    # WordPress Core
+│   ├── 📁 wp-content/
+│   │   ├── 📁 themes/blackcnote/     # Main theme
+│   │   └── 📁 plugins/blackcnote-hyiplab/  # Investment plugin
+├── 📁 react-app/                     # React Frontend
+├── 📁 hyiplab/                       # Investment Platform
+├── 📁 docs/                          # Documentation
+├── 📁 scripts/                       # Automation Scripts
+└── 📁 config/                        # Configuration Files
 ```
 
-## Contributing
+## 🔧 Development
 
-1. Create a new branch for your feature
-2. Make your changes
-3. Submit a pull request
+### Scripts
+- **Setup**: `scripts/setup/` - Environment setup scripts
+- **Testing**: `scripts/testing/` - Test and validation scripts
+- **Deployment**: `scripts/deployment/` - Deployment automation
+- **Maintenance**: `scripts/maintenance/` - Maintenance tools
 
-## License
+### Tools
+- **Debug**: `tools/debug/` - Debugging utilities
+- **Analysis**: `tools/analysis/` - Code analysis tools
+- **Utilities**: `tools/utilities/` - General utilities
 
-This project is licensed under the GPL v2 or later.
+## 📚 Documentation
+- [Complete Documentation](docs/README.md) - Full documentation index
+- [Project Root Directory](BLACKCNOTE-PROJECT-ROOT.md) - Canonical project root information
+- [Canonical Paths](BLACKCNOTE-CANONICAL-PATHS.md) - All canonical directory pathways
+- [Directory Structure](BLACKCNOTE-DIRECTORY-STRUCTURE.md) - Complete project structure
+- [Development Guide](docs/development/DEVELOPMENT-GUIDE.md) - Development workflow
+- [Deployment Guide](docs/deployment/DEPLOYMENT-GUIDE.md) - Production deployment
+- [Troubleshooting](docs/troubleshooting/TROUBLESHOOTING.md) - Common issues
+
+## 🔒 Security
+- WordPress security best practices
+- Input validation and sanitization
+- SQL injection prevention
+- XSS protection
+- CSRF protection
+- Secure file permissions
+
+## 🚀 Deployment
+See [Deployment Guide](docs/deployment/DEPLOYMENT-GUIDE.md) for production deployment instructions.
+
+## 🤝 Contributing
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+This project is licensed under the MIT License - see [LICENSE.txt](docs/LICENSE.txt) for details.
+
+## 📞 Support
+- Documentation: [docs/README.md](docs/README.md)
+- Troubleshooting: [docs/troubleshooting/TROUBLESHOOTING.md](docs/troubleshooting/TROUBLESHOOTING.md)
+- Issues: GitHub Issues
+
+---
+
+**BlackCnote** - Advanced Investment Platform

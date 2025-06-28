@@ -1,0 +1,79 @@
+{
+  "builder": {
+    "gc": {
+      "defaultKeepStorage": "50GB",
+      "enabled": true
+    }
+  },
+  "experimental": true,
+  "features": {
+    "buildkit": true
+  },
+  "registry-mirrors": [],
+  "insecure-registries": [],
+  "debug": false,
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "20m",
+    "max-file": "5"
+  },
+  "max-concurrent-downloads": 20,
+  "max-concurrent-uploads": 10,
+  "max-download-attempts": 10,
+  "shutdown-timeout": 60,
+  "live-restore": true,
+  "userland-proxy": true,
+  "ip-forward": true,
+  "ip-masq": true,
+  "iptables": true,
+  "ip6tables": true,
+  "default-address-pools": [
+    {
+      "base": "172.17.0.0/12",
+      "size": 24
+    },
+    {
+      "base": "192.168.0.0/16",
+      "size": 24
+    }
+  ],
+  "default-network-opts": {
+    "com.docker.network.driver.mtu": "1500"
+  },
+  "default-runtime": "runc",
+  "runtimes": {
+    "runc": {
+      "path": "runc"
+    }
+  },
+  "init": true,
+  "seccomp-profile": "builtin",
+  "no-new-privileges": false,
+  "default-ulimits": {
+    "nofile": {
+      "Hard": 100000,
+      "Name": "nofile",
+      "Soft": 100000
+    }
+  },
+  "default-shm-size": "2G",
+  "dns": ["8.8.8.8", "8.8.4.4", "1.1.1.1"],
+  "dns-opts": ["timeout:5", "attempts:5", "rotate"],
+  "dns-search": [],
+  "labels": [
+    "com.blackcnote.project=blackcnote",
+    "com.blackcnote.environment=development",
+    "com.blackcnote.ml.enabled=true"
+  ],
+  "metrics-addr": "127.0.0.1:9323",
+  "default-cgroupns-mode": "private",
+  "default-ipc-mode": "private",
+  "tls": false,
+  "tlsverify": false,
+  "selinux-enabled": false,
+  "icc": true,
+  "raw-logs": false,
+  "allow-nondistributable-artifacts": false,
+  "disable-legacy-registry": true,
+  "log-level": "info"
+} 
