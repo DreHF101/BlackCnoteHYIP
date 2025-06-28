@@ -1,0 +1,212 @@
+groups:
+  - name: blackcnote-wordpress
+    rules:
+      # High response time alert
+      - alert: HighResponseTime
+        expr: wordpress_response_time_seconds > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High response time detected"
+          description: "WordPress response time is {{ $value }}s (threshold: 2s)"
+
+      # High error rate alert
+      - alert: HighErrorRate
+        expr: rate(wordpress_errors_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value }} errors per second"
+
+      # High memory usage alert
+      - alert: HighMemoryUsage
+        expr: wordpress_memory_usage_bytes / 1024 / 1024 > 512
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage detected"
+          description: "WordPress memory usage is {{ $value }}MB"
+
+      # Low cache hit ratio alert
+      - alert: LowCacheHitRatio
+        expr: wordpress_cache_hit_ratio < 0.8
+        for: 10m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low cache hit ratio detected"
+          description: "Cache hit ratio is {{ $value | humanizePercentage }}"
+
+  - name: blackcnote-database
+    rules:
+      # Slow database queries alert
+      - alert: SlowDatabaseQueries
+        expr: mysql_slow_queries_total > 10
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow database queries detected"
+          description: "{{ $value }} slow queries in the last 5 minutes"
+
+      # Database connection issues alert
+      - alert: DatabaseConnectionIssues
+        expr: mysql_connection_errors_total > 5
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database connection issues detected"
+          description: "{{ $value }} connection errors in the last 2 minutes"
+
+      # High database CPU usage alert
+      - alert: HighDatabaseCPU
+        expr: mysql_cpu_usage_percent > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High database CPU usage detected"
+          description: "Database CPU usage is {{ $value }}%"
+
+  - name: blackcnote-redis
+    rules:
+      # Redis memory usage alert
+      - alert: HighRedisMemoryUsage
+        expr: redis_memory_used_bytes / redis_memory_max_bytes > 0.8
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High Redis memory usage detected"
+          description: "Redis memory usage is {{ $value | humanizePercentage }}"
+
+      # Redis connection issues alert
+      - alert: RedisConnectionIssues
+        expr: redis_connected_clients == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis connection issues detected"
+          description: "No clients connected to Redis"
+
+  - name: blackcnote-system
+    rules:
+      # High CPU usage alert
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage is {{ $value }}%"
+
+      # High memory usage alert
+      - alert: HighSystemMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High system memory usage detected"
+          description: "System memory usage is {{ $value | humanizePercentage }}"
+
+      # High disk usage alert
+      - alert: HighDiskUsage
+        expr: (node_filesystem_size_bytes - node_filesystem_free_bytes) / node_filesystem_size_bytes > 0.85
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High disk usage detected"
+          description: "Disk usage is {{ $value | humanizePercentage }}"
+
+      # Container restart alert
+      - alert: ContainerRestart
+        expr: changes(container_start_time_seconds[15m]) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Container restart detected"
+          description: "Container {{ $labels.name }} has restarted"
+
+  - name: blackcnote-application
+    rules:
+      # Application down alert
+      - alert: ApplicationDown
+        expr: up{job="blackcnote-wordpress"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "BlackCnote application is down"
+          description: "WordPress application is not responding"
+
+      # Nginx down alert
+      - alert: NginxDown
+        expr: up{job="blackcnote-nginx"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Nginx is down"
+          description: "Nginx web server is not responding"
+
+      # Database down alert
+      - alert: DatabaseDown
+        expr: up{job="blackcnote-mysql"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database is down"
+          description: "MySQL database is not responding"
+
+      # Redis down alert
+      - alert: RedisDown
+        expr: up{job="blackcnote-redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down"
+          description: "Redis cache is not responding"
+
+  - name: blackcnote-security
+    rules:
+      # High number of failed login attempts
+      - alert: HighFailedLogins
+        expr: wordpress_failed_logins_total > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High number of failed login attempts"
+          description: "{{ $value }} failed login attempts detected"
+
+      # Suspicious activity detected
+      - alert: SuspiciousActivity
+        expr: wordpress_suspicious_requests_total > 50
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Suspicious activity detected"
+          description: "{{ $value }} suspicious requests detected"
+
+      # SSL certificate expiration
+      - alert: SSLCertificateExpiringSoon
+        expr: probe_ssl_earliest_cert_expiry - time() < 86400 * 30
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "SSL certificate expiring soon"
+          description: "SSL certificate will expire in {{ $value | humanizeDuration }}" 

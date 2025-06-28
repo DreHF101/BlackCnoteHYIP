@@ -1,0 +1,78 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "blackcnote-rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # BlackCnote Debug Metrics Exporter
+  - job_name: 'blackcnote-debug-metrics'
+    static_configs:
+      - targets: ['blackcnote-debug-exporter:9091']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scrape_timeout: 10s
+
+  # BlackCnote WordPress Application
+  - job_name: 'blackcnote-wordpress'
+    static_configs:
+      - targets: ['blackcnote-exporter:9100']
+    scrape_interval: 30s
+    metrics_path: '/metrics'
+    scrape_timeout: 10s
+
+  # MySQL Database
+  - job_name: 'blackcnote-mysql'
+    static_configs:
+      - targets: ['mysql-exporter:9104']
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Redis Cache
+  - job_name: 'blackcnote-redis'
+    static_configs:
+      - targets: ['redis-exporter:9121']
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Nginx Web Server
+  - job_name: 'blackcnote-nginx'
+    static_configs:
+      - targets: ['nginx-exporter:9113']
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Node Exporter (System Metrics)
+  - job_name: 'blackcnote-node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # Docker Containers
+  - job_name: 'blackcnote-docker'
+    static_configs:
+      - targets: ['docker-exporter:9323']
+    scrape_interval: 30s
+    scrape_timeout: 10s
+
+  # BlackCnote Custom Metrics
+  - job_name: 'blackcnote-custom'
+    static_configs:
+      - targets: ['blackcnote-wordpress:80']
+    scrape_interval: 60s
+    scrape_timeout: 15s
+    metrics_path: '/wp-json/blackcnote/v1/monitoring/metrics'
+    honor_labels: true 

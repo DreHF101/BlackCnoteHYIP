@@ -1,0 +1,230 @@
+{
+  "dashboard": {
+    "id": null,
+    "title": "BlackCnote Debug System Dashboard",
+    "tags": ["blackcnote", "debug", "monitoring"],
+    "style": "dark",
+    "timezone": "browser",
+    "panels": [
+      {
+        "id": 1,
+        "title": "Debug Log Entries by Level",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "blackcnote_debug_log_entries_total",
+            "legendFormat": "Total Log Entries"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "displayMode": "list"
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": 2,
+        "title": "Log Level Distribution",
+        "type": "piechart",
+        "targets": [
+          {
+            "expr": "blackcnote_debug_errors_total",
+            "legendFormat": "Errors"
+          },
+          {
+            "expr": "blackcnote_debug_warnings_total",
+            "legendFormat": "Warnings"
+          },
+          {
+            "expr": "blackcnote_debug_info_total",
+            "legendFormat": "Info"
+          },
+          {
+            "expr": "blackcnote_debug_debug_total",
+            "legendFormat": "Debug"
+          },
+          {
+            "expr": "blackcnote_debug_system_total",
+            "legendFormat": "System"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        }
+      },
+      {
+        "id": 3,
+        "title": "File Changes Over Time",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(blackcnote_file_changes_total[5m])",
+            "legendFormat": "File Changes/sec"
+          }
+        ],
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        }
+      },
+      {
+        "id": 4,
+        "title": "Memory Usage",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "blackcnote_memory_usage_bytes / 1024 / 1024",
+            "legendFormat": "Memory Usage (MB)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                {"color": "green", "value": null},
+                {"color": "yellow", "value": 50},
+                {"color": "red", "value": 80}
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 0,
+          "y": 16
+        }
+      },
+      {
+        "id": 5,
+        "title": "Disk Free Space",
+        "type": "gauge",
+        "targets": [
+          {
+            "expr": "blackcnote_disk_free_bytes / 1024 / 1024 / 1024",
+            "legendFormat": "Disk Free (GB)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "max": 100,
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "yellow", "value": 20},
+                {"color": "green", "value": 50}
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 8,
+          "y": 16
+        }
+      },
+      {
+        "id": 6,
+        "title": "Docker Containers Running",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "blackcnote_docker_containers_running",
+            "legendFormat": "Containers Running"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "thresholds": {
+              "steps": [
+                {"color": "red", "value": null},
+                {"color": "green", "value": 1}
+              ]
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 16,
+          "y": 16
+        }
+      },
+      {
+        "id": 7,
+        "title": "Debug Daemon Uptime",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "blackcnote_daemon_uptime_seconds / 3600",
+            "legendFormat": "Uptime (hours)"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "unit": "h"
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 8,
+          "x": 24,
+          "y": 16
+        }
+      },
+      {
+        "id": 8,
+        "title": "Error Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(blackcnote_debug_errors_total[5m])",
+            "legendFormat": "Errors/sec"
+          }
+        ],
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "fillOpacity": 10
+            }
+          }
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 24
+        }
+      }
+    ],
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "refresh": "30s"
+  }
+} 

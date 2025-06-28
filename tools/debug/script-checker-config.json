@@ -1,0 +1,115 @@
+{
+  "script_checker": {
+    "enabled": true,
+    "check_interval": "daily",
+    "auto_fix_emojis": false,
+    "file_types": {
+      "powershell": ["*.ps1"],
+      "batch": ["*.bat", "*.cmd"],
+      "shell": ["*.sh"],
+      "php": ["*.php"],
+      "javascript": ["*.js"],
+      "python": ["*.py"],
+      "css": ["*.css"],
+      "html": ["*.html", "*.htm"],
+      "xml": ["*.xml"],
+      "json": ["*.json"],
+      "yaml": ["*.yml", "*.yaml"],
+      "markdown": ["*.md"],
+      "sql": ["*.sql"],
+      "docker": ["Dockerfile", "docker-compose*.yml"],
+      "nginx": ["*.conf"],
+      "apache": ["*.conf", ".htaccess"]
+    },
+    "admin_notices": {
+      "enabled": true,
+      "show_on_all_pages": true,
+      "dismiss_options": {
+        "24_hours": 24,
+        "1_week": 168,
+        "1_month": 720
+      },
+      "alert_levels": {
+        "error": {
+          "show_notice": true,
+          "icon": "dashicons-dismiss",
+          "color": "#dc3232",
+          "title": "Script Checker Critical Alert"
+        },
+        "warning": {
+          "show_notice": true,
+          "icon": "dashicons-warning",
+          "color": "#ffb900",
+          "title": "Script Checker Warning"
+        },
+        "info": {
+          "show_notice": false,
+          "icon": "dashicons-info",
+          "color": "#00a0d2",
+          "title": "Script Checker Info"
+        }
+      },
+      "notification_settings": {
+        "max_notices_per_page": 3,
+        "auto_refresh_interval": 300,
+        "show_timestamp": true,
+        "show_file_count": true,
+        "show_quick_actions": true
+      }
+    },
+    "email_notifications": {
+      "enabled": false,
+      "smtp_settings": {
+        "host": "smtp.gmail.com",
+        "port": 587,
+        "username": "your-email@gmail.com",
+        "password": "your-app-password",
+        "encryption": "tls"
+      },
+      "recipients": ["admin@yourdomain.com"],
+      "triggers": {
+        "on_error": true,
+        "on_warning": false,
+        "daily_summary": false,
+        "weekly_summary": true
+      }
+    },
+    "slack_notifications": {
+      "enabled": false,
+      "webhook_url": "https://hooks.slack.com/services/your/webhook/url",
+      "channel": "#blackcnote-alerts",
+      "triggers": {
+        "on_error": true,
+        "on_warning": false,
+        "daily_summary": false
+      }
+    },
+    "logging": {
+      "enabled": true,
+      "log_level": "info",
+      "max_log_size": "10MB",
+      "log_retention_days": 30,
+      "log_format": "json"
+    },
+    "performance": {
+      "max_files_per_check": 1000,
+      "timeout_seconds": 300,
+      "memory_limit": "256M",
+      "parallel_processing": false
+    },
+    "security": {
+      "exclude_patterns": [
+        "node_modules/**",
+        "vendor/**",
+        ".git/**",
+        "*.log",
+        "*.tmp",
+        "*.cache"
+      ],
+      "allowed_extensions": [
+        "ps1", "bat", "cmd", "sh", "php", "js", "py", "css", "html", "htm",
+        "xml", "json", "yml", "yaml", "md", "sql", "conf"
+      ]
+    }
+  }
+} 
