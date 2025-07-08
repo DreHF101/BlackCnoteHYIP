@@ -1,0 +1,891 @@
+/**
+ * HYIPLab Integration Styles
+ * 
+ * Styles for HYIPLab investment platform integration with BlackCnote theme
+ */
+
+/* HYIPLab Container Styles */
+.hyiplab-container {
+    background: var(--theme-background, #ffffff);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hyiplab-demo-content {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.demo-notice {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 6px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.demo-notice h3 {
+    color: #856404;
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.demo-notice p {
+    color: #856404;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Investment Plans Styles */
+.hyiplab-plans-container {
+    display: grid;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.hyiplab-plans-container.layout-grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.hyiplab-plans-container.layout-list {
+    grid-template-columns: 1fr;
+}
+
+.hyiplab-plan-card {
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-left: 4px solid #2196F3;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hyiplab-plan-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border-color: #1976D2;
+}
+
+.hyiplab-plan-card .plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.hyiplab-plan-card .plan-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.hyiplab-plan-card .plan-profit-rate {
+    background: #4CAF50;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.hyiplab-plan-card .plan-description {
+    color: #666;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.hyiplab-plan-card .plan-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.hyiplab-plan-card .plan-amount,
+.hyiplab-plan-card .plan-duration {
+    display: flex;
+    flex-direction: column;
+}
+
+.hyiplab-plan-card .plan-amount .label,
+.hyiplab-plan-card .plan-duration .label {
+    font-size: 12px;
+    color: #999;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+
+.hyiplab-plan-card .plan-amount .value,
+.hyiplab-plan-card .plan-duration .value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.hyiplab-plan-card .plan-actions {
+    text-align: center;
+}
+
+.hyiplab-plan-card .btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.hyiplab-plan-card .btn-primary {
+    background: #2196F3;
+    color: white;
+}
+
+.hyiplab-plan-card .btn-primary:hover {
+    background: #1976D2;
+    transform: translateY(-2px);
+}
+
+.hyiplab-plan-card .btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.hyiplab-plan-card .btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* Dashboard Styles */
+.hyiplab-dashboard {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hyiplab-dashboard .dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.hyiplab-dashboard .stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hyiplab-dashboard .stat-card .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2196F3;
+    margin-bottom: 8px;
+}
+
+.hyiplab-dashboard .stat-card .stat-value.profit {
+    color: #4CAF50;
+}
+
+.hyiplab-dashboard .stat-card .stat-label {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+.hyiplab-dashboard .dashboard-content {
+    padding: 20px;
+}
+
+.hyiplab-dashboard .investments-section,
+.hyiplab-dashboard .transactions-section {
+    margin-bottom: 30px;
+}
+
+.hyiplab-dashboard h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.hyiplab-dashboard .investments-list,
+.hyiplab-dashboard .transactions-list {
+    display: grid;
+    gap: 10px;
+}
+
+.hyiplab-dashboard .investment-item,
+.hyiplab-dashboard .transaction-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 15px;
+    align-items: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid #2196F3;
+}
+
+.hyiplab-dashboard .investment-plan,
+.hyiplab-dashboard .transaction-type {
+    font-weight: 600;
+    color: #333;
+}
+
+.hyiplab-dashboard .investment-amount,
+.hyiplab-dashboard .transaction-amount {
+    font-weight: 600;
+    color: #2196F3;
+    text-align: right;
+}
+
+.hyiplab-dashboard .investment-profit {
+    font-weight: 600;
+    color: #4CAF50;
+    text-align: right;
+}
+
+.hyiplab-dashboard .investment-status,
+.hyiplab-dashboard .transaction-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.hyiplab-dashboard .investment-status.active,
+.hyiplab-dashboard .transaction-status.completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.hyiplab-dashboard .investment-status.pending,
+.hyiplab-dashboard .transaction-status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.hyiplab-dashboard .investment-status.failed,
+.hyiplab-dashboard .transaction-status.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.hyiplab-dashboard .investment-date,
+.hyiplab-dashboard .transaction-date {
+    font-size: 12px;
+    color: #666;
+    text-align: right;
+}
+
+/* Transactions Styles */
+.hyiplab-transactions {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.hyiplab-transactions .transactions-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.hyiplab-transactions h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.hyiplab-transactions .transactions-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.hyiplab-transactions .transactions-filters select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+}
+
+.hyiplab-transactions .transactions-table {
+    overflow-x: auto;
+}
+
+.hyiplab-transactions table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.hyiplab-transactions th,
+.hyiplab-transactions td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.hyiplab-transactions th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+}
+
+.hyiplab-transactions td {
+    font-size: 14px;
+}
+
+.hyiplab-transactions .transaction-type {
+    font-weight: 600;
+}
+
+.hyiplab-transactions .transaction-type.deposit {
+    color: #4CAF50;
+}
+
+.hyiplab-transactions .transaction-type.withdrawal {
+    color: #f44336;
+}
+
+.hyiplab-transactions .transaction-type.profit {
+    color: #2196F3;
+}
+
+.hyiplab-transactions .transaction-type.investment {
+    color: #FF9800;
+}
+
+.hyiplab-transactions .transaction-amount {
+    font-weight: 600;
+    text-align: right;
+}
+
+.hyiplab-transactions .transaction-status {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.hyiplab-transactions .transaction-status.completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.hyiplab-transactions .transaction-status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.hyiplab-transactions .transaction-status.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Investment Form Styles */
+.hyiplab-invest-form {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hyiplab-invest-form h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.hyiplab-invest-form .selected-plan {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.hyiplab-invest-form .selected-plan h4 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 10px 0;
+}
+
+.hyiplab-invest-form .selected-plan p {
+    color: #666;
+    margin: 0 0 10px 0;
+    line-height: 1.5;
+}
+
+.hyiplab-invest-form .selected-plan .plan-details {
+    display: flex;
+    gap: 20px;
+    font-size: 14px;
+    color: #666;
+}
+
+.hyiplab-invest-form .form-group {
+    margin-bottom: 20px;
+}
+
+.hyiplab-invest-form label {
+    display: block;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.hyiplab-invest-form input,
+.hyiplab-invest-form select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.hyiplab-invest-form input:focus,
+.hyiplab-invest-form select:focus {
+    outline: none;
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.hyiplab-invest-form .amount-range {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.hyiplab-invest-form .btn {
+    width: 100%;
+    padding: 12px;
+    background: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hyiplab-invest-form .btn:hover {
+    background: #1976D2;
+}
+
+.hyiplab-invest-form .btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.hyiplab-invest-form #investment-result {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    display: none;
+}
+
+.hyiplab-invest-form #investment-result.success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.hyiplab-invest-form #investment-result.error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+/* Stats Styles */
+.hyiplab-stats {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hyiplab-stats .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+}
+
+.hyiplab-stats .stat-item {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #2196F3;
+}
+
+.hyiplab-stats .stat-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2196F3;
+    margin-bottom: 8px;
+}
+
+.hyiplab-stats .stat-label {
+    font-size: 14px;
+    color: #666;
+    text-transform: uppercase;
+}
+
+/* Widget Styles */
+.widget-hyiplab-plans,
+.widget-hyiplab-stats,
+.widget-hyiplab-transactions {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hyiplab-plans-widget .plan-item,
+.hyiplab-stats-widget .stat-item,
+.hyiplab-transactions-widget .transaction-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.hyiplab-plans-widget .plan-item:last-child,
+.hyiplab-stats-widget .stat-item:last-child,
+.hyiplab-transactions-widget .transaction-item:last-child {
+    border-bottom: none;
+}
+
+.hyiplab-plans-widget .plan-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.hyiplab-plans-widget .plan-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.hyiplab-plans-widget .plan-rate {
+    background: #4CAF50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.hyiplab-plans-widget .plan-range,
+.hyiplab-plans-widget .plan-duration {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.hyiplab-plans-widget .plan-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.hyiplab-plans-widget .plan-link:hover {
+    background: #1976D2;
+}
+
+.hyiplab-stats-widget .stat-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.hyiplab-stats-widget .stat-label {
+    font-size: 12px;
+    color: #666;
+}
+
+.hyiplab-stats-widget .stat-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2196F3;
+}
+
+.hyiplab-stats-widget .stat-value.profit {
+    color: #4CAF50;
+}
+
+.hyiplab-transactions-widget .transaction-item {
+    padding: 8px 0;
+}
+
+.hyiplab-transactions-widget .transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.hyiplab-transactions-widget .transaction-type {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.hyiplab-transactions-widget .transaction-type.deposit {
+    background: #d4edda;
+    color: #155724;
+}
+
+.hyiplab-transactions-widget .transaction-type.withdrawal {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.hyiplab-transactions-widget .transaction-type.profit {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.hyiplab-transactions-widget .transaction-type.investment {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.hyiplab-transactions-widget .transaction-status {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.hyiplab-transactions-widget .transaction-status.completed {
+    background: #d4edda;
+    color: #155724;
+}
+
+.hyiplab-transactions-widget .transaction-status.pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.hyiplab-transactions-widget .transaction-status.failed {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.hyiplab-transactions-widget .transaction-amount {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2196F3;
+    margin: 4px 0;
+}
+
+.hyiplab-transactions-widget .transaction-date {
+    font-size: 10px;
+    color: #999;
+}
+
+.hyiplab-transactions-widget .transaction-description {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.widget-footer {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+}
+
+.widget-footer a {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.widget-footer a:hover {
+    background: #1976D2;
+}
+
+.widget-footer .login-link {
+    background: #6c757d;
+}
+
+.widget-footer .login-link:hover {
+    background: #5a6268;
+}
+
+/* Navigation Integration */
+.menu-item-hyiplab-plans a,
+.menu-item-hyiplab-dashboard a {
+    color: #2196F3;
+    font-weight: 600;
+}
+
+.menu-item-hyiplab-plans a:hover,
+.menu-item-hyiplab-dashboard a:hover {
+    color: #1976D2;
+}
+
+/* Body Classes */
+.hyiplab-active {
+    /* Theme is aware of HYIPLab */
+}
+
+.hyiplab-plans-page .site-header {
+    background: linear-gradient(135deg, #2196F3, #1976D2);
+}
+
+.hyiplab-dashboard-page .site-header {
+    background: linear-gradient(135deg, #4CAF50, #388E3C);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hyiplab-plans-container.layout-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hyiplab-dashboard .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .hyiplab-dashboard .investment-item,
+    .hyiplab-dashboard .transaction-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .hyiplab-transactions .transactions-header {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+    
+    .hyiplab-transactions .transactions-filters {
+        flex-direction: column;
+    }
+    
+    .hyiplab-stats .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .hyiplab-plan-card .plan-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hyiplab-stats .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .hyiplab-transactions table {
+        font-size: 12px;
+    }
+    
+    .hyiplab-transactions th,
+    .hyiplab-transactions td {
+        padding: 8px 6px;
+    }
+}
+
+/* Animation Classes */
+.hyiplab-fade-in {
+    animation: fadeIn 0.5s ease-in;
+}
+
+.hyiplab-slide-up {
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Loading States */
+.hyiplab-loading {
+    position: relative;
+    min-height: 100px;
+}
+
+.hyiplab-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #2196F3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} 

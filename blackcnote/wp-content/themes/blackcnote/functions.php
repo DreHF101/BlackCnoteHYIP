@@ -293,4 +293,7 @@ function blackcnote_investment_plans_shortcode($atts) {
 add_shortcode('blackcnote_plans', 'blackcnote_investment_plans_shortcode');
 
 // Include additional theme files
-require_once BLACKCNOTE_THEME_DIR . '/inc/blackcnote-react-loader.php'; 
+require_once BLACKCNOTE_THEME_DIR . '/inc/blackcnote-react-loader.php';
+
+// Include HYIPLab integration
+require_once BLACKCNOTE_THEME_DIR . '/inc/hyiplab-integration.php'; 
