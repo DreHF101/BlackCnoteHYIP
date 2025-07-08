@@ -6,12 +6,19 @@
   "scripts": {
     "dev": "vite",
     "dev:full": "powershell -ExecutionPolicy Bypass -File \"./start-dev-simple.ps1\"",
-    "dev:react": "cd react-app && npm run dev:full",
+    "dev:react": "cd react-app && npm run dev",
     "dev:wordpress": "docker compose up -d",
+    "stop": "powershell -ExecutionPolicy Bypass -File \"./stop-dev-simple.ps1\"",
+    "stop:react": "powershell -ExecutionPolicy Bypass -File \"./stop-dev-simple.ps1\" -SkipDocker",
+    "stop:docker": "powershell -ExecutionPolicy Bypass -File \"./stop-dev-simple.ps1\" -SkipReact",
+    "status": "powershell -ExecutionPolicy Bypass -Command \"Get-Process | Where-Object {$_.ProcessName -like '*node*' -or $_.ProcessName -like '*docker*'} | Format-Table\"",
     "build": "vite build",
+    "build:react": "cd react-app && npm run build",
     "lint": "eslint .",
+    "lint:react": "cd react-app && npm run lint",
     "preview": "vite preview",
-    "start": "npm run dev:full"
+    "start": "npm run dev:full",
+    "clean": "powershell -ExecutionPolicy Bypass -Command \"Remove-Item -Recurse -Force node_modules, react-app/node_modules -ErrorAction SilentlyContinue; npm install; cd react-app && npm install\""
   },
   "dependencies": {
     "lucide-react": "^0.344.0",

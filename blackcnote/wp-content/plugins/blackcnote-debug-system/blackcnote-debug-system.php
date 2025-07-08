@@ -53,6 +53,11 @@ final class BlackCnoteDebugSystem {
     private $cursor_ai_monitor = null;
     
     /**
+     * Maintenance Automation instance
+     */
+    private $maintenance_automation = null;
+    
+    /**
      * Get single instance
      */
     public static function instance() {
@@ -100,6 +105,7 @@ final class BlackCnoteDebugSystem {
         require_once BLACKCNOTE_DEBUG_PLUGIN_DIR . 'includes/class-blackcnote-debug-rest.php';
         require_once BLACKCNOTE_DEBUG_PLUGIN_DIR . 'includes/class-blackcnote-cursor-ai-monitor.php';
         require_once BLACKCNOTE_DEBUG_PLUGIN_DIR . 'includes/class-blackcnote-debug-startup-monitor.php';
+        require_once BLACKCNOTE_DEBUG_PLUGIN_DIR . 'includes/class-blackcnote-maintenance-automation.php';
         add_action('rest_api_init', ['BlackCnote_Debug_REST', 'register_routes']);
     }
     
@@ -123,6 +129,9 @@ final class BlackCnoteDebugSystem {
         
         // Initialize Cursor AI Monitor
         $this->cursor_ai_monitor = new BlackCnoteCursorAIMonitor($this->get_debug_system());
+        
+        // Initialize Maintenance Automation
+        $this->maintenance_automation = new BlackCnoteMaintenanceAutomation($this->debug_system);
     }
     
     /**

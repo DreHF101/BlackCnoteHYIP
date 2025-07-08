@@ -1,6 +1,8 @@
-# BlackCnote Project .gitignore
+# BlackCnote GitHub Repository .gitignore
+# ================================================
+# This file ensures only essential files are tracked for cross-platform import
 
-# WordPress Core Files (should not be tracked)
+# WordPress Core Files (exclude - these should be installed separately)
 wordpress/
 wp-admin/
 wp-includes/
@@ -8,26 +10,46 @@ wp-*.php
 xmlrpc.php
 readme.html
 license.txt
+wp-config.php
+wp-config-*.php
+.htaccess
 
-# Vendor directories with embedded git repositories
-**/vendor/
+# Node.js dependencies
+node_modules/
 **/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# Composer files
+# Vendor directories
+**/vendor/
+vendor/
 composer.lock
 composer.phar
+
+# Build outputs
+dist/
+build/
+**/dist/
+**/build/
+.cache/
+.vite/
+
+# Environment and configuration files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+*.env
 
 # Logs and temporary files
 *.log
 logs/
 tmp/
 temp/
-
-# Environment files
-.env
-.env.local
-.env.development
-.env.production
+*.tmp
+*.temp
 
 # IDE and editor files
 .vscode/
@@ -35,6 +57,7 @@ temp/
 *.swp
 *.swo
 *~
+.cursor/
 
 # OS generated files
 .DS_Store
@@ -44,18 +67,15 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Build and cache directories
-build/
-dist/
-.cache/
-.vite/
+desktop.ini
 
 # Backup files
 *.bak
 *.backup
 *.sql
 backups/
+*.zip
+*.tar.gz
 
 # SSL certificates
 *.pem
@@ -66,50 +86,95 @@ ssl/
 # Docker volumes and data
 docker/data/
 docker/volumes/
+db/
+redis.conf/
 
-# React build output (will be generated)
-react-app/dist/
-react-app/build/
-
-# WordPress uploads (user content)
+# WordPress uploads and cache
 **/uploads/
-
-# WordPress cache
 **/cache/
 **/wp-content/cache/
-
-# WordPress debug logs
 **/debug.log
 **/error_log
 
-# Specific problematic directories
-blackcnote/wp-content/plugins/hyiplab/vendor/
-hyiplab/vendor/
+# React build output
+react-app/dist/
+react-app/build/
 
-# Keep important BlackCnote files
+# Package lock files (keep only root)
+**/package-lock.json
+!package-lock.json
+!react-app/package-lock.json
+
+# Test files
+test-*.php
+*-test.php
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Documentation files (keep only essential)
+BLACKCNOTE-*.md
+!README.md
+!QUICK-START.md
+!DOCKER-SETUP.md
+
+# Scripts (keep only essential)
+*.bat
+*.ps1
+*.sh
+!start-dev-simple.ps1
+!stop-dev-simple.ps1
+
+# Large binary files
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.pdf
+*.zip
+*.tar.gz
+
+# Development tools
+tools/
+bin/
+
+# WordPress Core Files (exclude - these should be installed separately)
+blackcnote/wp-admin/
+blackcnote/wp-includes/
+blackcnote/wp-*.php
+blackcnote/xmlrpc.php
+blackcnote/readme.html
+blackcnote/license.txt
+blackcnote/wp-config.php
+blackcnote/.htaccess
+blackcnote/wp-blog-header.php
+blackcnote/wp-comments-post.php
+blackcnote/wp-cron.php
+blackcnote/wp-links-opml.php
+blackcnote/wp-load.php
+blackcnote/wp-login.php
+blackcnote/wp-mail.php
+blackcnote/wp-settings.php
+blackcnote/wp-signup.php
+blackcnote/wp-trackback.php
+
+# Keep essential files
 !blackcnote/wp-content/themes/blackcnote/
 !blackcnote/wp-content/plugins/blackcnote-*/
-!blackcnote/wp-config.php
-!blackcnote/.htaccess
-
-# Keep documentation and scripts
-!docs/
-!scripts/
-!*.md
-!*.txt
-!*.bat
-!*.ps1
-!*.sh
-
-# Keep configuration files
-!config/
-!docker-compose*.yml
-!Dockerfile*
-
-# Keep React app source
 !react-app/src/
 !react-app/package.json
-!react-app/package-lock.json
 !react-app/vite.config.*
 !react-app/tailwind.config.*
 !react-app/tsconfig.*
+!react-app/index.html
+!react-app/public/
+!hyiplab/app/
+!hyiplab/routes/
+!hyiplab/views/
+!hyiplab/composer.json
+!config/docker/
+!docker-compose.yml
+!package.json
