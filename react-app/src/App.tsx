@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import DebugMonitor from './components/DebugMonitor';
 import DebugBanner from './components/DebugBanner';
+import ConnectionMonitor from './components/ConnectionMonitor';
 import HomePage from './pages/HomePage';
 import About from './pages/About';
 import Contact from './pages/Contact';
@@ -33,6 +34,9 @@ const App: React.FC<{ settings: WordPressSettings }> = ({ settings }) => {
         
         {/* Debug Monitor - only shows in development */}
         {debugComponent}
+        
+        {/* Connection Monitor - shows connection status */}
+        {isDevelopment && <ConnectionMonitor settings={settings} />}
         
         <Header />
         <main className="flex-grow">
