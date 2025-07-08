@@ -256,99 +256,14 @@ function blackcnote_theme_register_post_type(): void {
  * Add theme settings page
  */
 function blackcnote_theme_add_settings_page(): void {
-    add_theme_page(
-        __('BlackCnote Settings', 'blackcnote'), // Page title
-        __('BlackCnote Settings', 'blackcnote'), // Menu title
-        'manage_options', // Capability
-        'blackcnote-settings', // Menu slug
-        'blackcnote_render_settings_page' // Callback function
-    );
+    // This function is now handled by the comprehensive admin system in the theme
+    // See: blackcnote/wp-content/themes/blackcnote/admin/admin-functions.php
 }
-add_action('admin_menu', 'blackcnote_theme_add_settings_page');
+// Removed admin_menu action to prevent conflicts with theme admin system
 
 function blackcnote_render_settings_page() {
-    if (!current_user_can('manage_options')) {
-        wp_die(__('You do not have sufficient permissions to access this page.', 'blackcnote'));
-    }
-
-    // Save settings
-    if (isset($_POST['blackcnote_theme_settings_nonce']) && 
-        wp_verify_nonce($_POST['blackcnote_theme_settings_nonce'], 'blackcnote_theme_settings')) {
-        update_option('blackcnote_theme_settings', [
-            'primary_color' => sanitize_hex_color($_POST['primary_color'] ?? '#007bff'),
-            'enable_rtl' => isset($_POST['enable_rtl']),
-            'custom_css' => wp_strip_all_tags($_POST['custom_css'] ?? ''),
-            'stat_total_invested' => sanitize_text_field($_POST['stat_total_invested'] ?? '2500000'),
-            'stat_active_investors' => sanitize_text_field($_POST['stat_active_investors'] ?? '1200'),
-            'stat_success_rate' => sanitize_text_field($_POST['stat_success_rate'] ?? '98.5'),
-            'stat_years_experience' => sanitize_text_field($_POST['stat_years_experience'] ?? '5'),
-        ]);
-        echo '<div class="notice notice-success"><p>' . esc_html__('Settings saved.', 'blackcnote') . '</p></div>';
-    }
-
-    // Get current settings
-    $settings = get_option('blackcnote_theme_settings', [
-        'primary_color' => '#007bff',
-        'enable_rtl' => false,
-        'custom_css' => '',
-        'stat_total_invested' => '2500000',
-        'stat_active_investors' => '1200',
-        'stat_success_rate' => '98.5',
-        'stat_years_experience' => '5',
-    ]);
-    ?>
-    <div class="wrap">
-        <h1><?php esc_html_e('BlackCnote Theme Settings', 'blackcnote'); ?></h1>
-        <form method="post" action="">
-            <?php wp_nonce_field('blackcnote_theme_settings', 'blackcnote_theme_settings_nonce'); ?>
-            <table class="form-table">
-                <tr>
-                    <th scope="row">
-                        <label for="primary_color"><?php esc_html_e('Primary Color', 'blackcnote'); ?></label>
-                    </th>
-                    <td>
-                        <input type="color" id="primary_color" name="primary_color" value="<?php echo esc_attr($settings['primary_color']); ?>">
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row"><?php esc_html_e('RTL Support', 'blackcnote'); ?></th>
-                    <td>
-                        <label>
-                            <input type="checkbox" name="enable_rtl" <?php checked($settings['enable_rtl']); ?>>
-                            <?php esc_html_e('Enable RTL support', 'blackcnote'); ?>
-                        </label>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">
-                        <label for="custom_css"><?php esc_html_e('Custom CSS', 'blackcnote'); ?></label>
-                    </th>
-                    <td>
-                        <textarea id="custom_css" name="custom_css" rows="10" class="large-text code"><?php echo esc_textarea($settings['custom_css']); ?></textarea>
-                    </td>
-                </tr>
-                <tr><th colspan="2"><h2><?php esc_html_e('Homepage Stats', 'blackcnote'); ?></h2></th></tr>
-                <tr>
-                    <th scope="row"><label for="stat_total_invested"><?php esc_html_e('Total Invested ($)', 'blackcnote'); ?></label></th>
-                    <td><input type="number" id="stat_total_invested" name="stat_total_invested" value="<?php echo esc_attr($settings['stat_total_invested']); ?>" min="0" step="any"></td>
-                </tr>
-                <tr>
-                    <th scope="row"><label for="stat_active_investors"><?php esc_html_e('Active Investors', 'blackcnote'); ?></label></th>
-                    <td><input type="number" id="stat_active_investors" name="stat_active_investors" value="<?php echo esc_attr($settings['stat_active_investors']); ?>" min="0"></td>
-                </tr>
-                <tr>
-                    <th scope="row"><label for="stat_success_rate"><?php esc_html_e('Success Rate (%)', 'blackcnote'); ?></label></th>
-                    <td><input type="number" id="stat_success_rate" name="stat_success_rate" value="<?php echo esc_attr($settings['stat_success_rate']); ?>" min="0" max="100" step="0.1"></td>
-                </tr>
-                <tr>
-                    <th scope="row"><label for="stat_years_experience"><?php esc_html_e('Years Experience', 'blackcnote'); ?></label></th>
-                    <td><input type="number" id="stat_years_experience" name="stat_years_experience" value="<?php echo esc_attr($settings['stat_years_experience']); ?>" min="0"></td>
-                </tr>
-            </table>
-            <?php submit_button(); ?>
-        </form>
-    </div>
-    <?php
+    // This function is now handled by the comprehensive admin system in the theme
+    // See: blackcnote/wp-content/themes/blackcnote/admin/admin-functions.php
 }
 
 /**

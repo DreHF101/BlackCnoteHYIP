@@ -1,0 +1,82 @@
+{
+  "features": {
+    "buildkit": true,
+    "kubernetes": false,
+    "containerd": true,
+    "dockerComposeV2": true,
+    "useDockerContentTrust": false,
+    "experimental": false,
+    "liveRestore": true,
+    "userlandProxy": false,
+    "resourceSaver": true,
+    "wslEngineEnabled": true,
+    "wslIntegrationEnabled": true,
+    "ubuntuWslEnabled": true
+  },
+  "experimental": false,
+  "debug": false,
+  "stackOrchestrator": "swarm",
+  "deprecatedCgroupv1": false,
+  "liveRestore": true,
+  "userlandProxy": false,
+  "maxConcurrentDownloads": 3,
+  "maxConcurrentUploads": 5,
+  "registryMirrors": [],
+  "insecureRegistries": [],
+  "builder": {
+    "gc": {
+      "enabled": true,
+      "defaultKeepStorage": "20GB"
+    }
+  },
+  "runtimes": {},
+  "defaultRuntime": "runc",
+  "storageDriver": "overlay2",
+  "logDriver": "json-file",
+  "logOpts": {
+    "max-size": "10m",
+    "max-file": "3"
+  },
+  "defaultAddressPools": [
+    {
+      "base": "172.17.0.0/12",
+      "size": 16
+    }
+  ],
+  "wslEngineEnabled": true,
+  "wslIntegrationEnabled": true,
+  "ubuntuWslEnabled": true,
+  "resourceSaver": {
+    "enabled": true,
+    "memoryLimit": "4GB",
+    "cpuLimit": "2",
+    "diskLimit": "50GB"
+  },
+  "blackcnote": {
+    "projectRoot": "C:\\Users\\CASH AMERICA PAWN\\Desktop\\BlackCnote",
+    "wordpressPath": "C:\\Users\\CASH AMERICA PAWN\\Desktop\\BlackCnote\\blackcnote",
+    "canonicalUrls": {
+      "wordpress": "http://localhost:8888",
+      "react": "http://localhost:5174",
+      "phpmyadmin": "http://localhost:8080",
+      "redisCommander": "http://localhost:8081",
+      "mailhog": "http://localhost:8025",
+      "browsersync": "http://localhost:3000",
+      "browsersyncUI": "http://localhost:3001",
+      "devTools": "http://localhost:9229",
+      "metrics": "http://localhost:9091",
+      "healthCheck": "http://localhost:8888/health"
+    },
+    "ports": {
+      "wordpress": 8888,
+      "react": 5174,
+      "phpmyadmin": 8080,
+      "redisCommander": 8081,
+      "mailhog": 8025,
+      "browsersync": 3000,
+      "browsersyncUI": 3001,
+      "devTools": 9229,
+      "metrics": 9091
+    }
+  }
+} 

@@ -1,34 +1,26 @@
-# BlackCnote React App - Enhanced Dev Dockerfile
-# ------------------------------------------------
-# Optimized for live development, hot reloading, and WSL2 compatibility
-# Enforces canonical pathways for BlackCnote
-
+﻿# BlackCnote React App - Fixed Dev Dockerfile
 FROM node:18-alpine
 
-# Set working directory to canonical React app path
+# Set working directory
 WORKDIR /app
 
-# Install dependencies
-COPY package.json package-lock.json ./
+# Install dependencies first (for better caching)
+COPY package*.json ./
 RUN npm ci
 
 # Copy source code
 COPY . .
 
-# Environment variables for Vite and WSL2 polling
+# Environment variables for development
 ENV CHOKIDAR_USEPOLLING=true
 ENV WATCHPACK_POLLING=true
 ENV FAST_REFRESH=true
 ENV NODE_ENV=development
+ENV HOST=0.0.0.0
+ENV PORT=5174
 
-# Canonical pathway environment variables
-ENV CANONICAL_ROOT=/app
-ENV CANONICAL_REACT_APP=/app
-ENV CANONICAL_WP_CONTENT=/app/blackcnote/wp-content
-ENV CANONICAL_THEME=/app/blackcnote/wp-content/themes/blackcnote
-
-# Expose Vite dev server port
+# Expose port
 EXPOSE 5174
 
-# Start Vite dev server with polling for WSL2 and canonical pathway support
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0", "--port", "5174", "--strictPort"] 
+# Start Vite dev server with proper configuration
+CMD ["npm", "run", "dev:docker"]

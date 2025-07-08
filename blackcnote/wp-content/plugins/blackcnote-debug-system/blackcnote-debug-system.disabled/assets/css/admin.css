@@ -1,0 +1,379 @@
+/**
+ * BlackCnote Debug System Admin Styles
+ * WordPress admin interface styling
+ *
+ * @package BlackCnoteDebugSystem
+ * @since 1.0.0
+ */
+
+.blackcnote-debug-dashboard {
+    margin-top: 20px;
+}
+
+.blackcnote-debug-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.blackcnote-debug-section h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #23282d;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.blackcnote-debug-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.blackcnote-debug-card {
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    border-left: 4px solid #0073aa;
+    transition: all 0.3s ease;
+}
+
+.blackcnote-debug-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.blackcnote-debug-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #23282d;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.blackcnote-debug-metric {
+    text-align: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.blackcnote-debug-metric:hover {
+    background: #f0f0f1;
+    transform: translateY(-2px);
+}
+
+.metric-value {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #0073aa;
+    margin-bottom: 5px;
+}
+
+.metric-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.blackcnote-debug-stat {
+    text-align: center;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.blackcnote-debug-stat:hover {
+    background: #f0f0f1;
+    transform: translateY(-2px);
+}
+
+.stat-value {
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+    color: #0073aa;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-indicator {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.status-indicator.good {
+    background: #46b450;
+}
+
+.status-indicator.warning {
+    background: #ffb900;
+    color: #333;
+}
+
+.status-indicator.error {
+    background: #dc3232;
+}
+
+.blackcnote-debug-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.blackcnote-debug-actions .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.blackcnote-debug-actions .button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.log-entry {
+    margin-bottom: 15px;
+    padding: 12px;
+    border-radius: 4px;
+    border-left: 4px solid #ccc;
+    background: #fff;
+    transition: all 0.3s ease;
+}
+
+.log-entry:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+.log-entry-error {
+    background: #fef7f1;
+    border-left-color: #dc3232;
+}
+
+.log-entry-warning {
+    background: #fffbf0;
+    border-left-color: #ffb900;
+}
+
+.log-entry-info {
+    background: #f0f6fc;
+    border-left-color: #0073aa;
+}
+
+.log-entry-debug {
+    background: #f0f0f1;
+    border-left-color: #666;
+}
+
+.log-entry-system {
+    background: #f0f8ff;
+    border-left-color: #007cba;
+}
+
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.log-timestamp {
+    font-size: 12px;
+    color: #666;
+    font-family: monospace;
+}
+
+.log-level {
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.log-level-error {
+    background: #dc3232;
+}
+
+.log-level-warning {
+    background: #ffb900;
+    color: #333;
+}
+
+.log-level-info {
+    background: #0073aa;
+}
+
+.log-level-debug {
+    background: #666;
+}
+
+.log-level-system {
+    background: #007cba;
+}
+
+.log-message {
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    margin-bottom: 8px;
+    line-height: 1.4;
+    color: #23282d;
+}
+
+.log-context {
+    margin-top: 8px;
+}
+
+.log-context details {
+    font-size: 12px;
+}
+
+.log-context summary {
+    cursor: pointer;
+    color: #0073aa;
+    font-weight: 500;
+    padding: 4px 0;
+}
+
+.log-context summary:hover {
+    color: #005a87;
+}
+
+.log-context pre {
+    background: #f0f0f1;
+    padding: 10px;
+    border-radius: 3px;
+    overflow-x: auto;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.4;
+    border: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blackcnote-debug-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .blackcnote-debug-actions {
+        flex-direction: column;
+    }
+    
+    .blackcnote-debug-actions .button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .log-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
+/* Loading States */
+.blackcnote-debug-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.blackcnote-debug-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Notifications */
+.blackcnote-debug-notice {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border-left: 4px solid;
+}
+
+.blackcnote-debug-notice.success {
+    background: #f0f8f0;
+    border-left-color: #46b450;
+    color: #2d5a2d;
+}
+
+.blackcnote-debug-notice.error {
+    background: #fef7f1;
+    border-left-color: #dc3232;
+    color: #8b2a2a;
+}
+
+.blackcnote-debug-notice.warning {
+    background: #fffbf0;
+    border-left-color: #ffb900;
+    color: #8b6a00;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .blackcnote-debug-section {
+        background: #1e1e1e;
+        border-color: #3c434a;
+        color: #f0f0f1;
+    }
+    
+    .blackcnote-debug-card,
+    .blackcnote-debug-metric,
+    .blackcnote-debug-stat {
+        background: #2c2c2c;
+        color: #f0f0f1;
+    }
+    
+    .log-entry {
+        background: #2c2c2c;
+        color: #f0f0f1;
+    }
+    
+    .log-context pre {
+        background: #1e1e1e;
+        border-color: #3c434a;
+        color: #f0f0f1;
+    }
+} 

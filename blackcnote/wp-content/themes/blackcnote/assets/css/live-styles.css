@@ -1,0 +1,492 @@
+/**
+ * BlackCnote Live Editing Styles
+ * CSS for real-time editing interface and development indicators
+ *
+ * @package BlackCnote
+ * @since 1.0.0
+ */
+
+/* CSS Custom Properties for Live Editing */
+:root {
+    /* Default theme colors - can be changed via live editing */
+    --primary-color: #007cba;
+    --secondary-color: #1a1a1a;
+    --accent-color: #ff6b35;
+    --text-color: #333333;
+    --background-color: #ffffff;
+    --border-color: #e0e0e0;
+    
+    /* Typography */
+    --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family-secondary: 'Georgia', serif;
+    --font-size-base: 16px;
+    --font-size-small: 14px;
+    --font-size-large: 18px;
+    --line-height-base: 1.6;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-xxl: 3rem;
+    
+    /* Border radius */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+    --border-radius-xl: 16px;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+}
+
+/* Live Editing Active State */
+[data-live-edit] {
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    border: 2px solid transparent;
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-xs);
+    margin: calc(-1 * var(--spacing-xs));
+}
+
+[data-live-edit]:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(0, 124, 186, 0.05);
+}
+
+[data-live-edit].live-editing-active {
+    border-color: var(--accent-color);
+    background-color: rgba(255, 107, 53, 0.1);
+    box-shadow: var(--shadow-md);
+    outline: none;
+}
+
+[data-live-edit].live-editing-active::before {
+    content: "✏️";
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    z-index: 1000;
+}
+
+/* Style Editable Elements */
+[data-style-edit] {
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+[data-style-edit]:hover {
+    background-color: rgba(0, 124, 186, 0.05);
+    border-radius: var(--border-radius-sm);
+}
+
+[data-style-edit]::after {
+    content: "🎨";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+[data-style-edit]:hover::after {
+    opacity: 1;
+}
+
+/* Component Editable Elements */
+[data-component-edit] {
+    position: relative;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+[data-component-edit]:hover {
+    background-color: rgba(255, 107, 53, 0.05);
+    border-radius: var(--border-radius-sm);
+}
+
+[data-component-edit]::after {
+    content: "⚛️";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    opacity: 0;
+    transition: var(--transition-fast);
+}
+
+[data-component-edit]:hover::after {
+    opacity: 1;
+}
+
+/* Development Banner */
+.blackcnote-dev-banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+}
+
+.blackcnote-dev-banner .dev-status {
+    font-weight: 600;
+}
+
+.blackcnote-dev-banner .dev-connections {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.blackcnote-dev-banner .dev-connections span {
+    padding: 2px 6px;
+    border-radius: var(--border-radius-sm);
+    font-size: 10px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.blackcnote-dev-banner .wp-conn {
+    background: #0073aa !important;
+}
+
+.blackcnote-dev-banner .react-conn {
+    background: #61dafb !important;
+    color: #000;
+}
+
+.blackcnote-dev-banner .bs-conn {
+    background: #ff6b35 !important;
+}
+
+/* Context Menu */
+.blackcnote-context-menu {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-xs) 0;
+    min-width: 200px;
+    font-size: var(--font-size-small);
+    z-index: 10000;
+}
+
+.blackcnote-context-menu .menu-item {
+    padding: var(--spacing-sm) var(--spacing-md);
+    cursor: pointer;
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.blackcnote-context-menu .menu-item:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Live Editing Notifications */
+.blackcnote-live-notification {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-md);
+    max-width: 300px;
+    z-index: 10000;
+    transform: translateX(100%);
+    transition: var(--transition-normal);
+}
+
+.blackcnote-live-notification.show {
+    transform: translateX(0);
+}
+
+.blackcnote-live-notification.success {
+    border-left: 4px solid #28a745;
+}
+
+.blackcnote-live-notification.error {
+    border-left: 4px solid #dc3545;
+}
+
+.blackcnote-live-notification.warning {
+    border-left: 4px solid #ffc107;
+}
+
+.blackcnote-live-notification.info {
+    border-left: 4px solid var(--primary-color);
+}
+
+/* Live Editing Toolbar */
+.blackcnote-live-toolbar {
+    position: fixed;
+    bottom: var(--spacing-lg);
+    left: var(--spacing-lg);
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-sm);
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.blackcnote-live-toolbar button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-small);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.blackcnote-live-toolbar button:hover {
+    background: var(--accent-color);
+}
+
+.blackcnote-live-toolbar button:active {
+    transform: scale(0.95);
+}
+
+/* Live Editing Status Indicator */
+.blackcnote-live-status {
+    position: fixed;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-small);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.blackcnote-live-status .status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #28a745;
+    animation: pulse 2s infinite;
+}
+
+.blackcnote-live-status .status-indicator.error {
+    background: #dc3545;
+}
+
+.blackcnote-live-status .status-indicator.warning {
+    background: #ffc107;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Live Editing Modal */
+.blackcnote-live-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+}
+
+.blackcnote-live-modal .modal-content {
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-xl);
+    padding: var(--spacing-lg);
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.blackcnote-live-modal .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blackcnote-live-modal .modal-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--border-radius-sm);
+    transition: var(--transition-fast);
+}
+
+.blackcnote-live-modal .modal-close:hover {
+    background: var(--border-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blackcnote-dev-banner {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .blackcnote-dev-banner .dev-connections {
+        justify-content: center;
+    }
+    
+    .blackcnote-live-toolbar {
+        bottom: var(--spacing-sm);
+        left: var(--spacing-sm);
+    }
+    
+    .blackcnote-live-status {
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+    }
+    
+    .blackcnote-live-modal .modal-content {
+        margin: var(--spacing-sm);
+        max-width: calc(100% - 2 * var(--spacing-sm));
+    }
+}
+
+/* Print Styles */
+@media print {
+    .blackcnote-dev-banner,
+    .blackcnote-context-menu,
+    .blackcnote-live-notification,
+    .blackcnote-live-toolbar,
+    .blackcnote-live-status,
+    .blackcnote-live-modal {
+        display: none !important;
+    }
+    
+    [data-live-edit],
+    [data-style-edit],
+    [data-component-edit] {
+        border: none !important;
+        background: none !important;
+        cursor: default !important;
+    }
+    
+    [data-live-edit]::before,
+    [data-style-edit]::after,
+    [data-component-edit]::after {
+        display: none !important;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .blackcnote-dev-banner {
+        background: black;
+        border: 2px solid white;
+    }
+    
+    .blackcnote-context-menu {
+        border: 2px solid black;
+    }
+    
+    .blackcnote-context-menu .menu-item:hover {
+        background: black;
+        color: white;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .blackcnote-live-status .status-indicator {
+        animation: none;
+    }
+} 

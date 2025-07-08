@@ -100,7 +100,8 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ### Development Environment
 
 ```yaml
-WP_HOME: http://localhost:8888/blackcnote
+WP_HOME: 
+http://localhost:8888/blackcnote
 WP_SITEURL: http://localhost:8888/blackcnote
 WP_CONTENT_URL: http://localhost:8888/blackcnote/wp-content
 WP_DEBUG: true

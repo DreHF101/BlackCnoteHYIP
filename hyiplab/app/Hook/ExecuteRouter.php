@@ -38,6 +38,21 @@ class ExecuteRouter{
 
     public function includeTemplate($template)
     {
+        // Don't override templates on admin pages
+        if (is_admin()) {
+            return $template;
+        }
+        
+        // Don't override templates on login/register pages
+        if (isset($GLOBALS['pagenow']) && in_array($GLOBALS['pagenow'], ['wp-login.php', 'wp-register.php'])) {
+            return $template;
+        }
+        
+        // Don't override templates on WordPress admin AJAX requests
+        if (wp_doing_ajax() && isset($_REQUEST['action']) && strpos($_REQUEST['action'], 'wp_') === 0) {
+            return $template;
+        }
+        
         $noMatch = true;
         if (get_query_var('hyiplab_page')) {
             $routes = Router::$routes;

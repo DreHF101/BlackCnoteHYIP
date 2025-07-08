@@ -1,0 +1,12 @@
+parameters:
+  level: 6
+  paths:
+    - app
+    - tests
+  excludePaths:
+    - vendor
+    - tests/_output
+  checkMissingIterableValueType: false
+  checkGenericClassInNonGenericObjectType: false
+  inferPrivatePropertyTypeFromConstructor: true
+  reportUnmatchedIgnoredErrors: false 

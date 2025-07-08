@@ -1,0 +1,36 @@
+# Build and distribution files
+dist/
+/dist/
+*.dist.js
+
+# Backup files
+/backups/
+backups/
+
+# Dependency directories
+node_modules/
+
+# Configuration files
+*.config.js
+*.config.ts
+*.cjs
+
+# Scripts
+scripts/
+
+# All hyiplab assets
+hyiplab/assets/
+
+# WordPress theme assets
+blackcnote/assets/
+blackcnote/dist/
+
+# Reference materials (not used in active codebase)
+reference/
+
+# Legacy vendor files
+hyiplab/assets/admin/js/vendor/*
+hyiplab/assets/global/js/*
+hyiplab/assets/public/js/*
+blackcnote/assets/*
+blackcnote/dist/* 

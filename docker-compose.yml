@@ -1,121 +1,206 @@
+﻿# BlackCnote Unified Docker Compose Configuration
+# ================================================
+# CANONICAL PATHWAYS - DO NOT CHANGE
+# Project Root: C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote
+# Theme Directory: C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\blackcnote
+# WP-Content Directory: C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\blackcnote\wp-content
+# Theme Files: C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\blackcnote\wp-content\themes\blackcnote
+# ================================================
+
+version: '3.8'
+
 services:
-  # WordPress Application - EXCLUSIVELY using blackcnote/wp-content
+  # WordPress Application with Enhanced Live Editing
   wordpress:
-    image: wordpress:6.8-apache
-    container_name: blackcnote_wordpress
+    build:
+      context: ./blackcnote
+      dockerfile: ../config/docker/wordpress.Dockerfile
+    image: blackcnote-wordpress:custom
+    container_name: blackcnote-wordpress
     ports:
       - "8888:80"  # Canonical WordPress port
     environment:
-      # WordPress configuration
       WORDPRESS_DB_HOST: mysql
       WORDPRESS_DB_NAME: blackcnote
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: blackcnote_password
-      WORDPRESS_TABLE_PREFIX: wp_
-      # WordPress URLs - EXCLUSIVELY using blackcnote directory
+      WORDPRESS_DEBUG: 1
+      # Base URLs - canonical port 8888
       WP_HOME: http://localhost:8888
       WP_SITEURL: http://localhost:8888
       WP_CONTENT_URL: http://localhost:8888/wp-content
-      # WordPress settings
       WP_DEBUG: true
-      WP_DEBUG_DISPLAY: true
       WP_DEBUG_LOG: true
+      WP_DEBUG_DISPLAY: false
       SCRIPT_DEBUG: true
       SAVEQUERIES: true
-      # Security
-      FORCE_SSL_ADMIN: false
-      FORCE_SSL_LOGIN: false
-      # Performance
+      WP_CACHE: false
+      FS_METHOD: direct
       WP_MEMORY_LIMIT: 256M
       WP_MAX_MEMORY_LIMIT: 512M
-      # Updates
-      AUTOMATIC_UPDATER_DISABLED: true
-      WP_AUTO_UPDATE_CORE: false
-      # EXCLUSIVE BLACKCNOTE WP-CONTENT PATH
-      WP_CONTENT_DIR: /var/www/html/wp-content
+      DISALLOW_FILE_EDIT: true
+      UPLOADS: wp-content/uploads
     volumes:
-      # EXCLUSIVELY mount blackcnote directory as WordPress root
-      - ./blackcnote:/var/www/html:cached
-      # Use blackcnote wp-config.php
-      - ./blackcnote/wp-config.php:/var/www/html/wp-config.php
-      - ./logs/wordpress:/var/www/html/logs
+      # Canonical Windows filesystem path
+      - "C:\\Users\\CASH AMERICA PAWN\\Desktop\\BlackCnote\\blackcnote:/var/www/html:delegated"
+      # Development tools and scripts
+      - "./scripts:/var/www/html/scripts:delegated"
+      # Logs for debugging
+      - "./logs:/var/www/html/logs:delegated"
     depends_on:
       - mysql
       - redis
-    restart: unless-stopped
     networks:
-      - blackcnote_network
+      - blackcnote-network
+    restart: unless-stopped
+    # Enhanced file watching and performance
+    tmpfs:
+      - /tmp
+      - /var/tmp
 
-  # MySQL Database - Updated for MySQL 8.0 compatibility
+  # MySQL Database with Enhanced Performance
   mysql:
     image: mysql:8.0
-    container_name: blackcnote_mysql
+    container_name: blackcnote-mysql
     environment:
       MYSQL_ROOT_PASSWORD: blackcnote_password
       MYSQL_DATABASE: blackcnote
       MYSQL_USER: blackcnote_user
       MYSQL_PASSWORD: blackcnote_password
-      # Performance settings
-      MYSQL_INNODB_BUFFER_POOL_SIZE: 512M
-      MYSQL_INNODB_LOG_FILE_SIZE: 128M
-      MYSQL_INNODB_FLUSH_LOG_AT_TRX_COMMIT: 1
-      MYSQL_MAX_CONNECTIONS: 100
-      MYSQL_QUERY_CACHE_SIZE: 32M
-      MYSQL_QUERY_CACHE_TYPE: 1
+      # Performance optimizations for development
+      MYSQL_INNODB_BUFFER_POOL_SIZE: 256M
+      MYSQL_INNODB_LOG_FILE_SIZE: 64M
+      MYSQL_INNODB_FLUSH_LOG_AT_TRX_COMMIT: 2
     volumes:
       - mysql_data:/var/lib/mysql
-      - ./logs/mysql:/var/log/mysql
-      - ./backups:/var/lib/mysql-backups
-    command: >
-      --host-cache-size=0
-      --authentication-policy=caching_sha2_password
-      --innodb-buffer-pool-size=512M
-      --slow-query-log=1
-      --long-query-time=5
-      --log-error=/var/log/mysql/error.log
-      --general-log=1
-      --general-log-file=/var/log/mysql/general.log
-      --secure-file-priv=/var/lib/mysql-files
-      --pid-file=/var/lib/mysql/mysqld.pid
-      --default-storage-engine=InnoDB
-      --innodb-file-per-table=1
-      --innodb-flush-method=O_DIRECT
-      --innodb-log-buffer-size=16M
-      --innodb-log-file-size=128M
-      --innodb-read-io-threads=4
-      --innodb-write-io-threads=4
-      --innodb-io-capacity=2000
-      --innodb-io-capacity-max=4000
-    restart: unless-stopped
+      - "./db/blackcnote.sql:/docker-entrypoint-initdb.d/blackcnote.sql"
+      # Live editing - Database dumps
+      - "./db:/var/lib/mysql-dumps:delegated"
+    ports:
+      - "3306:3306"
     networks:
-      - blackcnote_network
+      - blackcnote-network
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password --innodb-buffer-pool-size=256M
 
-  # Redis Cache
+  # Redis Cache with Enhanced Configuration
   redis:
     image: redis:7-alpine
-    container_name: blackcnote_redis
-    command: >
-      redis-server
-      --loglevel notice
-      --maxmemory 256mb
-      --maxmemory-policy allkeys-lru
-      --save 900 1
-      --save 300 10
-      --save 60 10000
+    container_name: blackcnote-redis
+    ports:
+      - "6379:6379"
     volumes:
       - redis_data:/data
-      - ./config/redis.conf:/usr/local/etc/redis/redis.conf:ro
-      - ./logs/redis:/var/log/redis
-    restart: unless-stopped
+      # Live editing - Redis configuration
+      - "./redis.conf:/usr/local/etc/redis/redis.conf:ro"
     networks:
-      - blackcnote_network
+      - blackcnote-network
+    restart: unless-stopped
+    command: redis-server /usr/local/etc/redis/redis.conf
+
+  # React Development Server - Fixed Configuration
+  react-app:
+    build:
+      context: ./react-app
+      dockerfile: Dockerfile.dev
+    container_name: blackcnote-react
+    ports:
+      - "5174:5174"  # Canonical React port (updated to match Vite config)
+    volumes:
+      # Live editing - React source files
+      - "./react-app/src:/app/src:delegated"
+      - "./react-app/public:/app/public:delegated"
+      - "./react-app/package.json:/app/package.json"
+      - "./react-app/vite.config.ts:/app/vite.config.ts"
+      - "./react-app/tailwind.config.js:/app/tailwind.config.js"
+      - "./react-app/postcss.config.js:/app/postcss.config.js"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+      - FAST_REFRESH=true
+      - NODE_ENV=development
+      - HOST=0.0.0.0
+      - PORT=5174
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+
+  # Browsersync for Enhanced Live Reloading
+  browsersync:
+    image: node:18-alpine
+    container_name: blackcnote-browsersync
+    ports:
+      - "3000:3000"  # Canonical Browsersync port
+      - "3001:3001"  # Canonical Browsersync UI port
+    volumes:
+      # Canonical Windows filesystem path
+      - "C:\\Users\\CASH AMERICA PAWN\\Desktop\\BlackCnote\\blackcnote:/var/www/html:delegated"
+      - "./react-app/dist:/app/dist:delegated"
+    working_dir: /app
+    command: >
+      sh -c "npm install -g browser-sync &&
+             echo 'module.exports = { proxy: \"wordpress:80\", port: 3000, ui: { port: 3001 }, files: [\"/var/www/html/**/*.php\", \"/var/www/html/**/*.js\", \"/var/www/html/**/*.css\", \"/app/react/src/**/*.{js,jsx,ts,tsx}\"], notify: true, open: false };' > /app/browsersync-config.js &&
+             browser-sync start --config browsersync-config.js"
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    depends_on:
+      - wordpress
+      - react-app
+
+  # File Watcher Service for Enhanced Live Editing
+  file-watcher:
+    image: node:18-alpine
+    container_name: blackcnote-file-watcher
+    volumes:
+      # Canonical Windows filesystem path
+      - "C:\\Users\\CASH AMERICA PAWN\\Desktop\\BlackCnote\\blackcnote:/var/www/html:delegated"
+      - "./react-app:/app/react:delegated"
+      - "./scripts:/app/scripts:delegated"
+      - "./logs:/app/logs:delegated"
+    working_dir: /app
+    command: >
+      sh -c "npm install -g chokidar-cli &&
+             mkdir -p /app/logs &&
+             chokidar '/var/www/html/**/*.{php,js,jsx,ts,tsx,css,scss,html}' '/app/react/src/**/*.{js,jsx,ts,tsx,css,scss}' 
+                     --polling --interval 1000 
+                     --event add,change,unlink 
+                     --command 'echo \"[07/06/2025 21:57:02] File changed: \" >> /app/logs/file-changes.log'"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - CHOKIDAR_INTERVAL=1000
+      - NODE_ENV=development
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
+    depends_on:
+      - wordpress
+      - react-app
+
+  # Development Tools Container - Fixed Configuration
+  dev-tools:
+    build:
+      context: .
+      dockerfile: dev-tools.Dockerfile
+    container_name: blackcnote-dev-tools
+    ports:
+      - "9229:9229"  # Canonical Dev Tools port
+    volumes:
+      # Development tools and scripts
+      - "./react-app:/app/react:delegated"
+      - "./scripts:/app/scripts:delegated"
+      - "./tools:/app/tools:delegated"
+    working_dir: /app
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
 
   # phpMyAdmin for Database Management
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
-    container_name: blackcnote_phpmyadmin
+    container_name: blackcnote-phpmyadmin
     ports:
-      - "8080:80"
+      - "8080:80"  # Canonical phpMyAdmin port
     environment:
       PMA_HOST: mysql
       PMA_PORT: 3306
@@ -126,61 +211,44 @@ services:
       - mysql
     restart: unless-stopped
     networks:
-      - blackcnote_network
+      - blackcnote-network
 
-  # React Development Server
-  react-app:
-    build:
-      context: ./react-app
-      dockerfile: Dockerfile.dev
-    container_name: blackcnote_react
-    ports:
-      - "5174:5174"
-    volumes:
-      - ./react-app:/app
-      - /app/node_modules
+  # Redis Commander for Redis Management
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: blackcnote-redis-commander
     environment:
-      - NODE_ENV=development
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
-      - FAST_REFRESH=true
+      REDIS_HOSTS: local:redis:6379
+    ports:
+      - "8081:8081"  # Canonical Redis Commander port
+    depends_on:
+      - redis
     restart: unless-stopped
     networks:
-      - blackcnote_network
+      - blackcnote-network
 
-  # BlackCnote Debug System - monitoring blackcnote directory exclusively
-  blackcnote_debug:
-    image: php:8.1-cli
-    container_name: blackcnote_debug
-    volumes:
-      # EXCLUSIVELY monitor blackcnote directory
-      - ./blackcnote:/app/blackcnote
-      - .:/app
-      - ./logs:/app/logs
-    working_dir: /app
-    command: ["php", "bin/blackcnote-debug-daemon.php"]
-    restart: always
-    networks:
-      - blackcnote_network
-
-  # BlackCnote Metrics Exporter - Fixed with proper error handling
-  blackcnote_debug_exporter:
-    image: php:8.1-cli
-    container_name: blackcnote_debug_exporter
-    volumes:
-      # EXCLUSIVELY monitor blackcnote directory
-      - ./blackcnote:/app/blackcnote
-      - .:/app
-      - ./logs:/app/logs
-    working_dir: /app
-    command: ["php", "bin/blackcnote-metrics-exporter.php", "--serve", "9091"]
+  # MailHog for Email Testing
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: blackcnote-mailhog
     ports:
-      - "9091:9091"
-    restart: always
-    depends_on:
-      - blackcnote_debug
+      - "8025:8025"  # Canonical MailHog Web UI port
+      - "1026:1025"  # Canonical MailHog SMTP port
     networks:
-      - blackcnote_network
+      - blackcnote-network
+    restart: unless-stopped
+
+  # Debug Metrics Exporter
+  debug-exporter:
+    image: nginx:alpine
+    container_name: blackcnote-debug-exporter
+    ports:
+      - "9091:80"  # Canonical Metrics port
+    volumes:
+      - "./bin/blackcnote-metrics-exporter.php:/usr/share/nginx/html/index.html:ro"
+    networks:
+      - blackcnote-network
+    restart: unless-stopped
 
 volumes:
   mysql_data:
@@ -189,5 +257,9 @@ volumes:
     driver: local
 
 networks:
-  blackcnote_network:
-    driver: bridge 
+  blackcnote-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+

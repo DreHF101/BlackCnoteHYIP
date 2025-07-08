@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:full": "powershell -ExecutionPolicy Bypass -File \"./start-dev-simple.ps1\"",
+    "dev:react": "cd react-app && npm run dev:full",
+    "dev:wordpress": "docker compose up -d",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "npm run dev:full"
   },
   "dependencies": {
     "lucide-react": "^0.344.0",
@@ -29,6 +33,6 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.3.0",
-    "vite": "^5.4.2"
+    "vite": "^7.0.1"
   }
 }

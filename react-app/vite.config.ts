@@ -19,6 +19,18 @@ export default defineConfig({
     // Build to canonical WordPress theme dist directory
     outDir: resolve(CANONICAL_THEME, 'dist'),
     manifest: true,
+    target: 'es2020',
+    minify: 'terser',
+    terserOptions: {
+      compress: {
+        drop_console: process.env.NODE_ENV === 'production',
+        drop_debugger: process.env.NODE_ENV === 'production',
+        pure_funcs: process.env.NODE_ENV === 'production' ? ['console.log'] : [],
+      },
+      mangle: {
+        toplevel: true,
+      },
+    },
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
@@ -38,37 +50,41 @@ export default defineConfig({
         manualChunks: {
           vendor: ['react', 'react-dom'],
           router: ['react-router-dom'],
-          ui: ['lucide-react']
+          ui: ['lucide-react'],
+          utils: ['lodash', 'axios'],
         }
       },
     },
     // Generate source maps for better debugging (but not in production)
     sourcemap: process.env.NODE_ENV !== 'production',
-    // Performance optimizations
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: process.env.NODE_ENV === 'production',
-        drop_debugger: process.env.NODE_ENV === 'production',
-      },
-    },
     // Optimize chunk size
     chunkSizeWarningLimit: 1000,
   },
   server: {
-    // Configure Vite dev server with canonical pathway support
+    host: '0.0.0.0', // Allow connections from Docker and host.docker.internal
     port: 5174,
-    strictPort: true,
-    cors: true,
-    // Allow connections from all hosts (Docker container)
-    host: '0.0.0.0',
+    strictPort: false, // Allow fallback to next port if busy
+    cors: {
+      origin: [
+        'http://localhost:8888',
+        'http://host.docker.internal:8888',
+        'http://localhost:5174',
+        'http://host.docker.internal:5174',
+        'http://blackcnote-react:5174',
+        'http://blackcnote-wordpress:80',
+        '*'
+      ],
+      credentials: true,
+    },
     // Performance optimizations for dev server
     hmr: {
       overlay: true,
-      port: 5174,
+      port: 5178,
       // Ensure HMR works with Docker
-      host: 'localhost'
+      host: '0.0.0.0'
     },
+    // Allow all hosts for Docker development
+    allowedHosts: ['all'],
     // Add proxy for WordPress API calls with canonical pathway support
     proxy: {
       '/wp-json': {
@@ -76,74 +92,12 @@ export default defineConfig({
         changeOrigin: true,
         secure: false,
         timeout: 10000,
-        // Better error handling for when WordPress is not running
-        configure: (proxy) => {
-          proxy.on('error', (err, req, res) => {
-            console.warn(`[Vite] WordPress proxy error: ${err.message}`);
-            if (!res.headersSent) {
-              res.writeHead(503, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ 
-                error: 'WordPress service not available', 
-                message: 'Please ensure Docker services are running: docker-compose up -d',
-                canonical_path: CANONICAL_ROOT,
-                timestamp: new Date().toISOString()
-              }));
-            }
-          });
-          
-          proxy.on('proxyReq', (proxyReq, req, res) => {
-            if (req.url && (
-              req.url.includes('blackcnote_debug') || 
-              req.url.includes('blackcnote_send_to_cursor')
-            )) {
-              // Skip debug requests to avoid conflicts
-              res.writeHead(200, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ 
-                success: false, 
-                message: 'Debug request skipped in Vite dev server',
-                canonical_path: CANONICAL_ROOT
-              }));
-              return;
-            }
-          });
-        }
       },
       '/wp-admin/admin-ajax.php': {
         target: 'http://wordpress:80',
         changeOrigin: true,
         secure: false,
         timeout: 10000,
-        // Better error handling for when WordPress is not running
-        configure: (proxy) => {
-          proxy.on('error', (err, req, res) => {
-            console.warn(`[Vite] WordPress AJAX proxy error: ${err.message}`);
-            if (!res.headersSent) {
-              res.writeHead(503, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ 
-                error: 'WordPress service not available', 
-                message: 'Please ensure Docker services are running: docker-compose up -d',
-                canonical_path: CANONICAL_ROOT,
-                timestamp: new Date().toISOString()
-              }));
-            }
-          });
-          
-          proxy.on('proxyReq', (proxyReq, req, res) => {
-            if (req.url && (
-              req.url.includes('blackcnote_debug') || 
-              req.url.includes('blackcnote_send_to_cursor')
-            )) {
-              // Skip debug AJAX requests to avoid conflicts
-              res.writeHead(200, { 'Content-Type': 'application/json' });
-              res.end(JSON.stringify({ 
-                success: false, 
-                message: 'Debug AJAX request skipped in Vite dev server',
-                canonical_path: CANONICAL_ROOT
-              }));
-              return;
-            }
-          });
-        }
       },
       '/wp-content': {
         target: 'http://wordpress:80',
@@ -189,5 +143,9 @@ export default defineConfig({
     target: 'es2020',
     // Enable source maps for better debugging
     sourcemap: process.env.NODE_ENV === 'development',
+    // Production optimizations
+    minifyIdentifiers: process.env.NODE_ENV === 'production',
+    minifySyntax: process.env.NODE_ENV === 'production',
+    minifyWhitespace: process.env.NODE_ENV === 'production',
   }
 });

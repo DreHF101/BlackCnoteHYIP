@@ -116,7 +116,7 @@ https://github.com/DreHF101/BlackCnoteHYIP.git
 # Verify all services are accessible
 curl -f http://localhost:8888/health
 curl -f http://localhost:5174
-curl -f http://localhost:8080
+curl -f http://localhost:8083
 curl -f http://localhost:8025
 curl -f http://localhost:8081
 ```
@@ -139,7 +139,7 @@ function blackcnote_health_check() {
         'react' => 'http://localhost:5174',
         'mysql' => 'mysql://localhost:3306',
         'redis' => 'redis://localhost:6379',
-        'phpmyadmin' => 'http://localhost:8080',
+        'phpmyadmin' => 'http://localhost:8083',
         'mailhog' => 'http://localhost:8025',
         'browsersync' => 'http://localhost:3000'
     ];
@@ -251,9 +251,9 @@ $OutputFile = "C:\Users\CASH AMERICA PAWN\Desktop\BlackCnote\BlackCnote-Theme-Co
 // ✅ CORRECT - Use canonical service URLs
 define('BLACKCNOTE_WORDPRESS_URL', 'http://localhost:8888');
 define('BLACKCNOTE_REACT_URL', 'http://localhost:5174');
-define('BLACKCNOTE_PHPMYADMIN_URL', 'http://localhost:8080');
+define('BLACKCNOTE_PHPMYADMIN_URL', 'http://localhost:8083');
 define('BLACKCNOTE_MAILHOG_URL', 'http://localhost:8025');
-define('BLACKCNOTE_REDIS_COMMANDER_URL', 'http://localhost:8081');
+define('BLACKCNOTE_REDIS_COMMANDER_URL', 'http://localhost:8082');
 define('BLACKCNOTE_BROWSERSYNC_URL', 'http://localhost:3000');
 ```
 
@@ -308,9 +308,9 @@ define('BLACKCNOTE_BROWSERSYNC_URL', 'http://localhost:3000');
 | Uploads | `blackcnote/wp-content/uploads/` | `http://localhost:8888/wp-content/uploads` |
 | Logs | `blackcnote/wp-content/logs/` | `http://localhost:8888/wp-admin/admin.php?page=blackcnote-debug` |
 | React App | `react-app/` | `http://localhost:5174` |
-| Database Management | - | `http://localhost:8080` |
+| Database Management | - | `http://localhost:8083` |
 | Email Testing | - | `http://localhost:8025` |
-| Cache Management | - | `http://localhost:8081` |
+| Cache Management | - | `http://localhost:8082` |
 | Live Reloading | - | `http://localhost:3000` |
 
 ## **📞 Support**
@@ -322,6 +322,20 @@ If you encounter path-related issues:
 3. **Review debug logs** in `blackcnote/wp-content/logs/`
 4. **Check script documentation** for path references
 5. **Verify service connectivity** using the health check endpoints
+
+## **Troubleshooting Port Conflicts and Performance**
+
+### **Port Conflicts**
+- If you get errors about ports 5174, 3000, or 3001 being in use, run:
+  - `npx kill-port 5174 3000 3001`
+  - Or manually: `netstat -ano | findstr :5174` and `taskkill /PID [PID] /F`
+- If Browsersync starts on 3002 or 3003, it means 3000/3001 were busy
+- If you get a permission error, try running your terminal as administrator
+- If all else fails, reboot your machine
+
+### **Docker Resource Allocation**
+- For best performance, allocate at least 2 CPUs and 4GB RAM in Docker Desktop → Settings → Resources
+- Restart Docker after changing resources
 
 **Last Updated**: December 2024  
 **Version**: 2.0  

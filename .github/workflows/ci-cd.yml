@@ -1,0 +1,154 @@
+name: BlackCnote CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: blackcnote_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+      
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+        options: --health-cmd="redis-cli ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        extensions: mbstring, intl, mysql, redis, zip
+        coverage: xdebug
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+        cache-dependency-path: react-app/package-lock.json
+    
+    - name: Install Composer dependencies
+      run: |
+        cd hyiplab-plugin
+        composer install --prefer-dist --no-progress
+    
+    - name: Install Node.js dependencies
+      run: |
+        cd react-app
+        npm ci
+    
+    - name: Run PHP CodeSniffer
+      run: |
+        cd hyiplab-plugin
+        vendor/bin/phpcs --standard=PSR12 app/ tests/
+    
+    - name: Run PHPStan
+      run: |
+        cd hyiplab-plugin
+        vendor/bin/phpstan analyse app/ tests/ --level=6
+    
+    - name: Run PHPUnit tests
+      run: |
+        cd hyiplab-plugin
+        vendor/bin/phpunit --coverage-clover=coverage.xml
+      env:
+        DB_HOST: 127.0.0.1
+        DB_USER: root
+        DB_PASSWORD: root
+        DB_NAME: blackcnote_test
+    
+    - name: Run React tests
+      run: |
+        cd react-app
+        npm test -- --coverage --watchAll=false
+    
+    - name: Build React app
+      run: |
+        cd react-app
+        npm run build
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: hyiplab-plugin/coverage.xml
+        flags: unittests
+        name: codecov-umbrella
+
+  security:
+    runs-on: ubuntu-latest
+    needs: test
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Run security scan
+      uses: snyk/actions/node@master
+      env:
+        SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      with:
+        args: --severity-threshold=high
+    
+    - name: Run PHP security scan
+      run: |
+        composer global require enlightn/security-checker
+        security-checker security:check composer.lock
+
+  deploy-staging:
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    if: github.ref == 'refs/heads/develop'
+    environment: staging
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to staging
+      run: |
+        echo "Deploying to staging environment..."
+        # Add your staging deployment script here
+        # Example: rsync, FTP, or cloud deployment
+    
+    - name: Run health checks
+      run: |
+        echo "Running health checks on staging..."
+        # Add health check script here
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [test, security]
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deploy to production
+      run: |
+        echo "Deploying to production environment..."
+        # Add your production deployment script here
+    
+    - name: Run health checks
+      run: |
+        echo "Running health checks on production..."
+        # Add health check script here
+    
+    - name: Notify deployment
+      run: |
+        echo "Production deployment completed successfully!"
+        # Add notification script here (Slack, email, etc.) 

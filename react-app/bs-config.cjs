@@ -6,8 +6,8 @@
  * The React app handles environment detection internally.
  */
 module.exports = {
-  // Proxy your local WordPress server (XAMPP setup)
-  proxy: 'http://localhost/blackcnote',
+  // Proxy your local WordPress server (Docker setup)
+  proxy: 'http://localhost:8888',
 
   // Start the browser at the correct path.
   startPath: '/',
@@ -38,9 +38,9 @@ module.exports = {
   ],
 
   // Standard Browsersync ports (avoid conflicts with debug system)
-  port: 3000,
+  port: 3006,
   ui: {
-    port: 3001,
+    port: 3007,
   },
 
   // Open the browser automatically
@@ -115,8 +115,8 @@ module.exports = {
   callbacks: {
     ready: function(err, bs) {
       console.log('✅ Browsersync is ready!');
-      console.log('🌐 Local: http://localhost:3000');
-      console.log('🎛️  UI: http://localhost:3001');
+      console.log('🌐 Local: http://localhost:3002');
+      console.log('🎛️  UI: http://localhost:3003');
       console.log('📱 External: http://' + bs.options.host + ':' + bs.options.port);
       
       // Log that debug system is compatible

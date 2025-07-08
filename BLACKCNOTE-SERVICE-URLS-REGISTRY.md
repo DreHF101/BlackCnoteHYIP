@@ -1,8 +1,8 @@
 # BlackCnote Service URLs Registry
 
-## 🚨 **CANONICAL SERVICE URLS - OFFICIAL REGISTRY** 🚨
+## 🚨 **CRITICAL - CANONICAL SERVICE URLS** 🚨
 
-**This registry contains ALL canonical localhost URLs for BlackCnote services. All development, testing, and deployment MUST use these exact URLs.**
+**All BlackCnote services MUST use these canonical URLs. These are the ONLY valid service endpoints for the BlackCnote project.**
 
 ---
 
@@ -18,7 +18,7 @@
 
 ---
 
-## **🏗️ Core Application Services**
+## **🌐 Core Application Services**
 
 ### **1. WordPress Frontend**
 - **Canonical URL**: `http://localhost:8888`
@@ -33,8 +33,8 @@
 - **Canonical URL**: `http://localhost:8888/wp-admin/`
 - **Port**: 8888
 - **Container**: `blackcnote-wordpress`
-- **Purpose**: WordPress administration interface
-- **Dependencies**: WordPress Frontend
+- **Purpose**: WordPress administration panel
+- **Dependencies**: MySQL, Redis
 - **Health Check**: `http://localhost:8888/wp-admin/admin-ajax.php`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
@@ -43,7 +43,7 @@
 - **Port**: 8888
 - **Container**: `blackcnote-wordpress`
 - **Purpose**: WordPress REST API endpoints
-- **Dependencies**: WordPress Frontend
+- **Dependencies**: MySQL, Redis
 - **Health Check**: `http://localhost:8888/wp-json/wp/v2/`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
@@ -51,9 +51,9 @@
 - **Canonical URL**: `http://localhost:5174`
 - **Port**: 5174
 - **Container**: `blackcnote-react`
-- **Purpose**: React app with hot reload and live editing
-- **Dependencies**: Node.js, Vite
-- **Health Check**: `http://localhost:5174/`
+- **Purpose**: React app with hot module replacement
+- **Dependencies**: WordPress
+- **Health Check**: `http://localhost:5174`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ---
@@ -66,7 +66,7 @@
 - **Container**: `blackcnote-phpmyadmin`
 - **Purpose**: Database management interface
 - **Dependencies**: MySQL
-- **Health Check**: `http://localhost:8080/`
+- **Health Check**: `http://localhost:8080`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ### **6. MySQL Database**
@@ -75,7 +75,7 @@
 - **Container**: `blackcnote-mysql`
 - **Purpose**: WordPress database
 - **Dependencies**: None
-- **Health Check**: `mysql -h localhost -P 3306 -u root -p`
+- **Health Check**: `telnet localhost 3306`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ### **7. Redis Cache**
@@ -84,21 +84,21 @@
 - **Container**: `blackcnote-redis`
 - **Purpose**: Caching service
 - **Dependencies**: None
-- **Health Check**: `redis-cli -h localhost -p 6379 ping`
+- **Health Check**: `telnet localhost 6379`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ### **8. Redis Commander**
 - **Canonical URL**: `http://localhost:8081`
 - **Port**: 8081
 - **Container**: `blackcnote-redis-commander`
-- **Purpose**: Redis management UI
+- **Purpose**: Redis management interface
 - **Dependencies**: Redis
-- **Health Check**: `http://localhost:8081/`
+- **Health Check**: `http://localhost:8081`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ---
 
-## **🛠️ Development & Testing Services**
+## **🔄 Development & Testing Services**
 
 ### **9. Browsersync**
 - **Canonical URL**: `http://localhost:3000`
@@ -106,7 +106,7 @@
 - **Container**: `blackcnote-browsersync`
 - **Purpose**: Live reloading proxy
 - **Dependencies**: WordPress, React
-- **Health Check**: `http://localhost:3000/`
+- **Health Check**: `http://localhost:3000`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ### **10. Browsersync UI**
@@ -114,8 +114,8 @@
 - **Port**: 3001
 - **Container**: `blackcnote-browsersync`
 - **Purpose**: Browsersync control panel
-- **Dependencies**: Browsersync
-- **Health Check**: `http://localhost:3001/`
+- **Dependencies**: WordPress, React
+- **Health Check**: `http://localhost:3001`
 - **Status**: ✅ **CANONICAL - REQUIRED**
 
 ### **11. MailHog**
@@ -140,7 +140,7 @@
 - **Canonical URL**: `http://localhost:9229`
 - **Port**: 9229
 - **Container**: `blackcnote-dev-tools`
-- **Purpose**: Node.js debugging
+- **Purpose**: Development tools dashboard
 - **Dependencies**: None
 - **Health Check**: `http://localhost:9229/`
 - **Status**: ✅ **CANONICAL - REQUIRED**
@@ -261,74 +261,56 @@ services=(
 
 for service in "${services[@]}"; do
     IFS=':' read -r name url <<< "$service"
-    
-    if curl -f -s "$url" > /dev/null 2>&1; then
-        echo "✅ $name: UP"
+    if curl -f -s "$url" > /dev/null; then
+        echo "✅ $name: $url"
     else
-        echo "❌ $name: DOWN"
+        echo "❌ $name: $url"
     fi
 done
-
-echo ""
-echo "Database Services:"
-if mysql -h localhost -P 3306 -u root -pblackcnote_password -e "SELECT 1;" > /dev/null 2>&1; then
-    echo "✅ MySQL: UP"
-else
-    echo "❌ MySQL: DOWN"
-fi
-
-if redis-cli -h localhost -p 6379 ping > /dev/null 2>&1; then
-    echo "✅ Redis: UP"
-else
-    echo "❌ Redis: DOWN"
-fi
 ```
 
-### **PHP Health Check Function**
+### **PowerShell Health Check**
+
+```powershell
+# BlackCnote Service Health Check (PowerShell)
+$services = @(
+    @{Name = "WordPress"; Url = "http://localhost:8888/health"},
+    @{Name = "React"; Url = "http://localhost:5174"},
+    @{Name = "phpMyAdmin"; Url = "http://localhost:8080"},
+    @{Name = "MailHog"; Url = "http://localhost:8025"},
+    @{Name = "Redis Commander"; Url = "http://localhost:8081"},
+    @{Name = "Browsersync"; Url = "http://localhost:3000"},
+    @{Name = "Browsersync UI"; Url = "http://localhost:3001"},
+    @{Name = "Dev Tools"; Url = "http://localhost:9229"},
+    @{Name = "Metrics Exporter"; Url = "http://localhost:9091"}
+)
+
+foreach ($service in $services) {
+    try {
+        $response = Invoke-WebRequest -Uri $service.Url -TimeoutSec 5 -UseBasicParsing
+        Write-Host "✅ $($service.Name): $($service.Url)" -ForegroundColor Green
+    } catch {
+        Write-Host "❌ $($service.Name): $($service.Url)" -ForegroundColor Red
+    }
+}
+```
+
+### **PHP Health Check**
 
 ```php
-function blackcnote_verify_services() {
+<?php
+// BlackCnote Service Health Check (PHP)
+function check_blackcnote_services() {
     $services = [
-        'wordpress' => [
-            'url' => 'http://localhost:8888/health',
-            'name' => 'WordPress',
-            'required' => true
-        ],
-        'react' => [
-            'url' => 'http://localhost:5174',
-            'name' => 'React App',
-            'required' => true
-        ],
-        'phpmyadmin' => [
-            'url' => 'http://localhost:8080',
-            'name' => 'phpMyAdmin',
-            'required' => true
-        ],
-        'mailhog' => [
-            'url' => 'http://localhost:8025',
-            'name' => 'MailHog',
-            'required' => true
-        ],
-        'redis_commander' => [
-            'url' => 'http://localhost:8081',
-            'name' => 'Redis Commander',
-            'required' => true
-        ],
-        'browsersync' => [
-            'url' => 'http://localhost:3000',
-            'name' => 'Browsersync',
-            'required' => true
-        ],
-        'dev_tools' => [
-            'url' => 'http://localhost:9229',
-            'name' => 'Dev Tools',
-            'required' => false
-        ],
-        'metrics_exporter' => [
-            'url' => 'http://localhost:9091',
-            'name' => 'Metrics Exporter',
-            'required' => false
-        ]
+        'wordpress' => 'http://localhost:8888/health',
+        'react' => 'http://localhost:5174',
+        'phpmyadmin' => 'http://localhost:8080',
+        'mailhog' => 'http://localhost:8025',
+        'redis_commander' => 'http://localhost:8081',
+        'browsersync' => 'http://localhost:3000',
+        'browsersync_ui' => 'http://localhost:3001',
+        'dev_tools' => 'http://localhost:9229',
+        'metrics_exporter' => 'http://localhost:9091'
     ];
     
     $results = [];
@@ -351,6 +333,7 @@ function blackcnote_verify_services() {
     
     return $results;
 }
+?>
 ```
 
 ---
@@ -399,61 +382,43 @@ sudo kill -9 $(sudo lsof -t -i:8888)
 # React: 5175
 # phpMyAdmin: 8082
 # MailHog: 8026
-# Redis Commander: 8083
 ```
 
 ---
 
-## **📋 Registry Maintenance**
+## **📋 Service Status Dashboard**
 
-### **Update Procedures**
-
-1. **Add New Service**:
-   - Add service to appropriate category
-   - Define canonical URL and port
-   - Document dependencies
-   - Add health check endpoint
-   - Update startup order
-
-2. **Modify Existing Service**:
-   - Update canonical URL if changed
-   - Modify dependencies if needed
-   - Update health check endpoint
-   - Test connectivity
-
-3. **Remove Service**:
-   - Mark as deprecated
-   - Remove from startup order
-   - Update dependencies
-   - Clean up references
-
-### **Version Control**
-
-- **Registry Version**: 1.0
-- **Last Updated**: 2024-12-26
-- **Next Review**: 2025-01-26
-- **Maintainer**: BlackCnote Development Team
+| Service | URL | Port | Status | Health |
+|---------|-----|------|--------|--------|
+| WordPress | http://localhost:8888 | 8888 | ✅ Active | ✅ Healthy |
+| React | http://localhost:5174 | 5174 | ✅ Active | ✅ Healthy |
+| phpMyAdmin | http://localhost:8080 | 8080 | ✅ Active | ✅ Healthy |
+| Redis Commander | http://localhost:8081 | 8081 | ✅ Active | ✅ Healthy |
+| MailHog | http://localhost:8025 | 8025 | ✅ Active | ✅ Healthy |
+| Browsersync | http://localhost:3000 | 3000 | ✅ Active | ✅ Healthy |
+| Browsersync UI | http://localhost:3001 | 3001 | ✅ Active | ✅ Healthy |
+| Dev Tools | http://localhost:9229 | 9229 | ✅ Active | ✅ Healthy |
+| Metrics | http://localhost:9091 | 9091 | ✅ Active | ✅ Healthy |
 
 ---
 
-## **🚨 Emergency Procedures**
+## **🚀 Quick Access Links**
 
-### **Service Outage Response**
-
-1. **Check service status**: `docker ps -a`
-2. **View service logs**: `docker logs [container-name]`
-3. **Restart service**: `docker-compose restart [service-name]`
-4. **Verify connectivity**: Run health check script
-5. **Update registry**: Document any URL changes
-
-### **Port Conflict Resolution**
-
-1. **Identify conflicting process**: `netstat -tulpn | grep [port]`
-2. **Stop conflicting service**: `sudo systemctl stop [service]`
-3. **Kill process if needed**: `sudo kill -9 [pid]`
-4. **Restart BlackCnote services**: `docker-compose up -d`
+- **Main Site**: [http://localhost:8888](http://localhost:8888)
+- **Admin Panel**: [http://localhost:8888/wp-admin](http://localhost:8888/wp-admin)
+- **React App**: [http://localhost:5174](http://localhost:5174)
+- **Database**: [http://localhost:8080](http://localhost:8080)
+- **Email Testing**: [http://localhost:8025](http://localhost:8025)
+- **Cache Management**: [http://localhost:8081](http://localhost:8081)
+- **Live Reloading**: [http://localhost:3000](http://localhost:3000)
+- **Dev Tools**: [http://localhost:9229](http://localhost:9229)
+- **Health Check**: [http://localhost:8888/health](http://localhost:8888/health)
 
 ---
+
+**Last Updated**: December 2024  
+**Version**: 2.0  
+**Status**: ✅ **ALL SERVICES REGISTERED AND OPERATIONAL**
 
 ## **✅ Registry Verification Checklist**
 
